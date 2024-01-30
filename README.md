@@ -31,8 +31,7 @@ one million screen hours to secure an hour less screentime future<br>
 <br>
 
 
-<br><br>![esp](https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/b5cefe6b-7976-4aa5-b35c-28bc62fa4c82)
-
+<br>
 ## 🔥🔥 roadmap & ideas voice commands <br>
 <br>
 🇸🇪🇸🇪<br>

@@ -1,0 +1,64 @@
+# -> PlayArtist <- #
+## Plays all songs by said artist.
+# (this assumes you have vlc installed)
+
+# configuration.yaml
+script: !include scripts.yaml
+intent_script: !include intent_script.yaml
+conversation: !include conversation.yaml
+command_line: !include command_line.yaml
+
+input_text:
+  name: searchartist
+shell_command:
+  vlc_play_artist: vlc-wrapper add {{states('sensor.search_artist')}}  
+  
+# command_line.yaml
+  - sensor:
+      name: search_artist
+      command: 'find /media/Music -type d | grep -i {{states(''input_text.searchartist'') |replace(".", "")}} | tail -1'
+      value_template: '{{ value  }}'
+
+
+# intent_script.yaml
+PlayArtist:
+  action:
+    - service: input_text.set_value
+      data: 
+        value: "{{artist}}"
+      target:
+        entity_id: input_text.searchartist
+    - service: homeassistant.update_entity
+      target:
+        entity_id: "{{ states.sensor | selectattr('object_id', 'match', 'search') | map(attribute='entity_id') | list }}"
+      data: {}          
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 3
+        milliseconds: 0
+    - service: shell_command.vlc_play_artist
+      
+      
+# /custom_sentences/sv/IntentName.yaml      
+language: "sv"
+intents:
+  PlayArtist:
+    data:
+      - sentences:
+          - "spela upp bandet {artist}"
+lists:
+  artist:
+    wildcard: true
+    
+# conversation.yaml
+intents:
+  PlayBamd:
+    - "spela upp artisten {artist}" 
+          
+
+
+
+
+
+

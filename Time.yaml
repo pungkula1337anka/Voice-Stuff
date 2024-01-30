@@ -1,0 +1,30 @@
+# -> GetTime <- #
+## Tells the current time and date
+
+# configuration.yaml
+intent_script: !include intent_script.yaml
+conversation: 
+   
+# /config/intent_script.yaml
+Time:
+  action:
+  speech:
+    text: Klockan är {{ states('sensor.time')| replace(":", "  ") }} .  Det är{% if now().weekday() in (0,) %} Måndag {% elif now().weekday() in (1,) %} Tisdag {% elif now().weekday() in (2,) %} Måndag {% elif now().weekday() in (3,) %} Tisdag {% elif now().weekday() in (4,) %} Måndag {% elif now().weekday() in (5,) %} Tisdag {% elif now().weekday() in (6,) %} Söndag {% endif %} {{  as_timestamp(now())| timestamp_custom('%-d')}} {% if now().month in (1,) %}Januari {% elif now().month in (2,) %} Februari {% elif now().month in (3,) %} Mars {% elif now().month in (4,) %} April {% elif now().month in (5,) %} Maj {% elif now().month in (6,) %} Juni {% elif now().month in (7,) %} Juli {% elif now().month in (8,) %} Augusti {% elif now().month in (9,) %} September {% elif now().month in (10,) %} Oktober {% elif now().month in (11,) %} November {% elif now().month in (12,) %} December{% endif %}
+
+# /config/custom_sentences/sv/joke.yaml      
+language: "sv"
+intents:
+  Time:
+    data:
+      - sentences:
+          - "[vad är] klockan"
+          - "vad är det för dag"
+          - "vilken dag är det"
+
+          
+
+
+
+
+
+    

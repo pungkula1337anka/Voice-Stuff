@@ -1,0 +1,89 @@
+# -> SetTimer <- #
+## Starts a timer 
+
+# /config/configuration.yaml 
+intent_script: !include intent_script.yaml
+automation: !include automation.yaml
+conversation: 
+
+timer:
+  timer:
+    duration: "00:00:00"
+    restore: true
+
+# /config/intent_script.yaml
+SetTimer:
+  action:
+    - service: timer.start
+      data:
+          duration: "00:{{minutes}}:00"
+      target:
+          entity_id: timer.timer
+  speech:
+    text: "räknar ned från {{ minutes }} minuter"   
+ 
+SetHourTimer:
+  action:
+    - service: timer.start
+      data:
+          duration: "{{hours}}:{{minutes}}:00"
+      target:
+          entity_id: timer.timer             
+  speech:
+    text: "räknar ned från {{ hours }} timmar och {{ minutes }} minuter"  
+  
+# /config/custom_sentences/sv/SetTimer.yaml	
+language: "sv"
+intents:
+  SetTimer:
+    data:
+      - sentences:
+          - "(starta|ställ|sätt)  [en] timer [på] {minutes} minuter"       
+lists:
+  minutes:
+    range:
+      from: 0
+      to: 60
+
+# /config/custom_sentences/sv/SetHourTimer.yaml 	
+language: "sv"
+intents:
+  SetHourTimer:
+    data:
+      - sentences:
+          - "(starta|ställ|sätt)  [en] timer [på] {hours} (timma|timme|timmar) [och] {minutes} minuter"          
+lists:
+  minutes:
+    range:
+      from: 0
+      to: 60
+  hours:
+    range:
+      from: 0
+      to: 24
+
+# Example automation.yaml
+alias: timer_finish
+description: "When the timer finishes, blinks a light and send notification to phone and play sound on media player."
+trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.timer
+action:
+  - parallel:
+      - service: light.turn_on
+        data:
+          flash: long
+        target:
+          entity_id:
+            - light.min_lampa                     #<- change
+      - service: notify.mobile_app_min_telefon     #<- change
+        data:
+          message: TIMER
+      - service: media_player.play_media
+        target:
+          entity_id: media_player.min_media_spelare     #<- change
+        data:
+          media_content_id: http://homeassistant.local:8123/local/sound/timer.mp3       #<- change
+          media_content_type: music

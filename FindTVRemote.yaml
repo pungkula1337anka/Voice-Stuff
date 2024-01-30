@@ -1,0 +1,47 @@
+# -> Find TV Remote <- #
+## Locates the Nvidia Shield TV Remote by playing sound on it
+
+# configuration.yaml
+script: !include scripts.yaml
+intent_script: !include intent_script.yaml
+conversation: !include conversation.yaml
+
+# scripts.yaml
+find_tvremote:
+    alias: denon_random_song
+    sequence:
+    - service: androidtv.adb_command
+      target:
+        entity_id: media_player.android_tv_192_168_1_223
+      data:
+        command: am start -a android.intent.action.VIEW-d-n com.nvidia.remotelocator/.ShieldRemoteLocatorActivity
+
+# intent_script.yaml
+FindTVRemote:
+  action:
+    - service: script.find_tvremote
+      data: {}
+  speech:
+    text: "walla balla bruschan använd öronen då"
+
+# /custom_sentences/sv/FindTVRemote.yaml      
+language: "sv"
+intents:
+  FindTVRemote:
+    data:
+      - sentences:
+          - "var är fjärrkontrollen"
+          - "jag hittar inte fjärrkontrollen"
+          
+# conversation.yaml
+intents:
+  FindTVRemote:
+    - "var är fjärrkontrollen"          
+          
+          
+
+
+
+
+
+

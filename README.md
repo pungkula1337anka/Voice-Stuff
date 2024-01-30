@@ -30,10 +30,10 @@ made by blindis for blindisar.<br>
 one million screen hours to secure an hour less screentime future<br>
 <br>
 
-
 <br>
+<br><br>
 ## 🔥🔥 roadmap & ideas voice commands <br>
-<br>
+<br><br>
 🇸🇪🇸🇪<br>
 - 🚀 [<span style="color:green"><span style="color:green">100%</span></span>] "Tell me a joke"<br>
 - 🚀 [<span style="color:green"><span style="color:green">100%</span></span>] "Where's the phone?"<br>

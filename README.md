@@ -39,15 +39,24 @@ one million screen hours to secure an hour less screentime future<br>
 
 <br>
 🇸🇪🇸🇪<br>
-- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/ESP32%20Voice%20Assistant.yaml) ESP Voice ASsistant
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/ESP32%20Voice%20Assistant.yaml) ESP Voice ASsistant<br>
+
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Tell me a joke"<br>
+
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Where's the phone?"<br>
+
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/FindTVRemote.yaml) "Where's the remote?"<br>
+
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Where's the charger?"<br>
+
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "I got a letter" Scan document, label, organize, rename and send pdf to NAS,jpg to Phone, TTS the paper and when done asks if an calendar event should be made on the dates found on paper <br>
+
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "what is the kWh/$ ?" <br>
+
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/Time.yaml) "What time is it?" - Tells time day and date <br>
+
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "When is my package arriving?" , "When is mail delivery?"" <br>
+
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/SetTimer.yaml) Start timers <br>
 
 - 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/SetWakeuptime.yaml) "Set an alarm for 7:00"

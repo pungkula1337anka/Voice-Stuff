@@ -1,10 +1,7 @@
 
 <h1 align="center">
-
-  <br>
-
-    2024. Spoken.
-    
+<br>
+2024. Spoken.
 <br>
 <br><br>
 Wake. Word.<br>
@@ -40,65 +37,73 @@ one million screen hours to secure an hour less screentime future<br>
 ## 🔥🔥 roadmap & ideas voice commands 
 
 
-<br><br>
+<br>
 🇸🇪🇸🇪<br>
-- 🚀 [<span style="color:green"><span style="color:green">[100%](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml)</span></span>] "Tell me a joke"<br>
-- 🚀 [<span style="color:green"><span style="color:green">100%</span></span>] "Where's the phone?"<br>
-- 🚀 [<span style="color:green">100%</span>] "Where's the remote?"<br>
-- 🚀 [<span style="color:green">100%</span>] "Where's the charger?"<br>
-- 🚀 [<span style="color:green">100%</span>] "I got a letter" Scan document, label, organize, rename and send pdf to NAS,jpg to Phone, TTS the paper and when done asks if an calendar event should be made on the dates found on paper <br>
-- 🚀 [<span style="color:green">100%</span>] "what is the kWh/$ ?" <br>
-- 🚀 [<span style="color:green">100%</span>] "What date is it?" <br>
-- 🚀 [<span style="color:green">100%</span>] "When is my package arriving?" , "When is mail delivery?"" <br>
-- 🚀 [<span style="color:green">100%</span>] Start timers & wakeup alarms.<br>
-- 🚀 [<span style="color:green">100%</span>] Read/write calendar events<br>
-- 🚀 [<span style="color:green">100%</span>] "Is it cold outside?" (its sweden duh) <br>
-- 🚀 [<span style="color:green">100%</span>] "I want to hear the news" (np3) <br>
-- 🚀 [<span style="color:green">100%</span>] "Play the latest financial news" (mp3) <br>
-- 🚀 [<span style="color:green">100%</span>]  live TTS RSS feed <br>
-- 🚀 [<span style="color:green">100%</span>] TTS Market update s<br>
-- 🚀 [<span style="color:green">100%</span>] global TTS notifications<br>
-- 🚀 [<span style="color:green">100%</span>] DM and @ TTS notification<br>
-- 🚀 [<span style="color:green">100%</span>] live TTS emails<br>
-- 🚀 [<span style="color:green">100%</span>] "Play latest podcast."<br>
-- 🗣 [0%] "Play Random Jazz songs"<br>
-- 🚀 [<span style="color:green">100%</span>] "Play Artist" (add to Lidarr if not found)<br>
-- 🚀 [<span style="color:green">100%</span>] "Play Song" (add to Lidarr if not found)<br>
-- 🚀 [<span style="color:green">100%</span>] "Start Playlist"<br>
-- 🚀 [<span style="color:green">100%</span>] TV: TTS EPG. "Whats on TV right now?"<br>
-- 🚀 [<span style="color:green">100%</span>] "block this ad"<br>
-- 🚀 [<span style="color:green">100%</span>] "When does the next bus/train to the hospital departure?"<br>
-- 🚀 [<span style="color:green">100%</span>] Read/Write shopping/ToDo lists & reminders.<br>
-- 🚀 [<span style="color:green">100%</span>] "Complete backup" of iPhone duck cloud, Contacts, SMS, camera, shortcuts, certs. TTS progress <br>
-- 🗣 [75%] "TV: set Channel/Volume" (presence automation)<br>
-- 🗣 [95%] "TV: start TVShow" (add to Sonarr if not found)<br>
-- 🗣 [95%] "TV: start movie" (add to Radarr if not found)<br>
-- 🗣 [0%] "start todays most  watched video."<br>
-- 🗣 [50%] "Start xmr pirates"<br>
-- 🗣 [10%] "When does store open/close?"<br>
-- 🗣 [50%] "Show Robert's contact card"  TTS & show vcf on TV <br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/ESP32%20Voice%20Assistant.yaml) ESP Voice ASsistant
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Tell me a joke"<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Where's the phone?"<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/FindTVRemote.yaml) "Where's the remote?"<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Where's the charger?"<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "I got a letter" Scan document, label, organize, rename and send pdf to NAS,jpg to Phone, TTS the paper and when done asks if an calendar event should be made on the dates found on paper <br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "what is the kWh/$ ?" <br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/Time.yaml) "What time is it?" - Tells time day and date <br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "When is my package arriving?" , "When is mail delivery?"" <br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/SetTimer.yaml) Start timers <br>
+
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/SetWakeuptime.yaml) "Set an alarm for 7:00"
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) Read/write calendar events<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Is it cold outside?" (its sweden duh) <br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PlayNews.yaml) "I want to hear the news" (np3) <br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Play the latest financial news" (mp3) <br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml)  live TTS RSS feed <br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) TTS Market update s<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) global TTS notifications<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) DM and @ TTS notification<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) live TTS emails<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Play latest podcast."<br>
+- 🗣 [WIP] "Play Random Jazz songs"<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PlayArtist.yaml) "Play Artist" (add to Lidarr if not found)<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PlaySong.yaml) "Play Song" (add to Lidarr if not found)<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Start Playlist"<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) TV: TTS EPG. "Whats on TV right now?"<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "block this ad"<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "When does the next bus/train to the hospital departure?"<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) Read/Write shopping/ToDo lists & reminders.<br>
+- 🚀 [link](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml) "Complete backup" of iPhone duck cloud, Contacts, SMS, camera, shortcuts, certs. TTS progress <br>
+- 🗣 [WIP] "TV: set Channel/Volume" (presence automation)<br>
+- 🗣 [WIP] "TV: start TVShow" (add to Sonarr if not found)<br>
+- 🗣 [WIP] "TV: start movie" (add to Radarr if not found)<br>
+- 🗣 [WIP] "start todays most  watched video."<br>
+- 🗣 [WIP] "Start xmr pirates"<br>
+- 🗣 [WIP] "When does store open/close?"<br>
+- 🗣 [WIP] "Show Robert's contact card"  TTS & show vcf on TV <br>
 - 🗣 [5%] SMS & Phone calls<br>
 - 🗣 [0%] "What song is this?" (and add to playlist)<br>
-- 🗣 [0%] TV; Start a starred TV show on shuffle. "Throw something on the tv"<br>
-- 🗣 [25%] Morning message. Calendar, reminders, birthdays, market info, unread mail, missed calls,<br>
-- 🗣 [0%] TTS greeting BEFORE Friend/Stranger arrives. <br>
-- 🗣 [0%] DNS toggle
-- 🗣 [1%] Buy/sell<br>
-- 🗣 [0%] "how much $$ is on my card?"<br>
-- 🗣 [3%] "how much credit am i up to?"<br>
-- 🗣 [3%] quick transfer between bank accounts<br>
-- 🗣 [50%] Next game? Who won yesterday? Ladder position? How many games left? DVR the next game.<br>
-- 🗣 [<span style="color:blue">ESP</span>] ESP32-S3-BOx-3.yaml<br>
+- 🗣 [WIP] TV; Start a starred TV show on shuffle. "Throw something on the tv"<br>
+- 🗣 [WIP] Morning message. Calendar, reminders, birthdays, market info, unread mail, missed calls,<br>
+- 🗣 [WIP] TTS greeting BEFORE Friend/Stranger arrives. <br>
+- 🗣 [WIP] DNS toggle
+- 🗣 [WIP] Buy/sell<br>
+- 🗣 [WIP] "how much $$ is on my card?"<br>
+- 🗣 [WIP] "how much credit am i up to?"<br>
+- 🗣 [WIP] quick transfer between bank accounts<br>
+- 🗣 [WIP] Next game? Who won yesterday? Ladder position? How many games left? DVR the next game.<br>
+
 <br><br><br><br>
 
 If you want to help and contribute, issues up for grabs<br>
 <br>
 if i missed out on any good ideas, please add them to the list<br>
 <br>
+
 ## 🙇 acknowledgements<br>
+
 *ps amature noob please bare with me*<br>
+
 <br>
+
 ## 💻 looking to inja?]<br>
+
 so you like copy pasta huh? well, maybe ....<br>
 uploaded code are just examples and you might have to<br> 
 edit some for it to work without issues. <br>

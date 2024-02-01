@@ -1,7 +1,10 @@
+
 <h1 align="center">
+
   <br>
 
     2024. Spoken.
+    
 <br>
 <br><br>
 Wake. Word.<br>
@@ -32,10 +35,14 @@ one million screen hours to secure an hour less screentime future<br>
 
 <br>
 <br><br>
-## 🔥🔥 roadmap & ideas voice commands <br>
+
+
+## 🔥🔥 roadmap & ideas voice commands 
+
+
 <br><br>
 🇸🇪🇸🇪<br>
-- 🚀 [<span style="color:green"><span style="color:green">100%</span></span>] "Tell me a joke"<br>
+- 🚀 [<span style="color:green"><span style="color:green">[100%](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomJoke.yaml)</span></span>] "Tell me a joke"<br>
 - 🚀 [<span style="color:green"><span style="color:green">100%</span></span>] "Where's the phone?"<br>
 - 🚀 [<span style="color:green">100%</span>] "Where's the remote?"<br>
 - 🚀 [<span style="color:green">100%</span>] "Where's the charger?"<br>

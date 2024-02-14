@@ -2,7 +2,7 @@
 <h1 align="center">
 <br>
 PlayArtist
-<br>
+</h1><br>
 <br><br>
 Searches /media/Music for chosen artist and plays the entire folder through your connected speakers.<br><br>
 The good thing about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call artist names that are not in your native language.<br> 

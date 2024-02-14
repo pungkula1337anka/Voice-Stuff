@@ -17,9 +17,9 @@ I found this to be the easiest way to run VLC through your connected speakers.<b
 
 - **2: Install VLC** <br>
 
-VLC is a media player that supports playback of entire folders.
-Create the file 'install_vlc.sh' inside your /config directory and paste in the code below.
-This script will install VLC package, and run a command which allows you to control it with an root priveledged user.
+VLC is a media player that supports playback of entire folders.<br>
+Create the file 'install_vlc.sh' inside your /config directory and paste in the code below.<br>
+This script will install VLC package, and run a command which allows you to control it with an root priveledged user.<br>
 HA limitations to install packages, will require you to run this after each update, but this can easily be done through an automation.<br>
 
 - **3: Create the shell commands.** <br>

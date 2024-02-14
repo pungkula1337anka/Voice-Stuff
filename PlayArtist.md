@@ -40,9 +40,9 @@ In that folder you create a file called 'PlayArtist.yaml' and fill in the code f
 
 - **6: The fuzzy search python script** <br>
 
-This is where the magic happends. 
-Within your /config dir, create a file called 'find_closest_directory.py'
-Paste in the code at the bottom of this page. 
+This is where the magic happends. <br>
+Within your /config dir, create a file called 'find_closest_directory.py'<br>
+Paste in the code at the bottom of this page. <br>
 
 <br><br>
 Your all set, try it out!<br><br>

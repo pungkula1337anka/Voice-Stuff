@@ -9,52 +9,53 @@ The good thing about doing, whats called an "fuzzy search" like this, is that it
 Even if the STT generates the wrong word, the python script will still point you to the right directory path.<br>
 <br><br>
 
-- 1. Add the SSH integration <br>
+- 1: Add the SSH integration <br>
 
 Settings > Devices and services > add integration & search for SSH.<br>
 
 I found this to be the easiest way to run VLC through your connected speakers.<br>
 
-- 2. Install VLC <br>
+- 2: Install VLC <br>
 
 VLC is a media player that supports playback of entire folders.
 Create the file 'install_vlc.sh' inside your /config directory and paste in the code below.
 This script will install VLC package, and run a command which allows you to control it with an root priveledged user.
 HA limitations to install packages, will require you to run this after each update, but this can easily be done through an automation.<br>
 
-- 3. Create the shell commands. <br>
+- 3: Create the shell commands. <br>
 
 Create the file 'shell_command.yaml' file in your /config dir and paste in the code below.
 This will allow you to call the scripts easily later.
 
-- 4. Intent Script <br>
+- 4: Intent Script <br>
 
 Create the file 'intent_script.yaml' file in the /config dir and fill in the code below.
 Dont forget to add your credentials to the 'secrets.yaml' file!
 
-- 5. Custom Sentence <br>
+- 5: Custom Sentence <br>
 
 Create a folder called 'custom_sentences' inside your /config dir.
 Inside that folder, once again create a folder named with your language code. 'sv' for swedish, 'en' for english.
 In that folder you create a file called 'PlayArtist.yaml' and fill in the code from below. 
 
-- 6. The fuzzy search python script <br>
+- 6: The fuzzy search python script <br>
 
 This is where the magic happends. 
 Within your /config dir, create a file called 'find_closest_directory.py'
 Paste in the code at the bottom of this page. 
 
 <br><br>
-Your all set, try it out!<br>br>
+Your all set, try it out!<br><br>
 
 ## 🦆 shell_command.yaml <br>
 
 
 <br>
 <br>
-
+```
   py_find_closest_directory: "python find_closest_directory.py '{{ artist }}' /media/Music" <br>
   install_vlc: "sh install_vlc.sh"<br>
+```  
 <br><br>
 
 

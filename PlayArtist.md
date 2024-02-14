@@ -47,23 +47,26 @@ Paste in the code at the bottom of this page.
 <br><br>
 Your all set, try it out!<br><br>
 
-## 🦆 shell_command.yaml <br>
+## 🦆 /config/shell_command.yaml <br>
 
 
 <br>
 <br>
+
 ```
   py_find_closest_directory: "python find_closest_directory.py '{{ artist }}' /media/Music" <br>
   install_vlc: "sh install_vlc.sh"<br>
-```  
-<br><br>
-
-
-## 🦆 intent_script.yaml <br>
-
+```
 
 <br><br>
 
+
+## 🦆 /config/intent_script.yaml <br>
+
+
+<br><br>
+
+```
 PlayArtist:
   action:
     - service: shell_command.py_find_closest_directory
@@ -77,6 +80,8 @@ PlayArtist:
         user: !secret haos_user
         pass: !secret haos_auth
         command: "{{ search_result['stdout'] }}"
+```
+
 <br><br>
 
 
@@ -85,6 +90,7 @@ PlayArtist:
 
 <br><br>
 
+```
 language: "sv"
 intents:
   PlayArtist:
@@ -94,6 +100,7 @@ intents:
 lists:
   band:
     wildcard: true   
+```
 
 <br><br>
 
@@ -102,7 +109,11 @@ lists:
 
 
 <br><br>
+
+```
 apk add vlc && sed -i 's/geteuid/getppid/' /usr/bin/vlc
+```
+
 <br><br>
 
 
@@ -110,6 +121,8 @@ apk add vlc && sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
 
 <br><br>
+
+```
 import os
 import sys
 from difflib import get_close_matches
@@ -138,5 +151,7 @@ if __name__ == "__main__":
         print("cvlc add '{}' vlc://quit &".format(closest_directory))
     else:
         print("")
+```
+
 
 <br><br>

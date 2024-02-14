@@ -45,15 +45,17 @@ Within your /config dir, create a file called 'find_closest_directory.py'<br>
 Paste in the code at the bottom of this page. <br>
 
 <br>
+Your all set, try it out!<br><br>
+
 
 
 ## **⚠️⚠️ TO STOP THE PLAYBACK⚠️⚠️** <br>
 
 
-The terminal command `pkill vlc` will [stop the music.](https://www.github.com/)
+The terminal command `pkill vlc` will [stop the music.](https://www.github.com/) <br>
 For volume control, please see [this link.](https://www.github.com/)
 <br><br>
-Your all set, try it out!<br><br>
+
 
 ## 🦆 /config/shell_command.yaml <br>
 

@@ -5,7 +5,7 @@ PlayArtist
 </h1><br>
 <br><br>
 Searches /media/Music for chosen artist and plays the entire folder through your connected speakers.<br><br>
-The good thing about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call artist names that are not in your native language.<br> 
+The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name that are not in your native language.<br> 
 Even if the STT generates the wrong word, the python script will still point you to the right directory path.<br>
 <br><br>
 
@@ -44,6 +44,14 @@ This is where the magic happends. <br>
 Within your /config dir, create a file called 'find_closest_directory.py'<br>
 Paste in the code at the bottom of this page. <br>
 
+<br>
+
+
+## **⚠️⚠️ TO STOP THE PLAYBACK⚠️⚠️** <br>
+
+
+The terminal command `pkill vlc` will [stop the music.](https://www.github.com/)
+For volume control, please see [this link.](https://www.github.com/)
 <br><br>
 Your all set, try it out!<br><br>
 

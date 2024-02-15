@@ -8,7 +8,7 @@ Searches /media/Music for chosen artist and plays the entire folder through your
 The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.<br> 
 Even if the STT generates the wrong word, the python script will still point you to the right directory path.<br><br>
 Just network mount your music to your instance and run the py,<br> 
-it will take care of the installation process of VLC and modifying the binaries so it can be run safely. (:
+it will take care of the installation process of VLC and modify the binaries so it can be run safely.<br><br>
 <br>
 
 
@@ -43,12 +43,13 @@ Your all set, try it out!<br><br>
 
 
 The terminal command `pkill vlc` will stop the music.<br>
-For volume control, one option is to use<br><br>
-<br>
+For volume control, one option is to use<br>
 
 ```mute
 curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 0}' http://supervisor/audio/volume/output
 ```
+
+<br>
 
 
 ```100%

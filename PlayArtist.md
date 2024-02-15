@@ -42,17 +42,18 @@ Your all set, try it out!<br><br>
 ## **⚠️⚠️ TO STOP THE PLAYBACK⚠️⚠️** <br>
 
 
-The terminal command `pkill vlc` will stop the music.<br>
+The terminal command `pkill vlc` will stop the music.<br><br>
 For volume control, one option is to use<br>
 
-```mute
+mute
+```
 curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 0}' http://supervisor/audio/volume/output
 ```
 
 <br>
 
-
-```100%
+100%
+```
 curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 1}' http://supervisor/audio/volume/output
 ```
 

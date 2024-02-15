@@ -1,47 +1,37 @@
 
 <h1 align="center">
 <br>
-PlayArtist
+Play Artist
 </h1><br>
 <br><br>
 Searches /media/Music for chosen artist and plays the entire folder through your connected speakers.<br><br>
-The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name that are not in your native language.<br> 
-Even if the STT generates the wrong word, the python script will still point you to the right directory path.<br>
-<br><br>
+The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.<br> 
+Even if the STT generates the wrong word, the python script will still point you to the right directory path.<br><br>
+Just network mount your music to your instance and run the py,<br> 
+it will take care of the installation process of VLC and modifying the binaries so it can be run safely. (:
+<br>
 
-- **1: Add the SSH integration** <br>
 
-Settings > Devices and services > add integration & search for SSH.<br>
-
-I found this to be the easiest way to run VLC through your connected speakers.<br>
-
-- **2: Install VLC** <br>
-
-VLC is a media player that supports playback of entire folders.<br>
-Create the file 'install_vlc.sh' inside your /config directory and paste in the code below.<br>
-This script will install VLC package, and run a command which allows you to control it with an root priveledged user.<br>
-HA limitations to install packages, will require you to run this after each update, but this can easily be done through an automation.<br>
-
-- **3: Create the shell commands.** <br>
+- **1: Create the shell commands.** <br>
 
 Create the file 'shell_command.yaml' file in your /config dir and paste in the code below.
-This will allow you to call the scripts easily later.
+This will allow you to call the script easily later.
 
-- **4: Intent Script** <br>
+- **2: Intent Script** <br>
 
 Create the file 'intent_script.yaml' file in the /config dir and fill in the code below.
-Dont forget to add your credentials to the 'secrets.yaml' file!
 
-- **5: Custom Sentence** <br>
 
-Create a folder called 'custom_sentences' inside your /config dir.
-Inside that folder, once again create a folder named with your language code. 'sv' for swedish, 'en' for english.
-In that folder you create a file called 'PlayArtist.yaml' and fill in the code from below. 
+- **3: Custom Sentence** <br>
 
-- **6: The fuzzy search python script** <br>
+Create a folder called `custom_sentences` inside your /config dir.
+Inside that folder, once again create a folder named with your language code. `sv` for swedish, `en` for english.
+In that folder you create a file called `PlayArtist.yaml` and fill in the code from below. 
+
+- **4: The fuzzy search python script** <br>
 
 This is where the magic happends. <br>
-Within your /config dir, create a file called 'find_closest_directory.py'<br>
+Within your /config dir, create a file called `play_fuzzy_artist.py` <br>
 Paste in the code at the bottom of this page. <br>
 
 <br>
@@ -52,8 +42,22 @@ Your all set, try it out!<br><br>
 ## **⚠️⚠️ TO STOP THE PLAYBACK⚠️⚠️** <br>
 
 
-The terminal command `pkill vlc` will [stop the music.](https://www.github.com/) <br>
-For volume control, please see [this link.](https://www.github.com/)
+The terminal command `pkill vlc` will stop the music.<br>
+For volume control, one option is to use<br><br>
+<br>
+
+```mute
+curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 0}' http://supervisor/audio/volume/output
+```
+
+
+```100%
+curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 1}' http://supervisor/audio/volume/output
+```
+
+
+
+    
 <br><br>
 
 
@@ -64,8 +68,7 @@ For volume control, please see [this link.](https://www.github.com/)
 
 
 ```
-  py_find_closest_directory: "python find_closest_directory.py '{{ artist }}' /media/Music"
-  install_vlc: "sh install_vlc.sh"
+  play_fuzzy_artist: "python play_fuzzy_artist.py '{{ artist }}' /media/Music"
 ```
 
 <br><br>
@@ -79,17 +82,9 @@ For volume control, please see [this link.](https://www.github.com/)
 ```
 PlayArtist:
   action:
-    - service: shell_command.py_find_closest_directory
+    - service: shell_command.play_fuzzy_artist
       data: 
         artist: "{{band}}"
-      response_variable: search_result
-    - service: ssh_command.exec_command
-      data:
-        host: !secret haos_ip
-        port: 22
-        user: !secret haos_user
-        pass: !secret haos_auth
-        command: "{{ search_result['stdout'] }}"
 ```
 
 <br><br>
@@ -115,19 +110,8 @@ lists:
 <br><br>
 
 
-## 🦆 /config/install_vlc.sh <br>
 
-
-<br>
-
-```
-apk add vlc && sed -i 's/geteuid/getppid/' /usr/bin/vlc
-```
-
-<br><br>
-
-
-## 🦆 /config/find_closest_directory.py <br>
+## 🦆 /config/play_fuzzy_artist.py <br>
 
 
 <br>
@@ -135,7 +119,13 @@ apk add vlc && sed -i 's/geteuid/getppid/' /usr/bin/vlc
 ```
 import os
 import sys
+import subprocess
 from difflib import get_close_matches
+
+def clean_search_query(query):
+    # Remove periods and commas from the query
+    cleaned_query = query.replace('.', '').replace(',', '')
+    return cleaned_query
 
 def find_closest_directory(query, directory):
     directories = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d))]
@@ -149,6 +139,10 @@ def find_closest_directory(query, directory):
         return None
 
 if __name__ == "__main__":
+    # Run the shell command to install VLC and modify vlc binary
+    vlc_install_command = "apk add vlc && sed -i 's/geteuid/getppid/' /usr/bin/vlc"
+    subprocess.run(vlc_install_command, shell=True)
+    
     if len(sys.argv) != 3:
         print("Usage: python script.py <search_query> <directory>")
         sys.exit(1)
@@ -156,11 +150,18 @@ if __name__ == "__main__":
     search_query = sys.argv[1]
     directory = sys.argv[2]
 
-    closest_directory = find_closest_directory(search_query, directory)
+    # Clean the search query
+    cleaned_search_query = clean_search_query(search_query)
+
+    closest_directory = find_closest_directory(cleaned_search_query, directory)
     if closest_directory:
-        print("cvlc add '{}' vlc://quit &".format(closest_directory))
+        command = "cvlc add '{}' vlc://quit &".format(closest_directory)
+        print("Executing command:", command)
+        
+        # Execute the command
+        subprocess.run(command, shell=True)
     else:
-        print("")
+        print("Sorry")
 ```
 
 

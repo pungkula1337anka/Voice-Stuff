@@ -1,17 +1,50 @@
-# -> SetTimer <- #
-## Starts a timer 
 
-# /config/configuration.yaml 
-intent_script: !include intent_script.yaml
-automation: !include automation.yaml
-conversation: 
+<h1 align="center">
+<br>
 
-timer:
-  timer:
-    duration: "00:00:00"
-    restore: true
+Set Timer
 
-# /config/intent_script.yaml
+</h1><br>
+<br><br>
+
+Simple, sets a timer.
+
+<br><br><br>
+
+
+- **1: Intent Script** <br>
+
+If you dont have it already, create the file `intent_script.yaml` in the /config dir and fill in the code below.<br>
+(dont forget to reference it in `configuration.yaml` with `intent_script: !include intent_script.yaml`<br> 
+
+- **2: Custom Sentence** <br>
+
+Create a folder called `custom_sentences` inside your /config dir.<br>
+Inside that folder, once again create a folder named with your language code. `sv` for swedish, `en` for english.<br>
+In that folder you create a file and name it whatever you want, but remember it, cause it will be referencesd later.<br>
+I will use `IntentName.yaml` as an example here, fill this yaml file with the code from below. <br>
+
+
+
+
+
+<br><br>
+
+
+
+## **⚠️⚠️ Dont forget to create the timer.timer ⚠️⚠️** <br><br><br>
+
+
+
+
+
+## 🦆 /config/intent_script.yaml <br>
+
+
+<br>
+
+
+```
 SetTimer:
   action:
     - service: timer.start
@@ -31,8 +64,17 @@ SetHourTimer:
           entity_id: timer.timer             
   speech:
     text: "räknar ned från {{ hours }} timmar och {{ minutes }} minuter"  
-  
-# /config/custom_sentences/sv/SetTimer.yaml	
+```
+
+<br><br>
+
+
+## 🦆 /custon_sentences/sv/IntentName.yaml <br>
+
+
+<br>
+
+```
 language: "sv"
 intents:
   SetTimer:
@@ -44,8 +86,10 @@ lists:
     range:
       from: 0
       to: 60
+```
 
-# /config/custom_sentences/sv/SetHourTimer.yaml 	
+
+```	
 language: "sv"
 intents:
   SetHourTimer:
@@ -61,8 +105,17 @@ lists:
     range:
       from: 0
       to: 24
+```
 
-# Example automation.yaml
+<br><br>
+
+
+## 🦆 Example Automation <br>
+
+
+<br>
+
+```
 alias: timer_finish
 description: "When the timer finishes, blinks a light and send notification to phone and play sound on media player."
 trigger:
@@ -87,3 +140,7 @@ action:
         data:
           media_content_id: http://homeassistant.local:8123/local/sound/timer.mp3       #<- change
           media_content_type: music
+```
+
+
+

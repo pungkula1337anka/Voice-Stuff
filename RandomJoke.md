@@ -13,7 +13,7 @@ Paste in your jokes in this file.<br>
 One line per joke only.<br>
 
 
-- **2: Command line sensor ** <br>
+- **2: Command line sensor** <br>
 Create the command line sensor. Paste in code below.<br>
 
 - **3: Intent Script** <br>

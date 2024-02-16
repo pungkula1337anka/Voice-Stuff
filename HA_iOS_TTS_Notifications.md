@@ -7,7 +7,6 @@ Home Assistant Text to Speak Notifications
 </h1><br>
 <br><br>
 
-<img src="https://i.ibb.co/ZGsVMwZ/hadocs.png" width="200" height="200"  /><br><br>
 
 According to the Home Assistant docs iOS TTS notfications is not possible. <br>
 This is technically not true. Here is a workaround using iOS settings. <br>

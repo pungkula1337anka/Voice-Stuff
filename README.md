@@ -147,7 +147,7 @@ if i missed out on any good ideas, please add them to the list<br>
 ## 🙇 acknowledgements<br>
 
 
-*ps amature noob please bare with me*<br>
+*PS blind amature noob please bare with me* <br>
 
 <br>
 

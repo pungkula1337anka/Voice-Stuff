@@ -1,11 +1,107 @@
-# -> SetWakeUpTime <- #
-## Sets a alarm clock for waking up
 
-# /config/configuration.yaml 
-intent_script: !include intent_script.yaml
-automation: !include automation.yaml
-conversation: 
+<h1 align="center">
+<br>
 
+Set Wakeup Alarm
+
+</h1><br>
+<br><br>
+
+Sets an alarm at desired time, so you wake up in time.
+
+<br><br><br>
+
+
+- **1: Intent Script** <br>
+
+If you dont have it already, create the file `intent_script.yaml` in the /config dir and fill in the code below.<br>
+(dont forget to reference it in `configuration.yaml` with `intent_script: !include intent_script.yaml`<br> 
+
+- **2: Custom Sentence** <br>
+
+Create a folder called `custom_sentences` inside your /config dir.<br>
+Inside that folder, once again create a folder named with your language code. `sv` for swedish, `en` for english.<br>
+In that folder you create a file and name it whatever you want, but remember it, cause it will be referencesd later.<br>
+I will use `IntentName.yaml` as an example here, fill this yaml file with the code from below. <br>
+
+
+- **3: Add helpers ** <br>
+
+Add the helpers by adding the code down below to your `configuration.yaml` file. 
+
+- **4: ** <br>
+
+
+
+<br><br>
+
+
+
+## **⚠️⚠️ NOTE ⚠️⚠️** <br><br><br>
+
+
+
+
+
+## 🦆 /config/intent_script.yaml <br>
+
+
+<br>
+
+
+```
+IntentName:
+  action:
+    - service: input_datetime.set_datetime
+      data:
+          time: "{{hours}}:{{minutes}}:00"
+      target:
+          entity_id: input_datetime.wakeupalarm
+    - service: input_boolean.turn_on
+      data: {}
+      target:
+          entity_id: input_boolean.switch_wake_up_alarm            
+  speech:
+    text: "ställde väckarklockan på {{ hours }}  {{ minutes }}"     
+```
+
+<br><br>
+
+
+## 🦆 /custon_sentences/sv/IntentName.yaml <br>
+
+
+<br>
+
+```
+language: "sv"
+intents:
+  IntentName:
+    data:
+      - sentences:
+          - "(starta|ställ|sätt)  [en] väckarklockan på {hours} [och] {minutes} "          
+          - "väck mig klockan {hours} [och] {minutes} "    
+lists:
+  minutes:
+    range:
+      from: 0
+      to: 60
+  hours:
+    range:
+      from: 0
+      to: 24
+```
+
+<br><br>
+
+
+## 🦆 /config/configuration.yaml <br>
+
+
+<br>
+
+
+```
 input_datetime:
   wakeupalarm:
     name: Wake Up Alarm
@@ -20,41 +116,18 @@ timer:
   wakeup:
     duration: "00:00:01"
     restore: true
+```
 
-# /config/intent_script.yaml
-SetWakeUpTime:
-  action:
-    - service: input_datetime.set_datetime
-      data:
-          time: "{{hours}}:{{minutes}}:00"
-      target:
-          entity_id: input_datetime.wakeupalarm
-    - service: input_boolean.turn_on
-      data: {}
-      target:
-          entity_id: input_boolean.switch_wake_up_alarm            
-  speech:
-    text: "ställde väckarklockan på {{ hours }}  {{ minutes }}"     
-  
-# /config/custom_sentences/sv/SetWakeUpTime.yaml	
-language: "sv"
-intents:
-  SetWakeUpTime:
-    data:
-      - sentences:
-          - "(starta|ställ|sätt)  [en] väckarklockan på {hours} [och] {minutes} "          
-          - "väck mig klockan {hours} [och] {minutes} "    
-lists:
-  minutes:
-    range:
-      from: 0
-      to: 60
-  hours:
-    range:
-      from: 0
-      to: 24
+<br><br>
 
-# /config/automation.yaml
+
+## 🦆 Example Automation <br>
+
+
+<br>
+
+
+```
 alias: wake_up_alarm
 description: ""
 trigger:
@@ -113,4 +186,6 @@ action:
             volume: 1
       title: "⚠️ "
       message: VAKNA
+```
 
+<br><br>

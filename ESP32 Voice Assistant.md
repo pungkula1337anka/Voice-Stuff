@@ -1,15 +1,49 @@
 
+<h1 align="center">
+<br>
 
+Voice Butler
+
+</h1><br>
+<br><br>
+
+HA Voice assistant ESP code.
+
+<br><br><br>
+
+
+- **1: Flash ESP with ESPHome** <br>
+
+Put in battery, done.
+
+
+
+
+
+<br><br>
+
+
+
+
+
+## 🦆 /esphome/ESP32-S3-BOX3.yaml <br>
+
+
+<br>
+
+
+```
 substitutions:
   
   name: roboduck-assistant
   friendly_name: RoboDuck Assistant
-  loading_illustration_file: https://pungkula.duckdns.org:1337/local/roboduck.jpeg
-  idle_illustration_file: https://pungkula.duckdns.org:1337/local/roboduck.jpeg
-  listening_illustration_file: https://pungkula.duckdns.org:1337/local/roboduck.jpeg
-  thinking_illustration_file: https://pungkula.duckdns.org:1337/local/roboduck.jpeg
-  replying_illustration_file: https://pungkula.duckdns.org:1337/local/roboduck.jpeg
-  error_illustration_file: https://pungkula.duckdns.org:1337/local/roboduck.jpeg
+  
+  loading_illustration_file: !secret butler_pic
+  idle_illustration_file: !secret butler_pic
+  listening_illustration_file: !secret butler_pic
+  thinking_illustration_file: !secret butler_pic
+  replying_illustration_file: !secret butler_pic
+  error_illustration_file: !secret butler_pic
 
   loading_illustration_background_color: "FFFF00"
   idle_illustration_background_color: "000000"
@@ -77,7 +111,6 @@ external_components:
 api:
   encryption:
     key: !secret api_key
-   # key: "KH9uVMNKvSeUin1jIuQaYIKULf9UOEeZmUIiN1u8eek="
 #Custom Creates a service to start listening
   services:
     - service: va_start
@@ -113,7 +146,7 @@ dashboard_import:
 
 
 ota:
-  password: "06e355e96bc2c28bd310106b1f203f51"
+  password: !secret api_key
 
 wifi:
   ssid: !secret wifi_ssid
@@ -138,13 +171,13 @@ esp32_improv:
 #    sda: GPIO08
 #    scl: GPIO18
 #    scan: true
-
+#
 #  - sda: GPIO41
 #    scl: GPIO40
 #    id: bus_b
 
 ########
-#sensor:
+sensor:
 ########  
 #  - platform: aht10
 #    i2c_id: bus_b
@@ -153,33 +186,38 @@ esp32_improv:
 #      name: "Temperature"
 #    humidity:
 #      name: "Humidity"
-#    update_interval: 1s
-#
-#  - platform: adc
-#    pin: GPIO10
-#    name: "Battery voltage"
-#    id: battery_voltage
-#    unit_of_measurement: "V"
-#    accuracy_decimals: 3
-#    device_class: "voltage"
-#    entity_category: "diagnostic"
-#    update_interval: 30s
-#    filters:
-#        - multiply: 4.01
+#    update_interval: 45s
 
-#  - platform: copy
-#    source_id: battery_voltage
-#    name: "Battery level"
-#    unit_of_measurement: "%"
-#    accuracy_decimals: 1
-#    device_class: "battery"
-#    entity_category: "diagnostic"
-#    filters:
-#      - lambda: return (x - 2.5) / (4.2 - 2.5) * 100;
-#      - clamp:
-#          min_value: 0
-#          max_value: 100
-#          ignore_out_of_range: true
+  - platform: adc
+    pin: GPIO10
+    name: "Battery voltage"
+    id: battery_voltage
+    unit_of_measurement: "V"
+    accuracy_decimals: 3
+    device_class: "voltage"
+    entity_category: "diagnostic"
+    update_interval: 30s
+    filters:
+        - multiply: 4.01
+
+  - platform: copy
+    source_id: battery_voltage
+    name: "Battery level"
+    unit_of_measurement: "%"
+    accuracy_decimals: 1
+    device_class: "battery"
+    entity_category: "diagnostic"
+    filters:
+      - lambda: return (x - 2.5) / (4.2 - 2.5) * 100;
+      - clamp:
+          min_value: 0
+          max_value: 100
+          ignore_out_of_range: true
+
+time:
+  - platform: homeassistant
+    id: time_ha
+    timezone: Europe/Stockholm
 
 #remote_receiver:
 #  pin: GPIO38
@@ -197,19 +235,19 @@ esp32_improv:
 
 
 button:
- # - platform: restart
- #   id: restart_btn  
-#    name: Restart
- #   entity_category: "diagnostic"
+  - platform: restart
+    name: "Reboot Butler"
+    entity_category: "diagnostic"
 
-#  - platform: shutdown
-#    id: shutdown_btn  
-#    name: Shutdown
-#    entity_category: "diagnostic"
+  - platform: shutdown
+    name: "Stäng av Butler"
+    entity_category: "diagnostic"
+
+
 
   - platform: factory_reset
     id: factory_reset_btn
-    name: Factory reset
+    name: NOLLSTÄLL Butler
 
 number:
   - platform: template
@@ -358,7 +396,7 @@ voice_assistant:
   #        media_player_entity_id: media_player.ha
   #        message: !lambda 'return x;'
   on_tts_end:
-    - delay: 3s
+    - delay: 5s
     - homeassistant.service:
         service: media_player.play_media
         data:
@@ -512,7 +550,7 @@ switch:
     name: Use wake word
     id: use_wake_word
     optimistic: true
-    restore_mode: RESTORE_DEFAULT_ON
+    restore_mode: RESTORE_DEFAULT_OFF
     entity_category: config
     on_turn_on:
       - lambda: id(va).set_use_wake_word(true);
@@ -642,11 +680,6 @@ display:
         lambda: |-
           it.fill(Color::BLACK);
 
+```
 
-
-
-
-
-
-
-
+<br><br>

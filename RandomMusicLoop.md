@@ -72,7 +72,7 @@ curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volum
 ```
 
 
-
+<br><br><br>
 
 
 ## 🦆 /config/intent_script.yaml <br>
@@ -189,7 +189,7 @@ if __name__ == "__main__":
 
     closest_directory = find_closest_directory(directory)
     if closest_directory:
-        # Initialize a list to hold the selected files
+        
         selected_files = []
 
         # Iterate through the directory and add files to the list
@@ -202,25 +202,25 @@ if __name__ == "__main__":
         # Shuffle the selected files
         random.shuffle(selected_files)
 
-        # Select a random song
+        
         random_song = random.choice(selected_files)
 
-        # Send the current song information to Home Assistant
+       
         send_current_song_to_home_assistant(random_song)
 
-        # Generate the command to load the playlist into VLC
+        
         command = f"cvlc --playlist-enqueue '{random_song}' &"
 
         print("Executing command:", command)
 
-        # Execute the command
+        
         subprocess.run(command, shell=True)
         
-        # Get the duration of the song
+        
         song_duration = get_song_duration(random_song)
 
         # Start the timer with the duration of the song
-        start_timer(f"00:00:{song_duration}")  # Assuming the song duration is in seconds
+        start_timer(f"00:00:{song_duration}")  
 
     else:
         print("Music directory not found.")
@@ -236,7 +236,16 @@ if __name__ == "__main__":
 
 
 ```
+timer:
+  songtimer:
+    duration: "00:00:00"
 
+input_text:
+  currentsong:
+    name: Current Song 
+    min: 8
+    max: 250
+    icon: mdi:music-box
 ```
 
 <br><br>
@@ -249,7 +258,7 @@ if __name__ == "__main__":
 
 
 ```
-alias: Random Music Automation
+alias: Random Music Automation Loop
 description: ""
 trigger:
   - platform: event
@@ -261,7 +270,6 @@ action:
   - service: shell_command.random_music
     data: {}
 mode: single
-
 ```
 
 <br><br>

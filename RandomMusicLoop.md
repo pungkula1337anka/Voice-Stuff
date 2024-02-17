@@ -9,7 +9,7 @@ Random Music Loop
 
 Searches your music library and grabs a song by random. <br> 
 After it starts a timer in HA with the duration of the song. And sets an input_text with the full file path of the song. <br>
-So if you like the song you can just say ["add this to my playlist"](https://.com) <br>
+So if you like the song you can just say ["add this to my playlist".](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/AddSongToPlaylist.md) <br>
 Starts the playback on your connected speakers. <br>
 When the timer finishes this all loops. <br>
 This script assumes your music is mounted at /media/Music <br>

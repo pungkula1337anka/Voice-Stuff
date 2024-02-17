@@ -50,7 +50,7 @@ mute
 curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 0}' http://supervisor/audio/volume/output
 ```
 
-<br>
+<br><br>
 
 100%
 ```

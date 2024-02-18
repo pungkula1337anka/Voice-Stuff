@@ -13,7 +13,30 @@ So if you like the song you can just say ["add this to my playlist".](https://gi
 Starts the playback on your connected speakers. <br>
 When the timer finishes this all loops. <br>
 This script assumes your music is mounted at /media/Music <br>
+  
 
+*if you dont have/wants to use connected speakers, one simple workaround option would be something like:*  
+
+  
+```
+alias: stream_music_to_homepod
+mode: single
+trigger:
+  - platform: state
+    entity_id:
+      - input_text.currentsong
+
+action:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.homepod
+    data:
+      media_content_type: music
+      media_content_id: >
+        {{states('input_text.currentsong')|replace("/media/Music/",
+        "media-source://media_source/local/Music/")}}
+```
+  
 <br><br><br>
 
 

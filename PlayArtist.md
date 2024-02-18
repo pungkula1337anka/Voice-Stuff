@@ -9,8 +9,8 @@ The beuty about doing, whats called an "fuzzy search" like this, is that it allo
 Even if the STT generates the wrong word, the python script will still point you to the right directory path.<br><br>
 Just network mount your music to your instance and run the py,<br> 
 it will take care of the installation process of VLC and modify the binaries so it can be run safely.<br><br>
-<br>
-
+<br><br>
+*if you dont know what you want to listen to, take a look at [RandomMusicLoop*](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomMusicLoop.md)
 
 - **1: Create the shell commands.** <br>
 

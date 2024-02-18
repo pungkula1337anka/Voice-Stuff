@@ -148,6 +148,7 @@ if i missed out on any good ideas, please add them to the list<br>
 
 
 *PS blind amature noob please bare with me* <br>
+*i am not a pro developer, i work with tape. im good at tape* <br>
 
 <br>
 

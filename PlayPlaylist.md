@@ -7,9 +7,9 @@ Play Playlist
 </h1><br>
 <br><br>
 
-Starts playing a [playlist](http://). <br> 
+Makes sure VLC is installed, then starts playing a playlist. <br> 
 Playback is started on your HA connected speakers. <br>
-
+I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/AddSongToPlaylist.md) to add songs to the playlist by voice. <br> 
 
 <br><br><br>
 
@@ -102,7 +102,7 @@ intents:
 
 
 ```
-  play_playlist: "python play_playlist.py"
+  play_playlist: "python play_playlist.py '/media/MyPlaylist.m3u'"
 ```
 
 <br><br>
@@ -115,7 +115,23 @@ intents:
 
 
 ```
+import subprocess
+import sys
 
+def play_playlist(playlist_file):
+    # Install VLC and modify the binary
+    subprocess.run(["apk", "add", "vlc"])
+    subprocess.run(["sed", "-i", "s/geteuid/getppid/", "/usr/bin/vlc"])
+
+    subprocess.run(["cvlc", playlist_file, "vlc://quit"])
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python play_playlist.py <playlist_file>")
+        sys.exit(1)
+
+    playlist_file = sys.argv[1]
+    play_playlist(playlist_file)
 ```
 
 <br><br>

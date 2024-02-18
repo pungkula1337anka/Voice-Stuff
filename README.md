@@ -1,7 +1,7 @@
 
 <h1 align="center">
 <br>
-2024. Spoken.
+**Speak!**
 <br>
 <br><br>
 Wake. Word.<br>
@@ -23,10 +23,12 @@ wat next?<br>
 <br>
 </h1>
 <br>🦆<br>
-this is just another blind project trying to make its code heard...<br>
+lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants, and having fun while doing so. <br>
+this is just another one of those blind project trying to make its code heard.<br>
 simple voice control, and everything inbetween.<br>
 made by blindis for blindisar.<br>
-<br>i am looking for any dumb/smart/doable/impossible/crazy ideas to expand the list.<br> <br> 
+it would be fun if any of this could help other visually impared people, but somehow i doubt any of those would end up here. <br>
+<br>i am looking for any dumb/smart/doable/impossible/crazy ideas to expand the list below.<br> <br> 
 one million screen hours to secure an hour less screentime future<br>
 <br>
 
@@ -47,7 +49,7 @@ one million screen hours to secure an hour less screentime future<br>
 ## 🔥🔥 roadmap & ideas voice commands 
 
 
-<br>
+
 🇸🇪🇸🇪<br>
 
 - 🚀  ESP Voice ASsistant<br>
@@ -84,25 +86,25 @@ one million screen hours to secure an hour less screentime future<br>
 
 - 🚀  TTS Market updates <br>
 
-- 🚀  global TTS notifications<br>
+- 🚀  Global TTS notifications<br>
 
 - 🚀  Discord DM and @ TTS notification <br>
 
-- 🚀  live TTS emails<br>
+- 🚀  Live TTS emails<br>
 
-- 🚀  "Play latest podcast." <br>
+- 🚀  "Play latest podcast" <br>
 
--   "Play Random Jazz songs"<br>
+- 🚀  "Play Random songs" <br>
 
 - 🚀  "Play Artist" (add to Lidarr if not found)<br>
 
-- 🚀  "Play Song" (add to Lidarr if not found)<br>
+- 🚀  "Play Song title" (add to Lidarr if not found)<br>
 
 - 🚀  "Start Playlist"<br>
 
 - 🚀  TV: TTS EPG. "Whats on TV right now?"<br>
 
-- 🚀  "block this ad"<br>
+- 🚀  "Block this ad"<br>
 
 - 🚀  "When does the next bus/train to the hospital departure?"<br>
 
@@ -122,7 +124,7 @@ one million screen hours to secure an hour less screentime future<br>
 
 -   "When does store open/close?"<br>
 
--   "Show Robert's contact card"  TTS & show vcf on TV <br>
+-   "Show Robert's contact info"  TTS & show vcard on TV <br>
 
 -   SMS & Phone calls<br>
 
@@ -147,7 +149,7 @@ one million screen hours to secure an hour less screentime future<br>
 -   Next game? Who won yesterday? Ladder position? How many games left? DVR the next game.<br>
 
 
-<br><br><br><br>
+<br><br><br>
 
 If you want to help and contribute, issues up for grabs<br>
 <br>
@@ -171,14 +173,20 @@ code goes into the right file.<br>
 <br><br>
 
 
-## 🔗 Community and sharing<br>
+## 🔗 Community, sharing & other links<br>
 
 
 click the 🦆 if you saw something you liked here
 <br><br>
+[HA Voice Discord](https://discord.com/channels/330944238910963714/646814454063038466) <br>
+[HA Forums](https://community.home-assistant.io/) <br>
+[HA Developer Documentation](https://developers.home-assistant.io/) <br>
+[Wyoming Protocol](https://github.com/rhasspy/wyoming) <br>
+[ESPHome](https://esphome.io/) <br>
+<br><br><br>
 
 
-## 🔗 other strange stuff<br>
+## 🔗 my other strange stuff<br>
 
 
 🦆📺<br>

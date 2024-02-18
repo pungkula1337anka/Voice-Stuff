@@ -34,6 +34,16 @@ one million screen hours to secure an hour less screentime future<br>
 <br><br>
 
 
+## 🙇 acknowledgements<br>
+
+
+*PS blind amature noob please bare with me* <br>
+*i am not a pro developer, i work with tape. i am good at tape* <br>
+
+<br><br>
+
+
+
 ## 🔥🔥 roadmap & ideas voice commands 
 
 
@@ -142,15 +152,7 @@ one million screen hours to secure an hour less screentime future<br>
 If you want to help and contribute, issues up for grabs<br>
 <br>
 if i missed out on any good ideas, please add them to the list<br>
-<br>
-
-## 🙇 acknowledgements<br>
-
-
-*PS blind amature noob please bare with me* <br>
-*i am not a pro developer, i work with tape. im good at tape* <br>
-
-<br>
+<br><br>
 
 
 ## 💻 looking to Jinja? <br>
@@ -180,7 +182,8 @@ click the 🦆 if you saw something you liked here
 
 
 🦆📺<br>
-🦆☁️<br><br>
+🦆☁️<br>
+qwackify<br><br>
 
 
 

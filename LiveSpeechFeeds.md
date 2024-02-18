@@ -35,7 +35,7 @@ Create a file called `feeds.yaml` inside your `config` directory. Use this file 
 
 - **6: Create the automation**  
 
-You can use the code below as an example, but you'll have to edit accourdingly. <br>
+You can use the code below as an example, but you'll have to edit accourding to your setup. <br>
 
 <br><br>
 

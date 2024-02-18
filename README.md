@@ -1,7 +1,7 @@
 
 <h1 align="center">
 <br>
-**Speak!**
+Speak!
 <br>
 <br><br>
 Wake. Word.<br>
@@ -24,7 +24,7 @@ wat next?<br>
 </h1>
 <br>🦆<br>
 lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants, and having fun while doing so. <br>
-this is just another one of those blind project trying to make its code heard.<br>
+this is just another one of those blind projects trying to make its code heard.<br>
 simple voice control, and everything inbetween.<br>
 made by blindis for blindisar.<br>
 it would be fun if any of this could help other visually impared people, but somehow i doubt any of those would end up here. <br>
@@ -157,7 +157,7 @@ if i missed out on any good ideas, please add them to the list<br>
 <br><br>
 
 
-## 💻 looking to Jinja? <br>
+## 💻 looking to Jinja/copy pasta? <br>
 
 so you like copy pasta huh? well, maybe ....<br>
 uploaded code are just examples and you might have to<br> 
@@ -183,7 +183,7 @@ click the 🦆 if you saw something you liked here
 [HA Developer Documentation](https://developers.home-assistant.io/) <br>
 [Wyoming Protocol](https://github.com/rhasspy/wyoming) <br>
 [ESPHome](https://esphome.io/) <br>
-<br><br><br>
+<br><br>
 
 
 ## 🔗 my other strange stuff<br>

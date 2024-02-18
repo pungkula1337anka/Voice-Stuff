@@ -9,7 +9,7 @@ Add Song To Playlist
 
 Checks what song is currently being played, takes the filepath and grabs the metadata and saves it for a rainy day on your playlist. <br>
 Works with the [RandomMusicLoop](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomMusicLoop.md). <br>
-To play the playlist, [PlayPlaylist](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PlayPlaylist.md). <br>
+To play the playlist, you can see (i cant) [PlayPlaylist](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PlayPlaylist.md). <br>
 <br><br><br>
 
 

@@ -26,7 +26,7 @@ wat next?<br>
 lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants, and having fun while doing so. <br>
 this is just another one of those blind projects trying to make its code heard.<br>
 simple voice control, and everything inbetween.<br>
-made by blindis for blindisar.<br>
+<br>
 it would be fun if any of this could help other visually impared people, but somehow i doubt any of those would end up here. <br>
 <br>i am looking for any dumb/smart/doable/impossible/crazy ideas to expand the list below.<br> <br> 
 one million screen hours to secure an hour less screentime future<br>
@@ -134,7 +134,7 @@ one million screen hours to secure an hour less screentime future<br>
 
 -   Morning message. Calendar, reminders, birthdays, market info, unread mail, missed calls,<br>
 
--   TTS greeting BEFORE Friend/Stranger arrives. <br>
+-   TTS announcement before friends/guests arrives. <br>
 
 -   DNS toggle <br>
 
@@ -191,6 +191,7 @@ click the 🦆 if you saw something you liked here
 
 🦆📺<br>
 🦆☁️<br>
+🦆🏠<br>
 qwackify<br><br>
 
 

@@ -128,7 +128,7 @@ import subprocess
 from difflib import get_close_matches
 
 def clean_search_query(query):
-    # Remove periods and commas from the query
+
     cleaned_query = query.replace('.', '').replace(',', '')
     return cleaned_query
 
@@ -144,7 +144,7 @@ def find_closest_directory(query, directory):
         return None
 
 if __name__ == "__main__":
-    # Run the shell command to install VLC and modify vlc binary
+
     vlc_install_command = "apk add vlc && sed -i 's/geteuid/getppid/' /usr/bin/vlc"
     subprocess.run(vlc_install_command, shell=True)
     
@@ -155,7 +155,6 @@ if __name__ == "__main__":
     search_query = sys.argv[1]
     directory = sys.argv[2]
 
-    # Clean the search query
     cleaned_search_query = clean_search_query(search_query)
 
     closest_directory = find_closest_directory(cleaned_search_query, directory)
@@ -163,7 +162,6 @@ if __name__ == "__main__":
         command = "cvlc add '{}' vlc://quit &".format(closest_directory)
         print("Executing command:", command)
         
-        # Execute the command
         subprocess.run(command, shell=True)
     else:
         print("Sorry")

@@ -41,7 +41,7 @@ Create a file called `random_music.py` in your `config` directory. Paste in the 
 
 <br><br>
 
-You are done, try it out!
+You are done, try it out! <br><br>
 
 
 ## **⚠️⚠️ You can get a media player entity ⚠️⚠️** <br>

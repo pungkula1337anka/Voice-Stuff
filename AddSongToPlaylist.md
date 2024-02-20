@@ -58,6 +58,17 @@ IntentName:
   action:
     - service: shell_command.add_song_to_playlist
       data: {}
+      response_variable: result   
+#O   - service: notify.mobile_app_YOURiPHONE
+#P     data:
+#T       message: "{{ result['stdout'] }}"
+#I       title: "  "
+#O       data:
+#N         push:
+#A           sound:
+#L             name: default
+#              critical: 1
+#              volume: 1       
 ```
 
 <br><br>

@@ -77,6 +77,8 @@ intents:
     data:
       - sentences:
           - "spela upp spellistan"
+          - "musik spellista"
+          - "musik spellistan"
 ```
 
 <br><br>

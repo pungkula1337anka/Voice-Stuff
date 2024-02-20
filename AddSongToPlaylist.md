@@ -62,7 +62,7 @@ IntentName:
 #O   - service: notify.mobile_app_YOURiPHONE
 #P     data:
 #T       message: "{{ result['stdout'] }}"
-#I       title: "  "
+#I       title: "Qwackify"
 #O       data:
 #N         push:
 #A           sound:
@@ -127,6 +127,7 @@ ENTITY_ID = 'media_player.YOUR_TELNET_PLAYER'
 ATTRIBUTE_NAME = 'media_title' 
 ACCESS_TOKEN = 'YOUR_LONG_LIVED_ACESS_TOKEN'
 
+
 def get_entity_attribute(entity_id, attribute_name):
     url = f'http://{HOME_ASSISTANT_IP}:{HOME_ASSISTANT_PORT}/api/states/{entity_id}'
     headers = {'Authorization': f'Bearer {ACCESS_TOKEN}'}
@@ -175,11 +176,11 @@ def main(playlist_file):
                     if mode == 'a':
                         playlist.write('\n')
                     playlist.write('\n'.join(metadata_list) + '\n')
-            print(f"Song {song_file} added to playlist {playlist_file} successfully!")
+            print(f"Låten {song_file} tillagd i spellistan {playlist_file} lyckades!")
         else:
-            print(f"Song with title '{media_title}' not found in the music directory.")
+            print(f"Låt med titeln '{media_title}' hittades inte i musik bibloteket.")
     else:
-        print(f"Failed to retrieve media title from attribute '{ATTRIBUTE_NAME}' of entity '{ENTITY_ID}'.")
+        print(f"Misslyckades ta ut låt titeln ur media spelaren '{ATTRIBUTE_NAME}'  '{ENTITY_ID}'.")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -187,6 +188,7 @@ if __name__ == "__main__":
         sys.exit(1)
     playlist_file = sys.argv[1]
     main(playlist_file)
+
 ```
 
 <br><br>

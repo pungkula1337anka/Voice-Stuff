@@ -41,8 +41,8 @@ Create a file called `add_song_to_playlist.py` in your `config` directory. Paste
 ## **⚠️⚠️ NOTE ⚠️⚠️** <br><br>
 
 
-This script grabs the filepath from an input_text entity. <br> 
-You can either use [my other script](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomMusicLoop.md) to set that up or edit accordingly. <br>
+This script grabs the currently playing song title from a media_player. <br> 
+You can either use [my other script](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomMusicLoop.md) to setup VLC with telnet or edit accordingly. <br>
 
 <br><br>
 

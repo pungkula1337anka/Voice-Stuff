@@ -4,14 +4,14 @@
 Play Artist
 </h1><br>
 <br><br>
-Searches /media/Music for chosen artist and plays the entire folder through your connected speakers.<br><br>
+Searches /media/Music for chosen artist and creates an temporary playlist, starts playback on your connected speakers, after it shuffles all the songs in the playlist.<br><br>
 The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.<br> 
 Even if the STT generates the wrong word, the python script will still point you to the right directory path.<br><br>
-Just network mount your music to your instance and run the py,<br> 
+Just network mount your music to `/media/Music` and run the py,<br> 
 it will take care of the installation process of VLC and modify the binaries so it can be run safely.<br><br>
 <br>
 
-_Not sure what to listen to? Take a look at [RandomMusicLoop](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomMusicLoop.md)_
+_Not sure what to listen to? Take a look at [RandomMusic](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomMusic.md)_
 
 <br><br>
 
@@ -42,24 +42,11 @@ Your all set, try it out!<br><br>
 
 
 
-## **⚠️⚠️ TO STOP THE PLAYBACK⚠️⚠️** <br>
+## **⚠️⚠️ You can get a media player entity ⚠️⚠️** <br>
 
-
-The terminal command `pkill vlc` will stop the music.<br><br>
-For volume control, one option is to use<br>
-
-mute
-```
-curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 0}' http://supervisor/audio/volume/output
-```
-
-<br><br>
-
-100%
-```
-curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 1}' http://supervisor/audio/volume/output
-```
-
+Settings > Devices & Integrations > VideoLAN > VLC with Telnet  
+and fill in your local ip and default port.  
+If you did not change the password in the pyscript, the password is `test123`.  
 
 
     
@@ -125,6 +112,7 @@ lists:
 import os
 import sys
 import subprocess
+import random
 from difflib import get_close_matches
 
 def clean_search_query(query):
@@ -145,6 +133,8 @@ def find_closest_directory(query, directory):
 
 if __name__ == "__main__":
 
+    subprocess.run(["pkill", "vlc"])
+
     vlc_install_command = "apk add vlc && sed -i 's/geteuid/getppid/' /usr/bin/vlc"
     subprocess.run(vlc_install_command, shell=True)
     
@@ -159,12 +149,26 @@ if __name__ == "__main__":
 
     closest_directory = find_closest_directory(cleaned_search_query, directory)
     if closest_directory:
-        command = "cvlc add '{}' vlc://quit &".format(closest_directory)
+
+        files = [f for f in os.listdir(closest_directory) if os.path.isfile(os.path.join(closest_directory, f))]
+
+        random.shuffle(files)
+
+
+        temp_playlist_file = "/tmp/shuffled_playlist.m3u"
+        with open(temp_playlist_file, 'w') as f:
+            for file in files:
+                f.write(os.path.join(closest_directory, file) + '\n')
+        
+        # YOU PROBABLY WANT TO CHANGE THE PASSWORD!!
+        command = "cvlc -I telnet --telnet-password=test123 --telnet-port=4212 --alsa-audio-device=hw:1,0 --playlist-enqueue '{}' &".format(temp_playlist_file)
+        
         print("Executing command:", command)
         
+
         subprocess.run(command, shell=True)
     else:
-        print("Sorry")
+        print("Sorry, try again.")
 ```
 
 

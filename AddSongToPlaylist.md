@@ -76,6 +76,8 @@ intents:
       - sentences:
           - "lägg till i spellistan"
           - "lägg till den här låten i spellistan"
+          - "musik lägg till"
+          - "musik lägg till [i] (listan|spellista|spellistan)"
 ```
 
 <br><br>

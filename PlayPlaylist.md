@@ -40,24 +40,11 @@ Create a file called `play_playlist.py` in your `config` directory. Paste in the
 
 
 
-## **⚠️⚠️ TO STOP THE PLAYBACK⚠️⚠️** <br>
+## **⚠️⚠️ You can get a media player entity ⚠️⚠️** <br>
 
-
-The terminal command `pkill vlc` will stop the music.<br><br>
-For volume control, one option is to use<br>
-
-mute
-```
-curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 0}' http://supervisor/audio/volume/output
-```
-
-<br><br>
-
-100%
-```
-curl -X POST -H "Authorization: Bearer $SUPERVISOR_TOKEN" -d '{"index": 0,"volume": 1}' http://supervisor/audio/volume/output
-```
-
+Settings > Devices & Integrations > VideoLAN > VLC with Telnet  
+and fill in your local ip and default port.  
+If you did not change the password in the pyscript, the password is `test123`.  
 
 
 

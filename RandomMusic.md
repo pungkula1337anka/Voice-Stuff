@@ -9,8 +9,10 @@ Random Music
 
 Searches music library and creates a temporary playlist containing 300 random generated songs. <br> 
 Starts the playback on your connected speakers. <br>
+Just network mount your music to `/media/Music` and run the py,<br> 
+it will take care of the installation process of VLC and modify the binaries so it can be run safely.<br><br>
 
-This script assumes your music is mounted at /media/Music<br>
+And if you like the song playing, you can just say ["add this to my playlist"](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/AddSongToPlaylist.md)     
 
 <br><br><br>
 
@@ -39,11 +41,16 @@ Create a file called `random_music.py` in your `config` directory. Paste in the 
 
 <br><br>
 
+You are done, try it out!
 
 
-## **⚠️⚠️ TO STOP THE PLAYBACK⚠️⚠️** <br>
+## **⚠️⚠️ You can get a media player entity ⚠️⚠️** <br>
 
+Settings > Devices & Integrations > VideoLAN > VLC with Telnet  
+and fill in your local ip and default port.  
+If you did not change the password in the pyscript, the password is `test123`.  
 
+<br><br>
 
 
 
@@ -78,6 +85,7 @@ intents:
           - "spela upp musik"
           - "slumpa musik"
           - "musik slumpa"
+          - "jag vill höra musik"
 ```
 
 <br><br>
@@ -141,8 +149,8 @@ if __name__ == "__main__":
         with open(temp_playlist_file, 'w') as f:
             for file in selected_files:
                 f.write(file + '\n')
-        
-        # YOU PROBABLY WANT TO CHANGE THE PASSWORD!!
+####################################################        
+        # YOU PROBABLY WANT TO CHANGE THE PASSWORD HERE!!
         command = "cvlc -I telnet --telnet-password=test123 --telnet-port=4212 --alsa-audio-device=hw:1,0 '{}' &".format(temp_playlist_file)
         
         print("Executing command:", command)

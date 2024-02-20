@@ -8,7 +8,8 @@ Searches /media/Music for chosen artist and creates an temporary playlist, start
 The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.<br> 
 Even if the STT generates the wrong word, the python script will still point you to the right directory path.<br><br>
 Just network mount your music to `/media/Music` and run the py,<br> 
-it will take care of the installation process of VLC and modify the binaries so it can be run safely.<br><br>
+it will take care of the installation process of VLC and modify the binaries so it can be run safely.<br>
+And if you like the song playing, you can just say ["add this to my playlist".](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/AddSongToPlaylist.md) <br>
 <br>
 
 _Not sure what to listen to? Take a look at [RandomMusic](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomMusic.md)_

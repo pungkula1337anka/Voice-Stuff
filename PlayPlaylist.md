@@ -44,7 +44,7 @@ Create a file called `play_playlist.py` in your `config` directory. Paste in the
 
 Settings > Devices & Integrations > VideoLAN > VLC with Telnet  
 and fill in your local ip and default port.  
-If you did not change the password in the pyscript, the password is `test123`.  
+If your using my other [pyscripts](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PlayArtist.md) and did not change the password, its `test123`.  
 
 
 

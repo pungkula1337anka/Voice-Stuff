@@ -32,7 +32,6 @@ it would be fun if any of this could help other visually impared people, but som
 one million screen hours to secure an hour less screentime future<br>
 <br>
 
-<br>
 <br><br>
 
 
@@ -157,7 +156,7 @@ if i missed out on any good ideas, please add them to the list<br>
 <br><br>
 
 
-## 💻 looking to Jinja/copy pasta? <br>
+## 💻 looking to copy pasta/Jinja? <br>
 
 so you like copy pasta huh? well, maybe ....<br>
 uploaded code are just examples and you might have to<br> 

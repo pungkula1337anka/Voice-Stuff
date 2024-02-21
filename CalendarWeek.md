@@ -7,8 +7,9 @@ Calendar Week
 </h1><br>
 <br><br>
 
-Lists upcoming calendar entries, for 170 hours forward, in a really nice human readable _(if you know swedish)_ format.   
+Lists upcoming calendar entries, for 170 hours forward, in a really nice human readable _(if you know swedish)_ format.
 No duplicate entries allowed.
+Also lists how many objects you have on your To Do lists.
 
 <br><br><br>
 
@@ -127,7 +128,14 @@ intents:
 import requests
 from datetime import datetime, timedelta
 
-### DEFINE CALENDAR ENTITY_IDs HERE!
+### GLOBAL VARIABLES ###
+HOME_ASSISTANT_IP = "HOMEASSISTANT_IP"
+LONG_LIVED_ACCESS_TOKEN = "YOUR_LONG_LIVED_ACEESS_TOKEN"
+
+## DEFINE YOUR TODO LISTS HERE
+TODO_ENTITY_IDS = ["todo.att_gora"]
+
+## DEFINE YOUR CALENDARS HERE!
 CALENDAR_ENTITY_IDS = [
     "calendar.anniversaries",
     "calendar.ha",
@@ -138,12 +146,10 @@ CALENDAR_ENTITY_IDS = [
 def get_calendar_events(duration):
     all_events = []
     for calendar_entity_id in CALENDAR_ENTITY_IDS:
-### --> 	DEFINE YOUR IP HERE
-        endpoint = f"http://YOUR_HOME_ASSISTANT_IP:8123/api/calendars/{calendar_entity_id}?start={datetime.now().isoformat()}&end={(datetime.now() + duration).isoformat()}"
+        endpoint = f"http://{HOME_ASSISTANT_IP}:8123/api/calendars/{calendar_entity_id}?start={datetime.now().isoformat()}&end={(datetime.now() + duration).isoformat()}"
 
         try:
-####    ----->  	            ------>           ----->            ----->         LONG_LIVED_TOKEN HERE 
-            response = requests.get(endpoint, headers={'Authorization': 'Bearer YOUR_LONG_LIVED_ACCESS_TOKEN'}, timeout=10)
+            response = requests.get(endpoint, headers={'Authorization': f'Bearer {LONG_LIVED_ACCESS_TOKEN}'}, timeout=10)
             response.raise_for_status()  # Raise an exception for non-200 status codes
             events = response.json()
             all_events.extend(events)
@@ -168,7 +174,6 @@ def format_event(event):
         return ""
 
 def format_date(date):
-
     swedish_date = date.strftime("%A den %d %B")
 
     swedish_date = swedish_date.replace("Monday", "måndag").replace("Tuesday", "tisdag").replace("Wednesday", "onsdag") \
@@ -178,15 +183,28 @@ def format_date(date):
         .replace("September", "september").replace("October", "oktober").replace("November", "november").replace("December", "december")
     return swedish_date
 
+def get_todo_items():
+    all_items = []
+    for entity_id in TODO_ENTITY_IDS:
+        endpoint = f"http://{HOME_ASSISTANT_IP}:8123/api/states/{entity_id}"
+        try:
+            response = requests.get(endpoint, headers={'Authorization': f'Bearer {LONG_LIVED_ACCESS_TOKEN}'}, timeout=10)
+            response.raise_for_status()
+            item = response.json()
+            all_items.append(item)
+        except requests.RequestException as e:
+            print(f"Error fetching todo items: {e}")
+
+    return all_items
+
 if __name__ == "__main__":
     duration = timedelta(days=7)  
 
     calendar_events = get_calendar_events(duration)
+    todo_items = get_todo_items()
 
     if calendar_events:
-       
         unique_events = {}
-
         for event in calendar_events:
             event_key = event.get('start', {}).get('date') or event.get('start', {}).get('dateTime')
             if event_key:
@@ -194,12 +212,18 @@ if __name__ == "__main__":
                     unique_events[event_key] = event
 
         today = datetime.now().strftime("%Y-%m-%d")
+        tomorrow = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+        
         events_today = []
+        events_tomorrow = []
         upcoming_events = []
+        
         for event in unique_events.values():
             start_time_str = event.get('start', {}).get('date') or event.get('start', {}).get('dateTime')
             if start_time_str == today:
                 events_today.append(event)
+            elif start_time_str == tomorrow:
+                events_tomorrow.append(event)
             else:
                 upcoming_events.append(event)
 
@@ -209,12 +233,24 @@ if __name__ == "__main__":
                 print(format_event(event))
             print()
 
+        if events_tomorrow:
+            print("Imorgon:")
+            for event in events_tomorrow:
+                print(format_event(event).replace(format_date(datetime.strptime(tomorrow, "%Y-%m-%d")), "Imorgon"))
+            print()
+
         print("Kommande evenemang:")
         sorted_events = sorted([event for event in upcoming_events if event.get('start', {}).get('dateTime') is not None], key=lambda x: x.get('start', {}).get('dateTime'))
         for event in sorted_events:
             print(format_event(event))
     else:
         print("Misslyckades.")
+
+    if todo_items:
+        total_items = sum(int(item.get('state', '0')) for item in todo_items)
+        print(f"Du har {total_items} stycken objekt på Att Göra listan idag!")
+    else:
+        print("Misslyckades ta fram att göra objekt.")
 ```
 
 <br><br>

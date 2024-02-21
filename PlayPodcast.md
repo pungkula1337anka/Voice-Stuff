@@ -11,7 +11,7 @@ Even if the STT generates the wrong word, the python script will still point you
 The Python script will take care of the installation process of VLC and modify the binaries so it can be run safely.  
   
 I use the [Podgrab](http://#) container to automatically download new episodes.  
-And my [PyPodCleanup](http://#) script to remove old episodes.  
+And my [PyPodCleanup](http://#) script to automatically  remove old episodes.  
    
 
 <br>

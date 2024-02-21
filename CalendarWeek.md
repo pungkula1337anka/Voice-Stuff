@@ -37,6 +37,7 @@ Include the file in your`configuration.yaml` like ths `shell_command: !include s
 This is where the magic happends. <br>
 Within your /config dir, create a file called `kalender.py` <br>
 Paste in the code at the bottom of this page. <br>
+Create a long lived acess token and define it in the python file with your calendar entity_ids and your Homme Assistant IP.  
 
 <br>
 Your all set, try it out!<br><br>
@@ -46,13 +47,13 @@ Your all set, try it out!<br><br>
 
 
 
-## **⚠️⚠️ _WARNING_ ⚠️⚠️** <br><br><br>
+## **⚠️⚠️ __WARNING__ ⚠️⚠️** <br><br><br>
 
-_DO NOT RENAME_ the python script,  
-If you have a file called calendar.py in your config folder, your home assistant will _CRASH!_  
-__Having  a swedish Kalender aint so bad after all..__
+__DO NOT RENAME__ the python script,  
+If you have a file called calendar.py in your config folder, your home assistant will __CRASH!__  
+_Having  a swedish Kalender aint so bad after all.._  
 
-
+<br><br>  
 
 ## 🦆 /config/intent_script.yaml <br>
 

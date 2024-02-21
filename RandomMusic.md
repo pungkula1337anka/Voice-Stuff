@@ -112,18 +112,25 @@ intents:
 
 ```
 import os
-import sys
 import subprocess
 import random
 
-def find_closest_directory(directory):
-    if os.path.isdir(directory):
-        return directory
-    else:
-        return None
+def select_files(directory, limit=300):
+    selected_files = []
+    artists = set()  # Keep track of artists already selected
+    for root, dirs, files in os.walk(directory):
+        random.shuffle(files)
+        for file in files:
+            if len(selected_files) >= limit:
+                break
+            file_path = os.path.join(root, file)
+            artist = os.path.basename(os.path.dirname(file_path))
+            if artist not in artists:
+                selected_files.append(file_path)
+                artists.add(artist)
+    return selected_files
 
 if __name__ == "__main__":
-
     subprocess.run(["pkill", "vlc"])
 
     vlc_install_command = "apk add vlc && sed -i 's/geteuid/getppid/' /usr/bin/vlc"
@@ -131,33 +138,21 @@ if __name__ == "__main__":
     
     directory = '/media/Music/'  # Change this to the desired music directory
 
-    closest_directory = find_closest_directory(directory)
-    if closest_directory:
+    selected_files = select_files(directory)
 
-        selected_files = []
+    random.shuffle(selected_files)  # Shuffle the list of selected files
 
-        for root, dirs, files in os.walk(closest_directory):
-            for file in files:
-                if len(selected_files) >= 300:
-                    break  # Stop if we have reached the limit
-                selected_files.append(os.path.join(root, file))
+    temp_playlist_file = "/tmp/shuffled_playlist.m3u"
+    with open(temp_playlist_file, 'w') as f:
+        for file in selected_files:
+            f.write(file + '\n')
 
-
-        random.shuffle(selected_files)
-
-        temp_playlist_file = "/tmp/shuffled_playlist.m3u"
-        with open(temp_playlist_file, 'w') as f:
-            for file in selected_files:
-                f.write(file + '\n')
-####################################################        
-        # YOU PROBABLY WANT TO CHANGE THE PASSWORD HERE!!
-        command = "cvlc -I telnet --telnet-password=test123 --telnet-port=4212 --alsa-audio-device=hw:1,0 '{}' &".format(temp_playlist_file)
-        
-        print("Executing command:", command)
-        
-        subprocess.run(command, shell=True)
-    else:
-        print("Music directory not found.")
+    # YOU PROBABLY WANT TO CHANGE THE PASSWORD HERE!!
+    command = "cvlc -I telnet --telnet-password=test123 --telnet-port=4212 --alsa-audio-device=hw:1,0 '{}' &".format(temp_playlist_file)
+    
+    print("Executing command:", command)
+    
+    subprocess.run(command, shell=True)
 ```
 
 <br><br>

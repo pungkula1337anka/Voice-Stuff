@@ -24,7 +24,7 @@ Create the file 'shell_command.yaml' file in your /config dir and paste in the c
 _(dont forget to include it in `configuration.yaml` like `shell_command: !include shell_command.yaml`.)_ 
 This will allow you to call the script easily later from for example an automation. <br>
 Here we specify all the information that the python script needs to be run. <br>
-Chose your folder where your podcasts lies, the maximum number of files, and the fileextension. <br>
+Chose your folder where your podcasts folders are, the maximum number of files, and the fileextension. <br>
 
 - **2: Python script** <br>
 

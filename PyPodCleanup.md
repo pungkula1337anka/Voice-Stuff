@@ -6,7 +6,8 @@ PyPodCleanup
 <br><br>
 
 Counts the number of files inside each subfolder of your specified directory.  
-If there are more files in a subfolder than the allowed number set when running the script, they are deleted, in order of creation date (oldest first).      
+If there are more files in a subfolder than the allowed number set when running the script, they are deleted,  
+in order of creation date (oldest first).      
   
 I use the container based service [Podgrab](https://github.com/akhilrex/podgrab) to automatically download new episodes.  
 And my [PyPlayPodcast](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyPlayPodcast.md) script to start playback by voice.    

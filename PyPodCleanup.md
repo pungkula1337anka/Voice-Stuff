@@ -47,7 +47,7 @@ Your all set, try it out!<br><br>
 
 ## **⚠️⚠️ __IMPORTANT__ ⚠️⚠️** <br>
 
-This script is written for a folder structure like:
+This script is written for a folder structure like:  
 `/media/Podcasts/PodcastName/PodcastFiles.mp3`
 
     

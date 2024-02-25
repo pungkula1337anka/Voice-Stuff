@@ -1,7 +1,7 @@
 
 <h1 align="center">
 <br>
-Play Podcast
+Play Fuzzy Podcast
 </h1><br>
 <br><br>
 Searches /media/Podcasts/ for chosen podcast and creates an temporary playlist of the entire found subdirectory, starts   playback on your connected speakers, after it sorts the podcasts by release date, playing the newest first..<br><br>

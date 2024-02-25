@@ -9,7 +9,7 @@ Add Song To Playlist
 
 Checks what song is currently being played, takes the song title and does a search, grabs file & netadata and saves it for a rainy day on your playlist. <br>
 
-To play the playlist, you can use [PlayPlaylist](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PlayPlaylist.md). <br>
+To play the playlist, you can use [PyPlayPlaylist](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyPlayPlaylist.md). <br>
 <br><br><br>
 
 

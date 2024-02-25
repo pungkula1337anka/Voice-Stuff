@@ -10,11 +10,11 @@ Even if the STT generates the wrong word, the python script will still point you
 Just network mount your music to `/media/Music` and run the py,<br> 
 it will take care of the installation process of VLC and modify the binaries so it can be run safely.  
 
-And if you like the song playing, you can just say ["add this to my playlist"](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/AddSongToPlaylist.md)   
+And if you like the song playing, you can just say ["add this to my playlist"](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyAddSongToPlaylist.md)   
 
 <br>
 
-_Not sure what to listen to? Take a look at [RandomMusic](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/RandomMusic.md)_
+_Not sure what to listen to? Take a look at [RandomMusic](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyRandomMusic.md)_
 
 <br><br>
 

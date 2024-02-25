@@ -119,7 +119,6 @@ import random
 from difflib import get_close_matches
 
 def clean_search_query(query):
-
     cleaned_query = query.replace('.', '').replace(',', '')
     return cleaned_query
 
@@ -133,6 +132,13 @@ def find_closest_directory(query, directory):
         return closest_dir
     else:
         return None
+
+def collect_files(directory):
+    files = []
+    for root, _, filenames in os.walk(directory):
+        for filename in filenames:
+            files.append(os.path.join(root, filename))
+    return files
 
 if __name__ == "__main__":
 
@@ -152,26 +158,22 @@ if __name__ == "__main__":
 
     closest_directory = find_closest_directory(cleaned_search_query, directory)
     if closest_directory:
-
-        files = [f for f in os.listdir(closest_directory) if os.path.isfile(os.path.join(closest_directory, f))]
-
+        files = collect_files(closest_directory)
         random.shuffle(files)
-
 
         temp_playlist_file = "/tmp/shuffled_playlist.m3u"
         with open(temp_playlist_file, 'w') as f:
             for file in files:
-                f.write(os.path.join(closest_directory, file) + '\n')
+                f.write(file + '\n')
         
         # YOU PROBABLY WANT TO CHANGE THE PASSWORD!!
         command = "cvlc -I telnet --telnet-password=test123 --telnet-port=4212 --alsa-audio-device=hw:1,0 --playlist-enqueue '{}' &".format(temp_playlist_file)
         
         print("Executing command:", command)
-        
 
         subprocess.run(command, shell=True)
     else:
-        print("Sorry, try again.")
+        print("No closest match found.")
 ```
 
 

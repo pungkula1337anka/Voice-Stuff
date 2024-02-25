@@ -9,7 +9,7 @@ Play Playlist
 
 Makes sure VLC is installed, then starts playing a playlist. <br> 
 Playback is started on your HA connected speakers. <br>
-I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/AddSongToPlaylist.md) to add songs to the playlist by voice. <br> 
+I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyAddSongToPlaylist.md) to add songs to the playlist by voice. <br> 
 
 <br><br><br>
 
@@ -44,7 +44,7 @@ Create a file called `play_playlist.py` in your `config` directory. Paste in the
 
 Settings > Devices & Integrations > VideoLAN > VLC with Telnet  
 and fill in your local ip and default port.  
-If your using my other [pyscripts](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PlayArtist.md) and did not change the password, its `test123`.  
+If your using my other [pyscripts](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyPlayFuzzyArtist.md) and did not change the password, its `test123`.  
 
 
 

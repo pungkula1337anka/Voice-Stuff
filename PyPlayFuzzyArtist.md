@@ -1,7 +1,7 @@
 
 <h1 align="center">
 <br>
-Play Artist
+Play Fuzzy Artist
 </h1><br>
 <br><br>
 Searches /media/Music for chosen artist and creates an temporary playlist, starts playback on your connected speakers, after it shuffles all the songs in the playlist.<br><br>

@@ -2,7 +2,7 @@
 <h1 align="center">
 <br>
 
-Time
+Time & Date
 
 </h1><br>
 <br><br>

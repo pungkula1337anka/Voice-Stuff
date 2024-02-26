@@ -219,4 +219,4 @@ qwackify _(i.e., 🦆🎶)_   <br><br><br>
 
 - 🏆  had serious knee injuries over 1/3 of life, so far... - stupid <br>
 
-- 🏆  hey, i am pretty good at this! 👑 <br>
+- 🏆  hey! i am pretty good at this! 👑 <br>

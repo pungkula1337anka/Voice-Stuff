@@ -23,6 +23,10 @@ wat next?<br>
 <br>
 </h1>
 
+
+# __🦆 👀 Few words__  <br>
+
+
 <br>__🦆 👀__<br>
 
 lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants. <br>

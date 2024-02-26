@@ -195,8 +195,8 @@ input_boolean:
     icon: mdi:music
 ```  
 
-<br><br>
-
+<br>
+And use that boolean that constantly stream when toggled on.  
 
 ```
 alias: Pass Podcast to HomePod Automation

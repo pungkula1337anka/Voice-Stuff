@@ -217,6 +217,8 @@ qwackify _(i.e., 🦆🎶)_   <br><br><br>
 
 - 🏆  taped over 506.25 kilometers worth of tape - stupid <br>
 
+- 🏆  started this whole mess cause my eyes really hurt - stupid <br>
+
 - 🏆  had serious knee injuries over 1/3 of life, so far... - stupid <br>
 
 - 🏆  hey! i am pretty good at this! 👑 <br>

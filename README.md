@@ -202,10 +202,13 @@ click the 🦆 if you saw something you liked here
 ## 🦆 my other strange stuff<br>
 
 
-🦆📺<br>
-🦆☁️<br>
-🦆🏠<br>
-qwackify _(i.e., 🦆🎶)_   <br><br><br>
+__🦆📺__ <br>
+
+__🦆☁️__ <br>
+
+__🦆🏰__ <br>
+
+qwackify _(i.e., __🦆🎶__)_   <br><br><br>
 
 <br><br>
 

@@ -22,7 +22,9 @@ wat next?<br>
     Commands (with your mouth!)
 <br>
 </h1>
-<br>🦆<br>
+
+<br>__🦆 👀__<br>
+
 lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants. <br>
 
 simple voice control, and some stuff inbetween.<br>

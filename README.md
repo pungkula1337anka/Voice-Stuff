@@ -38,6 +38,8 @@ it would be fun if any of this could help other visually impared people, but som
 
 guess i am okay, if this here would happen to help any regular, non blind, _(muggles)_ along the way too.
 
+<br>
+can be found at [discord](https://discordapp.com/users/675530282849533952)
 <br><br>
 
 i am looking for any __stupid__/smart/doable/impossible/__crazy__ ideas to expand the list below.<br>

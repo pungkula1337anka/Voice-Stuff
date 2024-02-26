@@ -8,7 +8,7 @@ Pass Pod Further
 <br><br>
 
 Grabs the pod title from the VLC telnet integrations media player entity media_title attribute, searches for the full file path, templates it to a correct media source url, then sends it back to another media player entity. This is not nearly fast enough to use as multiroom functionallity, and some may argue the use case for this, but it should do the trick if you just want to listen in a different room.  
-Assumes you are doing the playback on VLC with telnet integration installed, but it could be edited for different scenarios if you wish.  
+Assumes your podcasts are in `media/Podcasts` and that you are doing the playback on VLC with telnet integration installed, but it could be edited for different scenarios if you wish.  
 
 <br><br><br>
 

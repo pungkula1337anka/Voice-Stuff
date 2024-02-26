@@ -137,7 +137,7 @@ one million screen hours to secure an hour less screentime future<br>
 
 -   "When does store open/close?"<br>
 
--   "Show Robert's contact info"  TTS & show vcard on TV <br>
+-   "Show Nisse's contact info"  TTS & show vcard on TV <br>
 
 -   SMS & Phone calls<br>
 

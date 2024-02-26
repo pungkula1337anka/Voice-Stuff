@@ -197,7 +197,7 @@ input_boolean:
 
 <br>
 
-And use that boolean that constantly stream when toggled on.  <br>
+And use that boolean to constantly stream when toggled on.  <br>
 
 
 ```

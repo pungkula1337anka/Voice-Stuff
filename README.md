@@ -31,7 +31,7 @@ wat next?<br>
 
 lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants. <br>
 
-simple voice control, and some stuff inbetween.<br>
+simple voice control, and some stuff there between.<br>
 
 <br>
 it would be fun if any of this could help other visually impared people, but somehow i doubt any of those would ever end up here.   

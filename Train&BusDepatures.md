@@ -2,7 +2,7 @@
 <h1 align="center">
 <br>
 
-Next Bus
+Train & Bus Depatures
 
 </h1><br>
 <br><br>

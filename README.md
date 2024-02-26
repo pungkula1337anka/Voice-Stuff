@@ -23,12 +23,20 @@ wat next?<br>
 <br>
 </h1>
 <br>🦆<br>
-lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants, and having fun while doing so. <br>
-this is just another one of those blind projects trying to make its code heard.<br>
-simple voice control, and everything inbetween.<br>
+lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants. <br>
+
+simple voice control, and some stuff inbetween.<br>
+
 <br>
-it would be fun if any of this could help other visually impared people, but somehow i doubt any of those would end up here. <br>
-<br>i am looking for any dumb/smart/doable/impossible/crazy ideas to expand the list below.<br> <br> 
+it would be fun if any of this could help other visually impared people, but somehow i doubt any of those would ever end up here.   
+
+guess i am okay, if this here would happen to help any regular, non blind, _(muggles)_ along the way too.
+
+<br><br>
+
+i am looking for any __stupid__/smart/doable/impossible/__crazy__ ideas to expand the list below.<br>
+
+after weeks on a dry streak of ideas, it would be sad if list got `finished`.<br><br> <br>
 one million screen hours to secure an hour less screentime future<br>
 <br>
 
@@ -127,7 +135,7 @@ one million screen hours to secure an hour less screentime future<br>
 
 -   SMS & Phone calls<br>
 
--   "What song is this?" (and add to playlist)<br>
+- 🚀  "What song is this?" (and add to playlist)<br>
 
 -   TV; Start a starred TV show on shuffle. "Throw something on the tv"<br>
 
@@ -145,7 +153,7 @@ one million screen hours to secure an hour less screentime future<br>
 
 -   quick transfer between bank accounts <br>
 
--   Next game? Who won yesterday? Ladder position? How many games left? DVR the next game.<br>
+- 🚀  Next game? Who won yesterday? Ladder position? How many games left? DVR the next game.<br>
 
 
 <br><br><br>
@@ -185,7 +193,7 @@ click the 🦆 if you saw something you liked here
 <br><br>
 
 
-## 🔗 my other strange stuff<br>
+## 🦆 my other strange stuff<br>
 
 
 🦆📺<br>
@@ -193,5 +201,16 @@ click the 🦆 if you saw something you liked here
 🦆🏠<br>
 qwackify _(i.e., 🦆🎶)_   <br><br><br>
 
+<br><br>
 
 
+## 🏆 👑 stupid trophies  <br>
+
+
+- 🏆  Dashboard 20.000+ lines of code - stupid <br>
+
+- 🏆  taped over 506.25 kilometers worth of tape - stupid <br>
+
+- 🏆  had serious knee injuries over 1/3 of life, so far... - stupid <br>
+
+- 👑  hey, i am pretty good at this! <br>

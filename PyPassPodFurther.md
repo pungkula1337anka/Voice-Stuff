@@ -187,7 +187,7 @@ print("Service call sent:", templated_filepath)
 
 
 You could for example, create an helper boolean in your `configuration.yaml` file.  
-`` 
+```
 input_boolean:
   pass_to_homepod:
     name: Pass the Podcast to Homepod

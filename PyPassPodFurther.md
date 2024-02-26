@@ -46,7 +46,9 @@ Example use case.
 
 ## **⚠️⚠️ NOTE ⚠️⚠️** <br><br><br>
 
-_These are just examples, you should make configurations that fit your usecase._
+_These are just examples, you should make configurations that fit your usecase._  
+
+<br><br>
 
 
 

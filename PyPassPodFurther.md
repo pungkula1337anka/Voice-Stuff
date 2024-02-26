@@ -196,7 +196,7 @@ input_boolean:
 ```  
 
 <br>
-And use that boolean that constantly stream when toggled on.  
+And use that boolean that constantly stream when toggled on.  <br>
 
 ```
 alias: Pass Podcast to HomePod Automation

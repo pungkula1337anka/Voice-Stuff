@@ -129,6 +129,10 @@ one million screen hours to secure an hour less screentime future<br>
 
 - 🚀  "Complete backup" of iPhone duck cloud, Contacts, SMS, camera, shortcuts, certs. TTS progress <br>
 
+- 🚀  "Send a message to Nisse hello!" . Sebd encrypted SMS.
+
+-   "Call Nisse" . Make phone calls. 
+
 -   "TV: set Channel/Volume" (presence automation)<br>
 
 -   "TV: start TVShow" (add to Sonarr if not found)<br>
@@ -137,13 +141,11 @@ one million screen hours to secure an hour less screentime future<br>
 
 -   "start todays most  watched video."<br>
 
--   "Start xmr pirates"<br>
+-   "start mining" - start Network-wide mining. <br>
 
 -   "When does store open/close?"<br>
 
--   "Show Nisse's contact info"  TTS & show vcard on TV <br>
-
--   SMS & Phone calls<br>
+-   "Nisse's contact info"  TTS full vcard.  <br>
 
 - 🚀  "What song is this?" (and add to playlist)<br>
 

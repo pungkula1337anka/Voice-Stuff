@@ -127,11 +127,19 @@ one million screen hours to secure an hour less screentime future<br>
 
 - 🚀  Read/Write shopping/ToDo lists & reminders.<br>
 
-- 🚀  "Complete backup" of iPhone duck cloud, Contacts, SMS, camera, shortcuts, certs. TTS progress <br>
+- 🚀  "What song is this?" (and add to playlist)<br>
 
-- 🚀  "Send a message to Nisse hello!" . Sebd encrypted SMS.
+- 🚀  "Complete backup of phone" backups iPhone to duck cloud, Contacts, SMS, camera, shortcuts, certs. TTS progress <br>
 
--   "Call Nisse" . Make phone calls. 
+- 🚀  "When is the next game?" - Tells when local sports teams next game is. <br>
+
+- 🚀  "Who called?" - Do lookup on unknown number missed called. <br>
+
+- 🚀  "What can I say?" . Tells you how to trigger all custom commands. <br>
+
+- 🚀  "Send a message to Nisse hello!" . Sebd encrypted SMS. <br>
+
+-   "Call Nisse" . Make phone calls. <br>
 
 -   "TV: set Channel/Volume" (presence automation)<br>
 
@@ -146,8 +154,6 @@ one million screen hours to secure an hour less screentime future<br>
 -   "When does store open/close?"<br>
 
 -   "Nisse's contact info"  TTS full vcard.  <br>
-
-- 🚀  "What song is this?" (and add to playlist)<br>
 
 -   TV; Start a starred TV show on shuffle. "Throw something on the tv"<br>
 
@@ -165,7 +171,7 @@ one million screen hours to secure an hour less screentime future<br>
 
 -   quick transfer between bank accounts <br>
 
-- 🚀  Next game? Who won yesterday? Ladder position? How many games left? DVR the next game.<br>
+
 
 
 <br><br><br>

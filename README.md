@@ -87,7 +87,7 @@ one million screen hours to secure an hour less screentime future<br>
 
 - 🚀  "When is my package arriving?" , "When is mail delivery?"" <br>
 
-- 🚀  Start timers <br>
+- 🚀  "Set a timer for 8 minutes" - Start timers <br>
 
 - 🚀  "Set an alarm for 7:00" <br>
 

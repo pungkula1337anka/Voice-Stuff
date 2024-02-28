@@ -66,8 +66,9 @@ IntentName:
           push:
             sound:
               name: default
-              critical: 1
-              volume: 1      
+              critical: 
+  speech:
+    text: "{{ result['stdout'] }} "                   
 ```
 
 <br><br>
@@ -84,7 +85,8 @@ intents:
   IntentName:
     data:
       - sentences:
-          - "vad ska jag säga" 
+          - "vad ska jag säga"
+          - "vad kan jag säga"
 ```
 
 <br><br>

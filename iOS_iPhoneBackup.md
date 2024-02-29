@@ -208,7 +208,7 @@ service: notify.mobile_app_YOUR_iPHONE
 
 ![image](https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/8f43321c-a209-474e-8725-6a1251dbd627)
 
-<br>
+
 
 __Dashboard__ <br>
 
@@ -242,7 +242,8 @@ Then we have a few sensors that counts all the files for each subdirectory of `N
 Then there a card that takes me to view the `NAS:\Personal` after prompt for a password.<br>
 <br>
 In the middle sechtion, to the left I count all the different files on my phone. <br>
-This is done by automating a [Shortcut]() that for example could be triggered when an alarm finishes.<br>
+
+This is done by automating a [Shortcut](http://#) that for example could be triggered when an alarm finishes.<br>
 
 MIddle section right side I count the size of `NAS:\iPhone_export\` and also how many files in the subdirectories. <br>
 Then there is a card to manually trigger the backup process.<br>

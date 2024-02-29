@@ -204,7 +204,10 @@ service: notify.mobile_app_YOUR_iPHONE
 
 __Dashboard__ <br><br>
 
-<img src="[https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/b5cefe6b-7976-4aa5-b35c-28bc62fa4c82](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/duckcloud_Dash.png?raw=true)" width="200" height="200"  />
+[https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/b5cefe6b-7976-4aa5-b35c-28bc62fa4c82](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/duckcloud_Dash.png?raw=true)
+
+
+<img src="https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/b5cefe6b-7976-4aa5-b35c-28bc62fa4c82" width="200" height="200"  />
 
 <br>
 

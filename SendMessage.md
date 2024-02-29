@@ -23,7 +23,7 @@ If you dont have it already, create the file `intent_script.yaml` in the /config
 Create a folder called `custom_sentences` inside your /config dir.<br>
 Inside that folder, once again create a folder named with your language code. `sv` for swedish, `en` for english.<br>
 In that folder you create a file and name it whatever you want, but remember it, cause it will be referencesd later.<br>
-I will use `IntentName.yaml` as an example here, fill this yaml file with the code from below. <br>
+I will use `SendMessage.yaml` as an example here, fill this yaml file with the code from below. <br>
 
 
 - **3: Setup the container** <br>
@@ -48,11 +48,12 @@ This will allow you to call the commands easily later.
 
 
 ```
-IntentName:
+SendMessage:
   action:
-    - service: shell_command.skriv_till_nisse
+    - service: shell_command.send_message
       data: 
         text: "{{text}}"
+        number: "{{number}}"
   speech:
     text: "det är skickat bruschan"
 ```
@@ -60,7 +61,7 @@ IntentName:
 <br><br>
 
 
-## 🦆 /custon_sentences/sv/IntentName.yaml <br>
+## 🦆 /custon_sentences/sv/SendMessage.yaml <br>
 
 
 <br>
@@ -68,12 +69,18 @@ IntentName:
 ```
 language: "sv"
 intents:
-  IntentName:
+  SendMessage:
     data:
       - sentences:
-          - "skriv till nisse {text}"
+          - "skriv till {number} {text}"
                     
 lists:
+  number:
+    values:
+      - in: "friend1"
+        out: "+46111111111"
+      - in: "friend2"
+        out: "+46222222222" 
   text:
     wildcard: true
 ```
@@ -190,9 +197,9 @@ services:
 
 
 ```
-  skriv_till_nisse: >
+  send_message: >
     curl -X POST -H "Content-Type: application/json" 'http://YOUR_IP:YOUR_PORT/v2/send' \
-       -d '{"message": "{{ text }}", "number": "+46YOUR_PHONE_NUMBER", "recipients": [ "+46CONTACTS_PHONE_NUMBER" ]}' 
+       -d '{"message": "{{ text }}", "number": "+46YOUR_PHONE_NUMBER", "recipients": [ "{{ number }}" ]}' 
 ```
 
 <br><br>

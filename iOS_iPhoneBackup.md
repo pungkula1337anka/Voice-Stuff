@@ -205,14 +205,13 @@ service: notify.mobile_app_YOUR_iPHONE
 
 <br>
 
-__Dashboard__ <br><br>
-
 
 ![image](https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/8f43321c-a209-474e-8725-6a1251dbd627)
 
-
-
 <br>
+
+__Dashboard__ <br>
+
 
 This backup moves my data to `NAS:\iPhone_Export\` where I manually process the data before moving it to `NAS:\Personal\`.
 On the top left of the dashboard there are command line sensors, at the top the size of everything in `NAS:\Personal\` gets counted. <br>

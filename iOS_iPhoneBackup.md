@@ -24,9 +24,12 @@ The backup includes:
 
 - 🦆☁️  Shortcuts <br> 
  
-  
+<br>
+
+
 __This is not a copy paste project__ <br>
 
+<br>
 Additional configurations has to be made. <br>
 
 I'll post the code and try to break it down as simple as possible so you can edit for your needs.
@@ -205,7 +208,9 @@ service: notify.mobile_app_YOUR_iPHONE
 __Dashboard__ <br><br>
 
 
-<img src="https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/b5cefe6b-7976-4aa5-b35c-28bc62fa4c82" width="200" height="200"  />
+![image](https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/8f43321c-a209-474e-8725-6a1251dbd627)
+
+
 
 <br>
 

@@ -137,6 +137,10 @@ one million screen hours to secure an hour less screentime future<br>
 
 - 🚀  "What can I say?" . Tells you how to trigger all custom commands. <br>
 
+- 🚀  "Nisse's contact info" TTS Contact info + Displayi Contact Card on TV with profile pic.  <br>
+
+- 🚀  Receive SMS and TTS them, extract data and store in CSV. for message logs.  <br>
+
 - 🚀  "Send a message to Nisse hello!" . Sebd encrypted SMS. <br>
 
 -   "Call Nisse" . Make phone calls. <br>
@@ -152,8 +156,6 @@ one million screen hours to secure an hour less screentime future<br>
 -   "start mining" - start Network-wide mining. <br>
 
 -   "When does store open/close?"<br>
-
--   "Nisse's contact info"  TTS full vcard.  <br>
 
 -   TV; Start a starred TV show on shuffle. "Throw something on the tv"<br>
 

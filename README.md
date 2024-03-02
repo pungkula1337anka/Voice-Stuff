@@ -26,9 +26,6 @@ wat next?<br>
 
 # __🦆 👀 Few words__  <br>
 
-
-<br>__🦆 👀__<br>
-
 lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants. <br>
 simple voice control, and some stuff in there between.<br>
 
@@ -41,10 +38,9 @@ guess i am okay, if this here would happen to help any regular, non blind, _(mug
 one million screen hours to secure an hour less screentime future  
 
 can be found at [discord](https://discordapp.com/users/675530282849533952)  
-  
+
 
 ## 🙇 acknowledgements<br>
-
 
 *PS blind amature noob please bare with me* <br>
 *i am not a pro developer, i work with tape. i am good at tape* <br>
@@ -53,13 +49,13 @@ can be found at [discord](https://discordapp.com/users/675530282849533952)
 
 ## 🦆 Tiny Tips<br>
 
-1. __Use Jinja!__
+1. __Use Jinja!__  
    Unless you have a billion devices and no motion sensors, there should be no need to specify media players, or to use expensive presence sensors.
-2. __Use custom intents!__
+2. __Use custom intents!__  
     I dont care for the defaults, If your having problems with STT the time spent here is well invested, limit custom sentences to as few, simple words as possible.
-3. __Dont overpay!__
+3. __Dont overpay!__  
    I can ensure that you dont need a crazy CPU with local AI to handle your intents. I run everything on a crappy fanless Celeron _(60$ new)_.
-4. __Read the common file!__
+4. __Read the common file!__  
    You get alot of understanding about sentences by reading the `_common.yaml` file.
 
 ## 🔥🔥 roadmap & ideas voice commands 
@@ -174,8 +170,6 @@ i would hate to see it finished.
 -   quick transfer between bank accounts <br>
 
 
-
-
 ## 💻 looking to copy pasta/Jinja? <br>
 
 so you like copy pasta huh? well, maybe ....<br>
@@ -188,12 +182,9 @@ all yoou need is black sun glasses, a white cane and a dog with keyboard skillz?
  <br>
 be aware of the file structure so the right<br>
 code goes into the right file.<br>
-
-<br><br>
-
+<br>
 
 ## 🔗 Community, sharing & other links<br>
-
 
 click the 🦆 if you saw something you liked here
 <br><br>
@@ -202,11 +193,10 @@ click the 🦆 if you saw something you liked here
 [HA Developer Documentation](https://developers.home-assistant.io/) <br>
 [Wyoming Protocol](https://github.com/rhasspy/wyoming) <br>
 [ESPHome](https://esphome.io/) <br>
-<br><br>
+<br>
 
 
 ## 🦆 my other strange stuff<br>
-
 
 __🦆📺__ <br>
 
@@ -216,8 +206,7 @@ __🦆🏰__ <br>
 
 qwackify _(i.e., __🦆🎶__)_   <br><br><br>
 
-<br><br>
-
+<br>
 
 ## 🏆 stupid trophies 👑  <br>
 

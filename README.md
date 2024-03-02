@@ -30,8 +30,7 @@ wat next?<br>
 <br>__🦆 👀__<br>
 
 lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants. <br>
-
-simple voice control, and some stuff there between.<br>
+simple voice control, and some stuff in there between.<br>
 
 <br>
 it would be fun if any of this could help other visually impared people, but somehow i doubt any of those would ever end up here.   
@@ -39,8 +38,10 @@ it would be fun if any of this could help other visually impared people, but som
 guess i am okay, if this here would happen to help any regular, non blind, _(muggles)_ along the way too.
 
 <br>
-one million screen hours to secure an hour less screentime future<br>
-can be found at [discord](https://discordapp.com/users/675530282849533952)
+one million screen hours to secure an hour less screentime future  
+
+can be found at [discord](https://discordapp.com/users/675530282849533952)  
+  
 
 ## 🙇 acknowledgements<br>
 
@@ -51,6 +52,12 @@ can be found at [discord](https://discordapp.com/users/675530282849533952)
 <br><br>
 
 
+## 🦆 Tiny Tips<br>
+
+1. Use Jinja! Unless you have a billion devices and no motion sensors, there should be no need to specify media players, or to use expensive presence sensors.
+2. Use custom intents! I dont care for the defaults, If your having problems with STT the time spent here is well invested, limit custom sentences to as few, simple words as possible.
+3. Dont overpay! I can ensure that you dont need a crazy CPU with local AI to handle your intents. I run everything on a crappy fanless Celeron _(60$ new)_.
+4. Read _common.yaml! You get alot of understanding about sentences by reading the common file.
 
 ## 🔥🔥 roadmap & ideas voice commands 
 
@@ -165,14 +172,6 @@ i would hate to see it finished.
 -   quick transfer between bank accounts <br>
 
 
-
-
-<br><br><br>
-
-If you want to help and contribute, issues up for grabs<br>
-<br>
-if i missed out on any good ideas, please add them to the list<br>
-<br><br>
 
 
 ## 💻 looking to copy pasta/Jinja? <br>

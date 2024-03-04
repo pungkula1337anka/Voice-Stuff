@@ -133,7 +133,11 @@ i would hate to see it finished.
 
 - 🚀  "What can I say?" . Tells you how to trigger all custom commands. <br>
 
-- 🚀  "Nisse's contact info" TTS Contact info + Displayi Contact Card on TV with profile pic.  <br>
+- 🚀  "When does Willys close?" Ask customized search engine a question, template all response data to query, TTS closest match.  <br>
+
+- 🚀  "What is a duck?" Ask Wikipedia a question, compare all response data to query, TTS closest match.  <br>
+
+- 🚀  "Nisse's contact info" TTS Contact info + Display Contact Card on TV with profile pic.  <br>
 
 - 🚀  Receive SMS and TTS them, extract data and store in CSV. for message logs.  <br>
 

@@ -108,6 +108,7 @@ Paste in wall of text at bottom. <br>
 
 ## 🦆 /config/intent_script.yaml <br>
 
+You can define your playlist path in the template.
 
 <br>
 
@@ -117,8 +118,9 @@ MediaController:
   action:
     - service: shell_command.media_controller
       data: 
-        search: "{{movie}}"
-        typ: "{{type}}"
+        search: >
+          "{% if typ == 'playlist' %}/media/MyPlaylist2.m3u{% else %}{{ search }}{% endif %}"
+        typ: "{{typ}}"
 ```
 
 <br><br>
@@ -136,22 +138,35 @@ intents:
   MediaController:
     data:
       - sentences:
-          - "testa {typ} {search}"
-   
-
+          - "kör igång {typ} {search}"
+          - "spela {typ} {search}"
 lists:
   search:
-    type: wildcard
+    wildcard: true
   typ:
     values:
+      - in: "(serie|serien)"
+        out: "tv"  
+      - in: "(podd|pod|podcast|poddkast)"
+        out: "podcast"
+      - in: "(slump|slumpa)"
+        out: "jukebox"
       - in: "(artist|artisten|band|bandet|grupp|gruppen)"
-        out: "music"
+        out: "music"        
+      - in: "(låt|låten|sång|sången)"
+        out: "song" 
       - in: "(film|filmen)"
-        out: "movie"
-      #- in: "(serie|serien)"
-      #  out: "tv"        
-      #- in: "slumpa"
-      #  out: "jukebox"
+        out: "movie"        
+      - in: "(ljudbok|ljudboken)"
+        out: "audiobook"       
+      - in: "video"
+        out: "othervideo"       
+      - in: "(musik video|music video)"
+        out: "musicvideo"              
+      - in: "(spellista|spellistan|spel lista|spel listan)"
+        out: "playlist"        
+      #- in: ""
+      #  out: "livetv"   
 ```
 
 <br><br>
@@ -159,7 +174,8 @@ lists:
 
 ## 🦆 shell_command.yaml <br>
 
-Define your media player at the end of the shell command. <br>
+You can define your media player at the end of the shell command. <br>
+_(or preferbly presence media player)_
 
 <br>
 

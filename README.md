@@ -135,25 +135,21 @@ i would hate to see it finished.
 
 -   "Call Nisse" . Make phone calls. <br>
 
+- 🚀  TV; Start a starred TV show on shuffle. "Throw something on the tv"<br>
+
+- 🚀  "TV: start TVShow" (add to Sonarr if not found)<br>
+
+- 🚀  "TV: start movie" (add to Radarr if not found)<br>
+
 -   "TV: set Channel/Volume" (presence automation)<br>
-
--   "TV: start TVShow" (add to Sonarr if not found)<br>
-
--   "TV: start movie" (add to Radarr if not found)<br>
 
 -   "start todays most  watched video."<br>
 
 -   "start mining" - start Network-wide mining. <br>
 
--   "When does store open/close?"<br>
-
--   TV; Start a starred TV show on shuffle. "Throw something on the tv"<br>
-
 -   Morning message. Calendar, reminders, birthdays, market info, unread mail, missed calls,<br>
 
 -   TTS announcement before friends/guests arrives. <br>
-
--   DNS toggle <br>
 
 -   Buy/sell<br>
 

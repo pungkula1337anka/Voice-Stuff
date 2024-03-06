@@ -467,7 +467,7 @@ if __name__ == "__main__":
                         send_service_call(media_content_id, True, media_player_entity_id)
                     time.sleep(DELAY_BETWEEN_SERVICE_CALLS)
             else:
-                print("No closest match found.")
+                print("Sorry, please try again..")
 ```
 
 <br><br>

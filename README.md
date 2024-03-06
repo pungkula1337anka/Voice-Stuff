@@ -47,16 +47,6 @@ can be found at [discord](https://discordapp.com/users/675530282849533952)
 <br>
 
 
-## 🦆 Tiny Tips<br>
-
-1. __Use Jinja!__  
-   Unless you have a billion devices and no motion sensors, there should be no need to specify media players, or to use expensive presence sensors.
-2. __Use custom intents!__  
-    I dont care for the defaults, If your having problems with STT the time spent here is well invested, limit custom sentences to as few, simple words as possible.
-3. __Dont overpay!__  
-   I can ensure that you dont need a crazy CPU with local AI to handle your intents. I run everything on a crappy fanless Celeron _(60$ new)_.
-4. __Read the common file!__  
-   You get alot of understanding about sentences by reading the `_common.yaml` file.
 
 ## 🔥🔥 roadmap & ideas voice commands 
 

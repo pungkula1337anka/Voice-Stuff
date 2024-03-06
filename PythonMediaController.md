@@ -11,10 +11,6 @@ Full media control in one Python script. <br>
 The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>
 
-I __strongly__ recommend creating an presence media player sensor with a template, for full automation support. <br>
-Start by creating a template sensor that simply states what room you are in. <br> 
-I did this with the attributes of my motion sensors. <br>
-If you need help I suggest asking nicely [here](https://discord.com/channels/330944238910963714/672223497736421388).  <br>
 
 __Available types:__
 
@@ -64,9 +60,15 @@ I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyAddSong
 
 11. 📡 __Live-TV__ <br>
 _???_
-
  
-<br><br>
+<br> 
+
+I __strongly__ recommend creating an presence media player sensor with a template, for full automation support. <br>
+Start by creating a template sensor that simply states what room you are in. <br> 
+I did this with the attributes of my motion sensors. <br>
+If you need help I suggest asking nicely [here](https://discord.com/channels/330944238910963714/672223497736421388).  <br>
+
+<br>
 
 
 - **1: Intent Script** <br>

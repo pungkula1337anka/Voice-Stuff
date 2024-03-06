@@ -155,7 +155,7 @@ def extract_snippet(response_json, search_query):
         return None
 
 def send_tts_message(message):
-    # Construct the service call payload
+
     service_payload = {
         "entity_id": ENTITY_ID,
         "language": LANGUAGE,
@@ -163,7 +163,6 @@ def send_tts_message(message):
         "media_player_entity_id": MEDIA_PLAYER_ENTITY_ID
     }
 
-    # Make the TTS API call using requests library
     response = requests.post(f"http://{HOME_ASSISTANT_IP}:{HOME_ASSISTANT_PORT}/api/services/tts/speak",
                              headers={"Authorization": f"Bearer {LONG_LIVED_ACCESS_TOKEN}",
                                       "Content-Type": "application/json"},
@@ -184,9 +183,9 @@ if __name__ == "__main__":
         snippet = extract_snippet(response, search_query)
         if snippet:
             send_tts_message(snippet)
-            time.sleep(20)  # Delay for 20 seconds
-            send_tts_message(snippet)  # Sending TTS message again
-```
+            time.sleep(20)  
+            send_tts_message(snippet)  
+```¨
 
 <br><br>
 

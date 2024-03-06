@@ -27,12 +27,12 @@ If need help I suggest asking nicely [here](https://discord.com/channels/3309442
 
 __Available types:__
 
-1. Podcast  <br>
+1. __Podcast__  <br>
 Fuzzy searches a Podcast directory, lists all files in that directory, orders them after creation date. Sends them to your HA media player for playback.
 I use the container based service [Podgrab](https://github.com/akhilrex/podgrab) to automatically download new episodes.  
 And this [PyPodCleanup](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyPodCleanup.md) script to automatically  remove old episodes.  
 
-2. Jukebox <br>
+2. __Jukebox__ <br>
 Shuffles & randomizes 150 songs from your music directory. <br>
 Sends them back to your HA media player for playback. <br>
 
@@ -40,36 +40,36 @@ Sends them back to your HA media player for playback. <br>
 Fuzzy searches your music directory for an artist (folder) of your choice. <br>
 Lists all files in that folder and creates a temporary playlist which are shuffled and sent back to your HA media player. <br>
 
-4. Song
+4. __Song__ 
 Fuzzy searches your music directory and all its subdirectories for an song. <br>
 Song is sent back to your media player to enjoy. <br>
 
-5. Movie
+5. __Movie__
 Fuzzy searches for a movie title (folder in your movie directory). <br>
 Lists all file inside that folder, order them after filepath name, and sends them back to your media player. <br>
 
-6. Audiobook <br>
+6. __Audiobook__  <br>
 Fuzzy searches your audiobook directory for a folder. <br>
 Lists all files in that folder, order them by filepath name and sends to media player.
 
-6. OtherVideos
+6. __OtherVideos__  
 Fuzzysearches for a file in your othervideos directory. <br> 
 File is played on your media player.
 
-7. Musicvideos
+7. __Musicvideos__  
 Searches your musicvideo directory, for an artist (folder). <br>
 list all files, shuffles & randomizes before playback. <br>
 
-__8. TV__ 
+8. __TV__  
 Searches your TV directory for a TV Show (folder).
 Lists all files in that directory and all its subdirectories, shuffles them all and randomizes order. <br>
 Sends them all to your media_player.  
 
-__9. Playlist__
+9. __Playlist__  
 Specify full filepath in search query.
 Playlist is played on media_player in argument when running the script. 
 
-__10. Live-TV__
+10. __Live-TV__  
 
 _???_
 

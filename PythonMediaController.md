@@ -36,15 +36,15 @@ And this [PyPodCleanup](https://github.com/pungkula1337anka/Voice-Stuff/blob/mai
 Shuffles & randomizes 150 songs from your music directory. <br>
 Sends them back to your HA media player for playback. <br>
 
-3. Music
+3. __Music__ <br>
 Fuzzy searches your music directory for an artist (folder) of your choice. <br>
 Lists all files in that folder and creates a temporary playlist which are shuffled and sent back to your HA media player. <br>
 
-4. __Song__ 
+4. __Song__  <br>
 Fuzzy searches your music directory and all its subdirectories for an song. <br>
 Song is sent back to your media player to enjoy. <br>
 
-5. __Movie__
+5. __Movie__ <br>
 Fuzzy searches for a movie title (folder in your movie directory). <br>
 Lists all file inside that folder, order them after filepath name, and sends them back to your media player. <br>
 
@@ -52,25 +52,24 @@ Lists all file inside that folder, order them after filepath name, and sends the
 Fuzzy searches your audiobook directory for a folder. <br>
 Lists all files in that folder, order them by filepath name and sends to media player.
 
-6. __OtherVideos__  
+6. __OtherVideos__ <br>
 Fuzzysearches for a file in your othervideos directory. <br> 
 File is played on your media player.
 
-7. __Musicvideos__  
+7. __Musicvideos__ <br>
 Searches your musicvideo directory, for an artist (folder). <br>
 list all files, shuffles & randomizes before playback. <br>
 
-8. __TV__  
+8. __TV__ <br>
 Searches your TV directory for a TV Show (folder).
 Lists all files in that directory and all its subdirectories, shuffles them all and randomizes order. <br>
 Sends them all to your media_player.  
 
-9. __Playlist__  
+9. __Playlist__ <br>
 Specify full filepath in search query.
 Playlist is played on media_player in argument when running the script. 
 
-10. __Live-TV__  
-
+10. __Live-TV__ <br>
 _???_
 
  

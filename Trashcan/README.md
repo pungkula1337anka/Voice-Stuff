@@ -6,7 +6,8 @@ Trashcan
 <br><br>
 
 Why are you dumpster diving? <br>
-Better options are available...
+Better options are most likely available...
+_but okaaay_
 
 
 

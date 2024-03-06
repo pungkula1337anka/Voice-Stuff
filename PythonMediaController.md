@@ -19,7 +19,7 @@ Fuzzy searches a Podcast directory, lists all files in that directory, orders th
 I use the container based service [Podgrab](https://github.com/akhilrex/podgrab) to automatically download new episodes.  
 And this [PyPodCleanup](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyPodCleanup.md) script to automatically  remove old episodes.  
 
-2. 🔀 __Jukebox__ 🎵 <br>
+2. 🔀 __Jukebox__  <br>
 Shuffles & randomizes 150 songs from your music directory. <br>
 Sends them back to your HA media player for playback. <br>
 
@@ -43,7 +43,7 @@ Lists all files in that folder, order them by filepath name and sends to media p
 Fuzzysearches for a file in your othervideos directory. <br> 
 File is played on your media player.
 
-7. 🎵 __Musicvideos__ 📼<br>
+7. 🎵 __Musicvideos__ <br>
 Searches your musicvideo directory, for an artist (folder). <br>
 list all files, shuffles & randomizes before playback. <br>
 
@@ -52,7 +52,7 @@ Searches your TV directory for a TV Show (folder).
 Lists all files in that directory and all its subdirectories, shuffles them all and randomizes order. <br>
 Sends them all to your media_player.  
 
-9. 🎼 __Playlist__ 🎵 <br>
+9. 🎼 __Playlist__  <br>
 Specify full filepath in search query.
 Playlist is played on media_player in argument when running the script.
 I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyAddSongToPlaylist.md) script to add sobgs to my playlist.  

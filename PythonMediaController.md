@@ -7,7 +7,8 @@ __Python Media Controller__
 </h1><br>
 <br><br>
 
-Full media control in one Python script. <br>
+# __Full media control in one Python script.__ <br>
+
 The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>
 

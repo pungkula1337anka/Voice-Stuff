@@ -166,7 +166,7 @@ lists:
 <br><br>
 
 
-## 🦆 shell_command.yaml <br>
+## 🦆 /config/shell_command.yaml <br>
 
 You can define your media player at the end of the shell command. <br>
 _(or preferbly presence media player)_

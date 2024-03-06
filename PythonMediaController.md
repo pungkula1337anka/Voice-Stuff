@@ -10,68 +10,59 @@ __Python Media Controller__
 Full media control in one Python script. <br>
 The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>
-You run it: 
-  
-```
-service: shell_command.media_controller_test
-data: 
-  search: "<searcg_query/m3u_path>"
-  type: <type>
-  player: <media_player_id>
-```
 
-I recommend creating an presence media player sensor, with a template, for full automation support. <br>
+I __strongly__ recommend creating an presence media player sensor with a template, for full automation support. <br>
 Start by creating a template sensor that simply states what room you are in. <br> 
-I did this with the attributes off my motion sensors. <br>
-If need help I suggest asking nicely [here](https://discord.com/channels/330944238910963714/672223497736421388).  <br>
+I did this with the attributes of my motion sensors. <br>
+If you need help I suggest asking nicely [here](https://discord.com/channels/330944238910963714/672223497736421388).  <br>
 
 __Available types:__
 
-1. __Podcast__  <br>
+1. 🎙️ __Podcast__  <br>
 Fuzzy searches a Podcast directory, lists all files in that directory, orders them after creation date. Sends them to your HA media player for playback.
 I use the container based service [Podgrab](https://github.com/akhilrex/podgrab) to automatically download new episodes.  
 And this [PyPodCleanup](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyPodCleanup.md) script to automatically  remove old episodes.  
 
-2. __Jukebox__ <br>
+2. 🔀 __Jukebox__ 🎵 <br>
 Shuffles & randomizes 150 songs from your music directory. <br>
 Sends them back to your HA media player for playback. <br>
 
-3. __Music__ <br>
+3. 🎵 __Music__ <br>
 Fuzzy searches your music directory for an artist (folder) of your choice. <br>
 Lists all files in that folder and creates a temporary playlist which are shuffled and sent back to your HA media player. <br>
 
-4. __Song__  <br>
+4. 🎵 __Song__  <br>
 Fuzzy searches your music directory and all its subdirectories for an song. <br>
 Song is sent back to your media player to enjoy. <br>
 
-5. __Movie__ <br>
+5. 📽️ __Movie__ <br>
 Fuzzy searches for a movie title (folder in your movie directory). <br>
 Lists all file inside that folder, order them after filepath name, and sends them back to your media player. <br>
 
-6. __Audiobook__  <br>
+6. 📖 __Audiobook__  <br>
 Fuzzy searches your audiobook directory for a folder. <br>
 Lists all files in that folder, order them by filepath name and sends to media player.
 
-6. __OtherVideos__ <br>
+6. 📹 __OtherVideos__ <br>
 Fuzzysearches for a file in your othervideos directory. <br> 
 File is played on your media player.
 
-7. __Musicvideos__ <br>
+7. 🎵 __Musicvideos__ 📼<br>
 Searches your musicvideo directory, for an artist (folder). <br>
 list all files, shuffles & randomizes before playback. <br>
 
-8. __TV__ <br>
+8. 📺 __TV__ <br>
 Searches your TV directory for a TV Show (folder).
 Lists all files in that directory and all its subdirectories, shuffles them all and randomizes order. <br>
 Sends them all to your media_player.  
 
-9. __Playlist__ <br>
+9. 🎼 __Playlist__ 🎵 <br>
 Specify full filepath in search query.
 Playlist is played on media_player in argument when running the script.
 I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyAddSongToPlaylist.md) script to add sobgs to my playlist.  
 
 
-11. __Live-TV__ <br>
+11. 📡 __Live-TV__ <br>
 _???_
 
  

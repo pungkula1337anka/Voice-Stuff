@@ -113,7 +113,7 @@ MediaController:
     - service: shell_command.media_controller
       data: 
         search: >
-          "{% if typ == 'playlist' %}/media/MyPlaylist2.m3u{% else %}{{ search }}{% endif %}"
+          "{% if typ == 'playlist' %}/media/MyPlaylist2.m3u{% else %}{{ search| default(0) }}{% endif %}"
         typ: "{{typ}}"
 ```
 
@@ -133,19 +133,21 @@ intents:
     data:
       - sentences:
           - "kör igång {typ} {search}"
-          - "spela {typ} {search}"
+          - "spela [upp] {typ} {search}"
+          - "jag vill se {typ} {search}"
+          - "spela [upp] {typ}"
 lists:
   search:
     wildcard: true
   typ:
     values:
-      - in: "(serie|serien)"
+      - in: "(serie|serien|tvserien|tv-serien|tv serien)"
         out: "tv"  
-      - in: "(podd|pod|podcast|poddkast)"
+      - in: "(podd|pod|podcast|podcost|poddan|podden)"
         out: "podcast"
-      - in: "(slump|slumpa)"
+      - in: "(slump|slumpa|random|musik)"
         out: "jukebox"
-      - in: "(artist|artisten|band|bandet|grupp|gruppen)"
+      - in: "(artist|artisten|band|bandet|grupp|gruppen|höra)"
         out: "music"        
       - in: "(låt|låten|sång|sången)"
         out: "song" 
@@ -157,7 +159,7 @@ lists:
         out: "othervideo"       
       - in: "(musik video|music video)"
         out: "musicvideo"              
-      - in: "(spellista|spellistan|spel lista|spel listan)"
+      - in: "(spellista|spellistan|spel lista|spel listan|playlist)"
         out: "playlist"        
       #- in: ""
       #  out: "livetv"   

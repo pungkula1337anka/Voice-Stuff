@@ -54,7 +54,7 @@ IntentName:
   action:
     - service: input_datetime.set_datetime
       data:
-          time: "{{hours}}:{{minutes}}:00"
+          time: "{{hours}}:{{minutes | default(00)}}:00"
       target:
           entity_id: input_datetime.wakeupalarm
     - service: input_boolean.turn_on
@@ -76,11 +76,13 @@ IntentName:
 ```
 language: "sv"
 intents:
-  IntentName:
+  SetWakeUpTime:
     data:
       - sentences:
-          - "(starta|ställ|sätt)  [en] väckarklockan på {hours} [och] {minutes} "          
-          - "väck mig klockan {hours} [och] {minutes} "    
+          - "(starta|ställ|sätt) väckarklockan på {hours} [och] {minutes} "          
+          - "väck mig klockan {hours} {minutes} "    
+          - "väck mig {hours} {minutes} "       
+          - "väck mig klockan {hours}"    
 lists:
   minutes:
     range:

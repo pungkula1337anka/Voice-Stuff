@@ -122,6 +122,9 @@ MediaController:
 
 ## 🦆 /config/custom_sentences/sv/MediaController.yaml <br>
 
+Before you hastly delete my words and insert your own, take a look at how I did this. <br>
+This setup & with the search defaulting to `0`, enables me to skip the search part and just say `spela upp musik` to trigger the jukebox intent. <br>
+and also say `spela upp spellistan` for insant playlist playback. <br>
 
 <br>
 

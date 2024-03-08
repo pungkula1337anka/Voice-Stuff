@@ -113,7 +113,7 @@ MediaController:
     - service: shell_command.media_controller
       data: 
         search: >
-          "{% if typ == 'playlist' %}/media/MyPlaylist2.m3u{% else %}{{ search| default(0) }}{% endif %}"
+          "{% if typ == 'playlist' %}/media/MyPlaylist2.m3u{% else %}'{{ search | default(0) }}'{% endif %}"
         typ: "{{typ}}"
 ```
 
@@ -133,9 +133,10 @@ intents:
     data:
       - sentences:
           - "kör igång {typ} {search}"
-          - "spela [upp] {typ} {search}"
+          - "(spel|spela) [upp] {typ} {search}"
           - "jag vill se {typ} {search}"
-          - "spela [upp] {typ}"
+          - "spela [upp] {typ} "
+          - "jag vill höra {typ} {search}"
 lists:
   search:
     wildcard: true
@@ -147,7 +148,7 @@ lists:
         out: "podcast"
       - in: "(slump|slumpa|random|musik)"
         out: "jukebox"
-      - in: "(artist|artisten|band|bandet|grupp|gruppen|höra)"
+      - in: "(artist|artisten|band|bandet|grupp|gruppen)"
         out: "music"        
       - in: "(låt|låten|sång|sången)"
         out: "song" 

@@ -5,6 +5,7 @@
 __Python Media Controller__
 
 </h1><br>
+https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/pythonmedia.png?raw=true
 <br><br>
 
 # __Full media control in one Python script.__ <br>

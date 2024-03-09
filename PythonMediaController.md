@@ -4,11 +4,13 @@
 
 __Python Media Controller__
 
+<img src="https://raw.githubusercontent.com/pungkula1337anka/Voice-Stuff/main/asset/pythonmedia.png">
+
+
 </h1><br>
-[https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/b5cefe6b-7976-4aa5-b35c-28bc62fa4c82]
+
 <br><br><br>
-https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/pythonmedia.png?raw=true
-<br><br>
+
 
 # __Full media control in one Python script.__ <br>
 

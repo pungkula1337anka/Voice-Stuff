@@ -135,6 +135,8 @@ i would hate to see it finished.
 
 -   "Call Nisse" . Make phone calls. <br>
 
+- 🚀  TTS announcement before friends/guests arrives. <br>
+
 - 🚀  TV; Start a starred TV show on shuffle. "Throw something on the tv"<br>
 
 - 🚀  "TV: start TVShow" (add to Sonarr if not found)<br>
@@ -148,8 +150,6 @@ i would hate to see it finished.
 -   "start mining" - start Network-wide mining. <br>
 
 -   Morning message. Calendar, reminders, birthdays, market info, unread mail, missed calls,<br>
-
--   TTS announcement before friends/guests arrives. <br>
 
 -   Buy/sell<br>
 

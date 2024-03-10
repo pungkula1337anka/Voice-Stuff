@@ -67,7 +67,8 @@ I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyAddSong
 10. 🗞️ __News__ <br>
 Define your newscasts RESTful API's in the Python file. <br>
 If the newscast items has not been heard before, they will be played. _(if played before, they are skipped)_ <br>
-
+The script stores some data about played items in a .txt file in your config directory, <br>
+dont worry though, the script wont let it get big and strong. <br>
 
 11. 📡 __Live-TV__ <br>
 _???_
@@ -198,7 +199,8 @@ _(or preferbly presence media player)_
 
 ## 🦆 /config/media_controller.py <br>
 
-
+Don't forget to define your Home Assistant IP, long lived acess token, media directories.<br>
+Also in case you want your own local newscasts, please define their RESTful API's in this file aswell.
 <br>
 
 

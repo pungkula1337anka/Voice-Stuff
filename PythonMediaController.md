@@ -175,7 +175,9 @@ lists:
       - in: "(musik video|music video)"
         out: "musicvideo"              
       - in: "(spellista|spellistan|spel lista|spel listan|playlist)"
-        out: "playlist"        
+        out: "playlist"
+      - in: "(nyheter|nyheterna|senaste nytt)"
+        out: "news"   
       #- in: ""
       #  out: "livetv"   
 ```

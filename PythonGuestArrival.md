@@ -18,7 +18,7 @@ Also sends notification with MAC when unknown device connects.
 
 - **1: Python script** <br>
 
-If you dont have it already, add `python_script:` to your `configuration.yaml` file. 
+If you dont have it already, add `python_script:` to your `configuration.yaml` file. <br>
 Create the file `guest_arrival.py` in `config/python_scripts` _(create the folder if you dont have it)_
 Paste in the python script below, and start defining your devices, and then your guests devices.
 Add your own actions.

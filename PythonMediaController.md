@@ -64,6 +64,11 @@ Playlist is played on media_player in argument when running the script.
 I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyAddSongToPlaylist.md) script to add sobgs to my playlist.  
 
 
+10. 🗞️ __News__ <br>
+Define your newscasts RESTful API's in the Python file. <br>
+If the newscast items has not been heard before, they will be played. _(if played before, they are skipped)_ <br>
+
+
 11. 📡 __Live-TV__ <br>
 _???_
  

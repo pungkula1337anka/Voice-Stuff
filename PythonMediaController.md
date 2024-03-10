@@ -213,8 +213,9 @@ import requests
 import difflib
 from difflib import get_close_matches
 
-# Define your Home Assistant IP, long lived token & Media folders here.
-HOME_ASSISTANT_IP = "YOUR_HOMEASSISTANT_IP:8123"
+###########################################################
+#### Define your shit here please. #####
+HOME_ASSISTANT_IP = "YOUR_IP:YOUR_PORT"
 ACCESS_TOKEN = "YOUR_LONG_LIVED_ACESS_TOKEN"
 SEARCH_FOLDERS = {
     "tv": "/media/TV",
@@ -228,8 +229,19 @@ SEARCH_FOLDERS = {
     "jukebox": "/media/Music",
     "song": "/media/Music"
 }
-DELAY_BETWEEN_SERVICE_CALLS = 0  
+NEWS_MEDIA_PLAYER = "media_player.ha"
+PLAYED_NEWS_FILE = "played_news.txt"
+MAX_PLAYED_NEWS_ENTRIES = 350
+NEWS_API_LIST = [
+    "http://api.sr.se/api/v2/news/episodes?format=json",
+    "http://api.sr.se/api/v2/podfiles?programid=178&format=json",
+    "http://api.sr.se/api/v2/podfiles?programid=5524&format=json",
+    "http://api.sr.se/api/v2/podfiles?programid=5413&format=json"
+]
+DELAY_BETWEEN_SERVICE_CALLS = 0
+###########################################################
 
+news_list = []
 def clean_search_query(query):
     """
     This function removes punctuation from the search query.
@@ -271,7 +283,7 @@ def find_closest_file(query, files):
     closest_match = None
     max_ratio = 0
     for file in files:
-        filename = os.path.splitext(os.path.basename(file))[0]  # Extracting filename without extension
+        filename = os.path.splitext(os.path.basename(file))[0]  
         ratio = difflib.SequenceMatcher(None, query, filename).ratio()
         if ratio > max_ratio:
             max_ratio = ratio
@@ -315,52 +327,92 @@ def read_m3u_file(file_path):
 
     return lines
 
+def fetch_news():
+    global news_list
+    news_list.clear()
+
+    for api in NEWS_API_LIST:
+        response = requests.get(api)
+        if response.status_code == 200:
+            data = response.json()
+            for item in data.get("episodes", []) + data.get("podfiles", []):
+                url = item.get("downloadpodfile", {}).get("url") or item.get("url")
+                if url:
+                    news_list.append(url)
+    print("Fetched news:", news_list)
+
+def send_news_service_call(media_content_id, enqueue=False):
+    headers = {
+        "Authorization": f"Bearer {ACCESS_TOKEN}",
+        "Content-Type": "application/json"
+    }
+    data = {
+        "entity_id": NEWS_MEDIA_PLAYER,
+        "media_content_id": media_content_id,
+        "media_content_type": "music",
+        "extra": {"enqueue": enqueue}
+    }
+    response = requests.post(f"http://{HOME_ASSISTANT_IP}/api/services/media_player/play_media", headers=headers,
+                             json=data)
+    print("Service call response:", response.text)
+    return response.status_code
+
+def load_played_news():
+    if os.path.exists(PLAYED_NEWS_FILE):
+        with open(PLAYED_NEWS_FILE, "r") as f:
+            return set(f.read().splitlines()[:MAX_PLAYED_NEWS_ENTRIES])
+    return set()
+
+def save_played_news():
+    with open(PLAYED_NEWS_FILE, "w") as f:
+        f.write("\n".join(played_news))
+
+def mainnews():
+    global played_news
+    played_news = load_played_news()
+    fetch_news()
+    if len(news_list) == 0:
+        print("No new newscasts available.")
+        return
+
+    if news_list[0] not in played_news:
+        status_code = send_news_service_call(news_list[0], enqueue=False)
+        if status_code == 200:
+            print(f"Sent service call for {news_list[0]}")
+            played_news.add(news_list[0])
+        else:
+            print(f"Failed to send service call for {news_list[0]}")
+
+    for news_item in news_list[1:]:
+        if news_item not in played_news:
+            time.sleep(1)  
+            status_code = send_news_service_call(news_item, enqueue=True)
+            if status_code == 200:
+                print(f"Sent service call for {news_item}")
+                played_news.add(news_item)
+            else:
+                print(f"Failed to send service call for {news_item}")
+
+    save_played_news()
+
+    if len(played_news) > MAX_PLAYED_NEWS_ENTRIES:
+        played_news = set(list(played_news)[-MAX_PLAYED_NEWS_ENTRIES:])
+        save_played_news()
+
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python script.py <search_query/m3u_file> <type> <media_player_entity_id>")
+    if len(sys.argv) < 4:
+        print("Usage: python media_controller.py <search_query/m3u_file> <type> <media_player_entity_id>")
         sys.exit(1)
 
     query_or_file = sys.argv[1]
     directory_type = sys.argv[2].lower()
     media_player_entity_id = sys.argv[3]
 
-    if directory_type == "playlist":
-        lines = read_m3u_file(query_or_file)
-
-        clear_playlist_url = f"http://{HOME_ASSISTANT_IP}/api/services/media_player/clear_playlist"
-        clear_playlist_data = {}
-        clear_playlist_headers = {
-            "Authorization": f"Bearer {ACCESS_TOKEN}",
-            "Content-Type": "application/json"
-        }
-        requests.post(clear_playlist_url, json=clear_playlist_data, headers=clear_playlist_headers)
-
-        if lines:
-            send_service_call(media_content_id=lines[0], enqueue=False, media_player_entity_id=media_player_entity_id)
-            time.sleep(DELAY_BETWEEN_SERVICE_CALLS) 
-
-        for line in lines[1:]:
-            send_service_call(media_content_id=line, enqueue=True, media_player_entity_id=media_player_entity_id)
-            time.sleep(DELAY_BETWEEN_SERVICE_CALLS)  
+    if directory_type == "news":
+        mainnews()
     else:
-        search_query = clean_search_query(query_or_file)
-
-
-        if directory_type == "musicvideo":
-            if directory_type not in SEARCH_FOLDERS:
-                print("Invalid directory type.")
-                sys.exit(1)
-
-            search_directory = SEARCH_FOLDERS[directory_type]
-            directories = [d for d in os.listdir(search_directory) if os.path.isdir(os.path.join(search_directory, d))]
-            
-            closest_directory = find_closest_directory(search_query, directories)
-            if not closest_directory:
-                print("No directory matching the search query found.")
-                sys.exit(1)
-
-            search_directory = os.path.join(search_directory, closest_directory)
-            files = list_files(search_directory)
+        if directory_type == "playlist":
+            lines = read_m3u_file(query_or_file)
 
             clear_playlist_url = f"http://{HOME_ASSISTANT_IP}/api/services/media_player/clear_playlist"
             clear_playlist_data = {}
@@ -370,104 +422,32 @@ if __name__ == "__main__":
             }
             requests.post(clear_playlist_url, json=clear_playlist_data, headers=clear_playlist_headers)
 
-            files.sort()
+            if lines:
+                send_service_call(media_content_id=lines[0], enqueue=False, media_player_entity_id=media_player_entity_id)
+                time.sleep(DELAY_BETWEEN_SERVICE_CALLS) 
 
-            for i, file in enumerate(files):
-                media_content_id = template_directory_path(file)
-                if i == 0:
-                    send_service_call(media_content_id, False, media_player_entity_id)
-                else:
-                    send_service_call(media_content_id, True, media_player_entity_id)
-                time.sleep(DELAY_BETWEEN_SERVICE_CALLS)
-
-
-
-
-        if directory_type == "movie":
-            if directory_type not in SEARCH_FOLDERS:
-                print("Invalid directory type.")
-                sys.exit(1)
-
-            search_directory = SEARCH_FOLDERS[directory_type]
-            directories = [d for d in os.listdir(search_directory) if os.path.isdir(os.path.join(search_directory, d))]
-            
-            closest_directory = find_closest_directory(search_query, directories)
-            if not closest_directory:
-                print("No directory matching the search query found.")
-                sys.exit(1)
-
-            search_directory = os.path.join(search_directory, closest_directory)
-            files = list_files(search_directory)
-
-            clear_playlist_url = f"http://{HOME_ASSISTANT_IP}/api/services/media_player/clear_playlist"
-            clear_playlist_data = {}
-            clear_playlist_headers = {
-                "Authorization": f"Bearer {ACCESS_TOKEN}",
-                "Content-Type": "application/json"
-            }
-            requests.post(clear_playlist_url, json=clear_playlist_data, headers=clear_playlist_headers)
-
-            files.sort()
-
-            for i, file in enumerate(files):
-                media_content_id = template_directory_path(file)
-                if i == 0:
-                    send_service_call(media_content_id, False, media_player_entity_id)
-                else:
-                    send_service_call(media_content_id, True, media_player_entity_id)
-                time.sleep(DELAY_BETWEEN_SERVICE_CALLS)
-        elif directory_type == "jukebox":
-            search_directory = SEARCH_FOLDERS[directory_type]
-            files = list_files(search_directory)
-            random.shuffle(files)
-            for i, file in enumerate(files[:100]):
-                media_content_id = template_directory_path(file)
-                if i == 0:
-                    send_service_call(media_content_id, False, media_player_entity_id)
-                else:
-                    send_service_call(media_content_id, True, media_player_entity_id)
-                time.sleep(DELAY_BETWEEN_SERVICE_CALLS)
-        elif directory_type == "livetv":
-            trigger_home_assistant_automation(search_query)
-        elif directory_type == "song":
-            search_directory = SEARCH_FOLDERS[directory_type]
-            files = list_files(search_directory)
-            closest_file = find_closest_file(search_query, files)
-            if closest_file:
-                media_content_id = template_directory_path(os.path.join(search_directory, closest_file))
-                send_service_call(media_content_id, False, media_player_entity_id)
-            else:
-                print("No closest match found.")
-        elif directory_type == "othervideos":
-            if directory_type not in SEARCH_FOLDERS:
-                print("Invalid directory type.")
-                sys.exit(1)
-
-            search_directory = SEARCH_FOLDERS[directory_type]
-            files = list_files(search_directory)
-            
-            closest_file = find_closest_file(search_query, files)
-            if closest_file:
-                media_content_id = template_directory_path(closest_file)
-                send_service_call(media_content_id, False, media_player_entity_id)
-            else:
-                print("No closest match found.")
+            for line in lines[1:]:
+                send_service_call(media_content_id=line, enqueue=True, media_player_entity_id=media_player_entity_id)
+                time.sleep(DELAY_BETWEEN_SERVICE_CALLS)  
         else:
-            if directory_type not in SEARCH_FOLDERS:
-                print("Invalid directory type.")
-                sys.exit(1)
+            search_query = clean_search_query(query_or_file)
 
-            search_directory = SEARCH_FOLDERS[directory_type]
-            directories = [d for d in os.listdir(search_directory) if os.path.isdir(os.path.join(search_directory, d))]
 
-            closest_directory = find_closest_directory(search_query, directories)
-            if closest_directory:
-                templated_directory_path = template_directory_path(os.path.join(search_directory, closest_directory))
-                files = list_files(os.path.join(search_directory, closest_directory))
-                if directory_type in ["music", "tv"]:
-                    random.shuffle(files)
-                else:
-                    files.sort()
+            if directory_type == "musicvideo":
+                if directory_type not in SEARCH_FOLDERS:
+                    print("Invalid directory type.")
+                    sys.exit(1)
+
+                search_directory = SEARCH_FOLDERS[directory_type]
+                directories = [d for d in os.listdir(search_directory) if os.path.isdir(os.path.join(search_directory, d))]
+                
+                closest_directory = find_closest_directory(search_query, directories)
+                if not closest_directory:
+                    print("No directory matching the search query found.")
+                    sys.exit(1)
+
+                search_directory = os.path.join(search_directory, closest_directory)
+                files = list_files(search_directory)
 
                 clear_playlist_url = f"http://{HOME_ASSISTANT_IP}/api/services/media_player/clear_playlist"
                 clear_playlist_data = {}
@@ -477,15 +457,123 @@ if __name__ == "__main__":
                 }
                 requests.post(clear_playlist_url, json=clear_playlist_data, headers=clear_playlist_headers)
 
-                for i, file in enumerate(files[:150]):
+                files.sort()
+
+                for i, file in enumerate(files):
                     media_content_id = template_directory_path(file)
                     if i == 0:
                         send_service_call(media_content_id, False, media_player_entity_id)
                     else:
                         send_service_call(media_content_id, True, media_player_entity_id)
                     time.sleep(DELAY_BETWEEN_SERVICE_CALLS)
+
+
+
+
+            if directory_type == "movie":
+                if directory_type not in SEARCH_FOLDERS:
+                    print("Invalid directory type.")
+                    sys.exit(1)
+
+                search_directory = SEARCH_FOLDERS[directory_type]
+                directories = [d for d in os.listdir(search_directory) if os.path.isdir(os.path.join(search_directory, d))]
+                
+                closest_directory = find_closest_directory(search_query, directories)
+                if not closest_directory:
+                    print("No directory matching the search query found.")
+                    sys.exit(1)
+
+                search_directory = os.path.join(search_directory, closest_directory)
+                files = list_files(search_directory)
+
+                clear_playlist_url = f"http://{HOME_ASSISTANT_IP}/api/services/media_player/clear_playlist"
+                clear_playlist_data = {}
+                clear_playlist_headers = {
+                    "Authorization": f"Bearer {ACCESS_TOKEN}",
+                    "Content-Type": "application/json"
+                }
+                requests.post(clear_playlist_url, json=clear_playlist_data, headers=clear_playlist_headers)
+
+                files.sort()
+
+                for i, file in enumerate(files):
+                    media_content_id = template_directory_path(file)
+                    if i == 0:
+                        send_service_call(media_content_id, False, media_player_entity_id)
+                    else:
+                        send_service_call(media_content_id, True, media_player_entity_id)
+                    time.sleep(DELAY_BETWEEN_SERVICE_CALLS)
+            elif directory_type == "jukebox":
+                search_directory = SEARCH_FOLDERS[directory_type]
+                files = list_files(search_directory)
+                random.shuffle(files)
+                for i, file in enumerate(files[:100]):
+                    media_content_id = template_directory_path(file)
+                    if i == 0:
+                        send_service_call(media_content_id, False, media_player_entity_id)
+                    else:
+                        send_service_call(media_content_id, True, media_player_entity_id)
+                    time.sleep(DELAY_BETWEEN_SERVICE_CALLS)
+            elif directory_type == "livetv":
+                trigger_home_assistant_automation(search_query)
+            elif directory_type == "song":
+                search_directory = SEARCH_FOLDERS[directory_type]
+                files = list_files(search_directory)
+                closest_file = find_closest_file(search_query, files)
+                if closest_file:
+                    media_content_id = template_directory_path(os.path.join(search_directory, closest_file))
+                    send_service_call(media_content_id, False, media_player_entity_id)
+                else:
+                    print("No closest match found.")
+            elif directory_type == "othervideos":
+                if directory_type not in SEARCH_FOLDERS:
+                    print("Invalid directory type.")
+                    sys.exit(1)
+
+                search_directory = SEARCH_FOLDERS[directory_type]
+                files = list_files(search_directory)
+                
+                closest_file = find_closest_file(search_query, files)
+                if closest_file:
+                    media_content_id = template_directory_path(closest_file)
+                    send_service_call(media_content_id, False, media_player_entity_id)
+                else:
+                    print("No closest match found.")
             else:
-                print("Sorry, please try again..")
+                if directory_type not in SEARCH_FOLDERS:
+                    print("Invalid directory type.")
+                    sys.exit(1)
+
+                search_directory = SEARCH_FOLDERS[directory_type]
+                directories = [d for d in os.listdir(search_directory) if os.path.isdir(os.path.join(search_directory, d))]
+
+                closest_directory = find_closest_directory(search_query, directories)
+                if closest_directory:
+                    templated_directory_path = template_directory_path(os.path.join(search_directory, closest_directory))
+                    files = list_files(os.path.join(search_directory, closest_directory))
+                    if directory_type in ["music", "tv"]:
+                        random.shuffle(files)
+                    else:
+                        files.sort()
+
+                    clear_playlist_url = f"http://{HOME_ASSISTANT_IP}/api/services/media_player/clear_playlist"
+                    clear_playlist_data = {}
+                    clear_playlist_headers = {
+                        "Authorization": f"Bearer {ACCESS_TOKEN}",
+                        "Content-Type": "application/json"
+                    }
+                    requests.post(clear_playlist_url, json=clear_playlist_data, headers=clear_playlist_headers)
+
+                    for i, file in enumerate(files[:150]):
+                        media_content_id = template_directory_path(file)
+                        if i == 0:
+                            send_service_call(media_content_id, False, media_player_entity_id)
+                        else:
+                            send_service_call(media_content_id, True, media_player_entity_id)
+                        time.sleep(DELAY_BETWEEN_SERVICE_CALLS)
+                else:
+                    print("Sorry, try again.")
+
 ```
 
 <br><br>

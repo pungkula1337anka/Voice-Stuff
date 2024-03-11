@@ -28,6 +28,7 @@ data:
   typ: tv
   player: media_player.player1
 ```
+<br>
 
 __Available types:__
 
@@ -108,7 +109,7 @@ _Example presence room tenokate_
 {% endif %}
 ```
 
-<br><br>
+<br>
 
 _Example presence media player template_
 

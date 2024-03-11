@@ -24,7 +24,7 @@ _Example usage:_
 ```
 service: shell_command.media_controller
 data:
-  search: family guy
+  search: family guyz
   typ: tv
   player: media_player.player1
 ```

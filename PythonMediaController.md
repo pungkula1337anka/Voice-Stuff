@@ -87,6 +87,8 @@ _???_
  
 <br> 
 
+## 🦆 presence media player <br>
+
 I __strongly__ recommend creating an presence media player sensor with a template, for full automation support. <br>
 Start by creating a template sensor that simply states what room you are in. <br> 
 I did this with the attributes of my motion sensors. <br>
@@ -128,7 +130,9 @@ _Example presence media player template_
  {% endif %}
 ```
 
-<br><br>
+<br>
+
+## 🦆 __getting started__ <br>
 
 - **1: Intent Script** <br>
 
@@ -140,7 +144,6 @@ If you dont have it already, create the file `intent_script.yaml` in the /config
 Create a folder called `custom_sentences` inside your /config dir.<br>
 Inside that folder, once again create a folder named with your language code. `sv` for swedish, `en` for english.<br>
 In that folder you create a file and name it `MediaController.yaml`<br>
-I will use `IntentName.yaml` as an example here, fill this yaml file with the code from below, edit for your language. <br>
 
 - **3: Shell command** <br>
 
@@ -150,12 +153,11 @@ If you dont have it already, create the file `shell_command.yaml` in the /config
 - **4: Python Script** <br>
 
 Create the file `media_controller.py` inside your /config folder. <br>
-Paste in wall of text at bottom. <br>
+Paste in wall of text at bottom of this page. <br>
+This scipt serves as is, if your looking for transcoding, this is not it. 
 
 
 <br><br>
-
-
 
 
 ## 🦆 /config/intent_script.yaml <br>
@@ -235,7 +237,7 @@ lists:
 ## 🦆 /config/shell_command.yaml <br>
 
 You can define your media player at the end of the shell command. <br>
-_(or preferbly presence media player)_
+_(or presence media player, like i do here)_
 
 <br>
 
@@ -254,6 +256,7 @@ Also in case you want your own local newscasts, please define their RESTful API'
 
 
 ```
+# media_controller.py
 import os
 import sys
 import random

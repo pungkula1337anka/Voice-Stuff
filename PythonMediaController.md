@@ -17,6 +17,17 @@ __Python Media Controller__
 The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>
 
+<br>
+
+_Example usage:_
+
+```
+service: shell_command.media_controller
+data:
+  search: family guy
+  typ: tv
+  player: media_player.player1
+```
 
 __Available types:__
 
@@ -80,8 +91,43 @@ Start by creating a template sensor that simply states what room you are in. <br
 I did this with the attributes of my motion sensors. <br>
 If you need help I suggest asking nicely [here](https://discord.com/channels/330944238910963714/672223497736421388).  <br>
 
-<br>
+_Example presence room tenokate_
 
+```
+{% set sovrum_last_seen = states('sensor.motion_sensor_sovrum_last_seen') %}
+{% set kok_last_seen = states('sensor.motion_sensor_kok_last_seen') %}
+{% set hall_last_seen = states('sensor.motion_sensor_hall_last_seen') %}
+{% if sovrum_last_seen > kok_last_seen and sovrum_last_seen > hall_last_seen %}
+  Sovrum
+{% elif kok_last_seen > sovrum_last_seen and kok_last_seen > hall_last_seen %}
+  Kök
+{% elif hall_last_seen > sovrum_last_seen and hall_last_seen > kok_last_seen %}
+  Vardagsrum
+{% else %}
+  Unknown
+{% endif %}
+```
+
+<br><br>
+
+_Example presence media player template_
+
+```
+{% set presence = states('sensor.presence') %}
+ {% if presence == 'Kök' %}
+   media_player.player1
+ {% elif presence == 'Vardagsrum' %}
+   media_player.player2
+ {% elif presence == 'Sovrum' %}
+   media_player.player3
+ {% elif presence == 'Away' %}
+   media_player.all
+ {% elif presence == 'Unknown' %}
+   media_player.all            
+ {% endif %}
+```
+
+<br><br>
 
 - **1: Intent Script** <br>
 
@@ -217,6 +263,7 @@ from difflib import get_close_matches
 
 ###########################################################
 #### Define your shit here please. #####
+
 HOME_ASSISTANT_IP = "YOUR_IP:YOUR_PORT"
 ACCESS_TOKEN = "YOUR_LONG_LIVED_ACESS_TOKEN"
 SEARCH_FOLDERS = {
@@ -241,6 +288,7 @@ NEWS_API_LIST = [
     "http://api.sr.se/api/v2/podfiles?programid=5413&format=json"
 ]
 DELAY_BETWEEN_SERVICE_CALLS = 0
+
 ###########################################################
 
 news_list = []
@@ -403,7 +451,7 @@ def mainnews():
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        print("Usage: python media_controller.py <search_query/m3u_file> <type> <media_player_entity_id>")
+        print("Python sssnake sayz use like dizz: python media_controller.py <search_query/m3u_file> <type> <media_player_entity_id>")
         sys.exit(1)
 
     query_or_file = sys.argv[1]

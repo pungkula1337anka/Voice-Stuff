@@ -2,7 +2,7 @@
 <h1 align="center">
 <br>
 
-Add Song To Playlist
+Python Song2Playlist
 
 </h1><br>
 <br><br>

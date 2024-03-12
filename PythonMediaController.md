@@ -35,7 +35,7 @@ __Available types:__
 1. 🎙️ __Podcast__  <br>
 Fuzzy searches a Podcast directory, lists all files in that directory, orders them after creation date. Sends them to your HA media player for playback.
 I use the container based service [Podgrab](https://github.com/akhilrex/podgrab) to automatically download new episodes.  
-And this [PyPodCleanup](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyPodCleanup.md) script to automatically  remove old episodes.  
+And this [PythonPodCleanup](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PythonPodCleanup.md) script to automatically  remove old episodes.  
 
 2. 🔀 __Jukebox__  <br>
 Shuffles & randomizes 150 songs from your music directory. <br>

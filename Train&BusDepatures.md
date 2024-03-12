@@ -7,7 +7,7 @@ Python Travel Robot
 </h1><br>
 <br><br>
 
-Text to Speech Departure Tunes.
+Text to Speech Departure Tuness for Busses, Trains etc.
 
 <br><br>
 

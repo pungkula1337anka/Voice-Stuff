@@ -2,7 +2,11 @@
 <h1 align="center">
 <br>
 
-Set Wakeup Alarm
+Set Wakeup Alarm<br>
+<br>
+
+![image](https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/b034fb2d-28a3-4564-aa55-ad5ed24a4d99)
+
 
 </h1><br>
 <br><br>

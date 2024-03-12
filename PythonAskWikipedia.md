@@ -2,7 +2,7 @@
 <h1 align="center">
 <br>
 
-Ask Wiki
+Python Ask Wikipedia
 
 </h1><br>
 <br><br>

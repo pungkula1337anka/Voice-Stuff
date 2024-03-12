@@ -60,7 +60,7 @@ data:
   destination: STOP_ID_FROM_SEARCH
 ``` 
 <br>
-This will the stop ID to your list, but you will still need to include the stop name in your custom sentence list. <br>
+This will add the stop ID to your list, but you will still need to include the stop name in your custom sentence list. <br>
 
 
 

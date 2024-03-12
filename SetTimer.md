@@ -3,6 +3,9 @@
 <br>
 
 Set Timer
+<br>
+
+![image](https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/141106a3-db25-4efd-8c3b-90fcc13b9472)
 
 </h1><br>
 <br><br>

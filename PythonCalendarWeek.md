@@ -2,7 +2,7 @@
 <h1 align="center">
 <br>
 
-Calendar Week
+Python Calendar Week
 
 </h1><br>
 <br><br>
@@ -119,8 +119,8 @@ intents:
 
 
 ## 🦆 /config/kalender.py <br>
-
-
+  
+do not forget to define your Home Assistant information in the file.
 <br>
 
 

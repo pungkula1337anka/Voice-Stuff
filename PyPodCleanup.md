@@ -1,7 +1,7 @@
 
 <h1 align="center">
 <br>
-PyPodCleanup
+Python PodCleanup
 </h1><br>
 <br><br>
 

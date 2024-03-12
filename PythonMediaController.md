@@ -73,7 +73,7 @@ Sends them all to your media_player.
 9. 🎼 __Playlist__  <br>
 Specify full filepath in search query.
 Playlist is played on media_player in argument when running the script.
-I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PyAddSongToPlaylist.md) script to add sobgs to my playlist.  
+I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PythonSong2Playlist.md) script to add sobgs to my playlist.  
 
 
 10. 🗞️ __News__ <br>

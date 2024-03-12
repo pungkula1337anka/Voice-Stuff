@@ -2,7 +2,7 @@
 <h1 align="center">
 <br>
 
-Python vCard Helper
+Python Contactbook Helper
 
 </h1><br>
 <br><br>

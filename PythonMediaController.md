@@ -34,7 +34,7 @@ __Available types:__
 
 1. 🎬 __YouTube__  <br> 
 Plays <search_query>'s closeest match on YouTube. <br>
-Specify a `remote.*` entity. _(not `media_player.*`)_
+Specify a `remote.*` entity. _(not `media_player.*`)_ <br>
 _Requires API key._ <br>
 
 2. 🎙️ __Podcast__  <br>
@@ -86,7 +86,7 @@ The script stores some data about played items in a .txt file in your config dir
 dont worry though, the Python wont let it get big and grow strong. <br>
 
 13. 📡 __Live-TV__ <br>
-Specify a `remote.*` entity. _(not `media_player.*`)_
+Specify a `remote.*` entity. _(not `media_player.*`)_ <br>
 Edit your `.m3u` file and split your channels so that each channel has its own `.m3u` file. <br>
 Name each file by channel word you want to use and place it inside the directory `/config/www/live/`? <br>
 _This only seems to work if the `*.m3u` is pPublicly accessible, so define your domain?_ <br>

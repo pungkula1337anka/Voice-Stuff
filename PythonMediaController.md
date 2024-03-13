@@ -266,8 +266,8 @@ lists:
 
 Don't forget to define your Home Assistant IP, long lived acess token, media directories.<br>
 Also in case you want your own local newscasts, please define their RESTful API's in this file aswell. <br>
-_API Key is required for YouTube_
-_Remote is required for live-TV & YouTube_ <br>
+_API [key](https://developers.google.com/youtube/registering_an_application) is required for YouTube_ <br>
+_Remote entity is required for live-TV & YouTube_ <br>
 
 
 ```

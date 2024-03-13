@@ -163,11 +163,11 @@ Create the file `media_controller.py` inside your /config folder. <br>
 Paste in wall of text at bottom of this page. <br>
 This scipt serves as is, if your looking for transcoding, this is not it. 
 YouTube API Key can be created [here](https://developers.google.com/youtube/registering_an_application). <br>
-Dont forget to define your stuff _aaaand ..._ <br>
-__pewpewpew__ <br>
- - _congratulations you can now_ <br>
-    - _conntrol your media like a pro voice ninja!_  <br>
-
+Dont forget to define your stuff _aaaand ..............._ <br>
+     __pewpewpew__ <br>
+          - _congratulations you can now_ <br>
+               - _conntrol your media like a pro voice ninja!_  <br>
+<br><br>
 
 ## 🦆 /config/intent_script.yaml <br>
 

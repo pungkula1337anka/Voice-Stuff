@@ -283,7 +283,7 @@ from difflib import get_close_matches
 from urllib.parse import urlencode
 
 ##########################################################################
-### --> Define your shit here please <-- ###
+#### --> Define your shit here please <-- ####
 
 HOME_ASSISTANT_IP = "YOUR_HOME_ASSISTANT_IP:8123"
 ACCESS_TOKEN = "YOUR_LONG_LIVED_TOKEN_HERE"
@@ -310,7 +310,11 @@ NEWS_API_LIST = [
     "http://api.sr.se/api/v2/podfiles?programid=5413&format=json"
 ]
 DELAY_BETWEEN_SERVICE_CALLS = 0
+
+##### --> Thank you! <-- ####
 ##########################################################################
+
+news_list = []
 
 def clean_search_query(query):
     """

@@ -208,7 +208,6 @@ You can define your music playlist path in the template.
 
 <br>
 
-
 ```
 MediaController:
   action:
@@ -223,8 +222,7 @@ MediaController:
     text: "inga problem ja fixar det mannen" 
 ```
 
-<br><br>
-
+<br>
 
 ## 🦆 3 /config/custom_sentences/sv/MediaController.yaml <br>
 
@@ -280,8 +278,7 @@ lists:
         out: "youtube"
 ```
 
-<br><br>
-
+<br>
 
 ## 🦆 4 /config/shell_command.yaml <br>
 
@@ -292,8 +289,7 @@ lists:
     media_controller: 'python media_controller.py "{{ search }}" {{ typ }} {{ player }}'
 ```
 
-<br><br>
-
+<br>
 
 ## 🦆 5 /config/media_controller.py <br>
 

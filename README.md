@@ -188,8 +188,7 @@ click the 🦆 if you saw something you liked here
 
 ## 🦆 my host <br>
 
-<br>
-<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/host.jpeg?raw=true" alt="host" width="250"/> <br><br>
+<img src="/asset/host.jpeg" alt="host" width="250"/> <br><br>
 
 22W & passive cooling  <br>
 Streaccom DB-1 <br>
@@ -197,7 +196,6 @@ Gigabyte H610I  <br>
 32GB DDR4 <br>
 Intel Celeron G6900 3.4 GHz <br>
 M.2 1TB 2280 MP600 CORE XT <br>
-
 <br>
 
 ## 🦆 my other strange stuff<br>

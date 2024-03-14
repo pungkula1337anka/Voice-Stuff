@@ -12,11 +12,11 @@ Intent. Execution.<br>
 Text. to. Speech.<br>
 Speaker.
 <br><br>
-so... now you have all these ESP32 based satellites all around, stepping on three, four of them on the way to the can .<br>
-wat next?<br>
-<br><br>
 <img src="https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/b5cefe6b-7976-4aa5-b35c-28bc62fa4c82" width="200" height="200"  />
 <br><br><br>
+so... now you have all these ESP32 based satellites all around, stepping on three, four of them on the way to the can .<br>
+wat next?<br>
+
 
 </h1>
 <h1 align="center">

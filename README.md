@@ -200,7 +200,7 @@ qwackify _(i.e., __🦆🎶__)_   <br><br><br>
 
 ## 🦆 my host <br>
 
-<img src="asset/host.jpeg" alt="drawing" width="200"/> <br><br>
+<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/host.jpeg?raw=true" alt="host" width="200"/> <br><br>
 
 22W & passive cooling  <br>
 Streaccom DB-1 <br>

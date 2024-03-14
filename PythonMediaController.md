@@ -23,12 +23,30 @@ Even if the STT generates the wrong word, the python script will still _(try to)
 _Example usage:_
 
 ```
-service: shell_command.media_controller
-data:
-  search: family guyz
-  typ: tv
-  player: media_player.player1
+- "Start playing tvshow family guy"
 ```
+```
+- "Start playing movie godzilla"
+```
+```
+- "Start playing channel 6"
+```
+```
+- "Start playing artist the rolling stones"
+```
+```
+- "Start playing song death to all but metal"
+```
+```
+- "Start playing music"
+```
+```
+- "Start playing youtube funny cats"
+```
+```
+- "Start playing podcast self hosted"
+```
+[...]
 <br>
 
 __Available types:__

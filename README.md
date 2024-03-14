@@ -187,7 +187,7 @@ click the 🦆 if you saw something you liked here
 
 ## 🦆 my host <br>
 
-<h1 align="left">
+<h1 align="center">
 <img src="/asset/host.jpeg" alt="host" width="200"/> <br>
 </h1>
 

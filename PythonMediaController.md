@@ -80,8 +80,8 @@ Lists all files in that directory and all its subdirectories, shuffles them all 
 Sends them all to your media_player.  
 
 11. 🎼 __Playlist__  <br>
-Specify full filepath in search query.
-Playlist is played on media_player in argument when running the script.
+Specify full filepath in search query. <br>
+Use included template to do this automatically. <br>
 I use [this](https://github.com/pungkula1337anka/Voice-Stuff/blob/main/PythonSong2Playlist.md) script to add sobgs to my playlist.  
 
 12. 🗞️ __News__ <br>
@@ -209,11 +209,13 @@ You can define your music playlist path in the template.
 <br>
 
 ```
+# /config/intent_script.yaml
+
 MediaController:
   action:
     - service: shell_command.media_controller
       data: 
-        search: >
+        search: > # define your playlist filepath below
           "{% if typ == 'playlist' %}/media/MyPlaylist2.m3u{% else %}'{{ search | default(0) }}'{% endif %}"
         typ: "{{typ}}"
         player: >
@@ -234,7 +236,9 @@ and also say `spela upp spellistan` for insant playlist playback. <br>
 
 
 ```
-language: "sv"
+# /config/custom_sentences/sv/MediaController.yaml
+
+language: "sv" # dont forget to change this value
 intents:
   MediaController:
     data:
@@ -249,6 +253,7 @@ lists:
   search:
     wildcard: true
   typ:
+# only change the "in" value
     values:
       - in: "(serie|serien|tvserien|tv-serien|tv serien)"
         out: "tv"  
@@ -286,6 +291,8 @@ lists:
 <br>
 
 ```
+# /config/shell_command.yaml
+
     media_controller: 'python media_controller.py "{{ search }}" {{ typ }} {{ player }}'
 ```
 
@@ -300,7 +307,7 @@ _Remote entity is required for live-TV & YouTube._ <br>
 
 
 ```
-# media_controller.py
+# /config/media_controller.py
 
 import os
 import sys

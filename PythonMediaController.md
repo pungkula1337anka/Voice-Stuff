@@ -200,7 +200,7 @@ _Example  templates_
    all            
  {% endif %}
 ```
-
+<br>
 
 ## 🦆 2 /config/intent_script.yaml <br>
 
@@ -660,3 +660,5 @@ if __name__ == "__main__":
 
 <br><br>
 
+
+# __🎈 Enjoy! 🎈__ 

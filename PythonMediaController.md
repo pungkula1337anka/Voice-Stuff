@@ -16,6 +16,7 @@ __Python Media Controller__
 
 The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>
+5 simple steps to control all your media by voice.. <br>
 
 <br>
 
@@ -93,42 +94,101 @@ _This only seems to work if the `*.m3u` is pPublicly accessible, so define your 
  
 <br> <br>
 
-## 🦆 presence media player <br>
+
+## 🦆 __getting started__ <br>
+
+
+- **1: Presence Media Player** <br>
 
 I __strongly__ recommend creating an presence media player sensor with a template, for full automation support. <br>
 Amd the way we will do this will also enable auto switching between `media_player` and `remote` entity. <br>
-Start by creating a template sensor that simply states what room you are in. <br> 
-I did this with the attributes of my motion sensors. <br>
+Examples are below. <br>
 If you need help I suggest asking nicely [here](https://discord.com/channels/330944238910963714/672223497736421388).  <br>
 
-_Example presence room tenokate_
+- **2: Intent Script** <br>
+
+If you dont have it already, create the file `intent_script.yaml` in the /config dir and fill in the code below.<br>
+(dont forget to reference it in `configuration.yaml` with `intent_script: !include intent_script.yaml`<br> 
+
+- **3: Custom Sentences** <br>
+
+Create a folder called `custom_sentences` inside your /config dir.<br>
+Inside that folder, once again create a folder named with your language code. `sv` for swedish, `en` for english.<br>
+In that folder you create a file and name it `MediaController.yaml`<br>
+
+- **4: Shell command** <br>
+
+If you dont have it already, create the file `shell_command.yaml` in the /config dir and fill in the code below.<br>
+(dont forget to reference it in `configuration.yaml` with `shell_command: !include shell_command.yaml`<br> 
+
+- **5: Python Script** <br>
+
+Create the file `media_controller.py` inside your /config folder. <br>
+Paste in wall of text at bottom of this page. <br>
+This scipt serves as is, if your looking for transcoding, this is not it. 
+YouTube API Key can be created [here](https://developers.google.com/youtube/registering_an_application). <br>
+Dont forget to define your stuff _and .........._ <br>
+__yay__ <br>
+  - 🎉 _congratulations! 🎉 you can now control_ <br>
+    - _your media like a pro voice ninja!_  <br>
+<br><br>
+
+
+## 🦆 1 presence media player <br>
+
+Jinja Time!
+Start by creating a template sensor that simply states what room you are in. <br> 
+I did this with the state and attributes of my motion sensors. <br>
+
+_Example  templates_
 
 ```
-{% set sovrum_last_seen = states('sensor.motion_sensor_sovrum_last_seen') %}
-{% set kok_last_seen = states('sensor.motion_sensor_kok_last_seen') %}
-{% set hall_last_seen = states('sensor.motion_sensor_hall_last_seen') %}
-{% if sovrum_last_seen > kok_last_seen and sovrum_last_seen > hall_last_seen %}
-  Sovrum
-{% elif kok_last_seen > sovrum_last_seen and kok_last_seen > hall_last_seen %}
-  Kök
-{% elif hall_last_seen > sovrum_last_seen and hall_last_seen > kok_last_seen %}
-  Vardagsrum
+# sensor.presence
+
+{% set hall_state = states('binary_sensor.motion_sensor_hall_occupancy') %}
+{% set kitchen_state = states('binary_sensor.motion_sensor_kok_occupancy') %}
+{% set bedroom_state = states('binary_sensor.motion_sensor_sovrum_occupancy') %}
+{% set YOU_state = states('device_tracker.YOU') %}
+
+{% if YOU_state == 'away' %}
+  Away
 {% else %}
-  Unknown
+  {% if hall_state == 'off' and kitchen_state == 'off' and bedroom_state == 'off' %}
+    {% set hall_last_seen = states('sensor.motion_sensor_hall_last_seen') %}
+    {% set kitchen_last_seen = states('sensor.motion_sensor_kitchen_last_seen') %}
+    {% set bedroom_last_seen = states('sensor.motion_sensor_sovrum_last_seen') %}
+    
+    {% set last_seen_times = [hall_last_seen, kitchen_last_seen, bedroom_last_seen] %}
+    {% set latest_last_seen_time = last_seen_times | max %}
+    
+    {% if latest_last_seen_time == hall_last_seen %}
+      Hallway
+    {% elif latest_last_seen_time == kitchen_last_seen %}
+      Kitchen
+    {% elif latest_last_seen_time == bedroom_last_seen %}
+      Bedroom
+    {% endif %}
+  {% else %}
+    {% if hall_state == 'on' %}
+      Hallway
+    {% elif kitchen_state == 'on' %}
+      Kitchen
+    {% elif bedroom_state == 'on' %}
+      Bedroom
+    {% endif %}
+  {% endif %}
 {% endif %}
-```
 
-<br>
 
-_Example presence media player template_
+# sensor.presence_media_player
+# only display entity name, entity type (remote/media_player) will be added by the intent script
 
-```
 {% set presence = states('sensor.presence') %}
- {% if presence == 'Kök' %}
+ {% if presence == 'Kitchen' %}
    player1
- {% elif presence == 'Vardagsrum' %}
+ {% elif presence == 'Livingroom' %}
    player2
- {% elif presence == 'Sovrum' %}
+ {% elif presence == 'Bedroom' %}
    player3
  {% elif presence == 'Away' %}
    all
@@ -137,39 +197,8 @@ _Example presence media player template_
  {% endif %}
 ```
 
-<br>
 
-## 🦆 __getting started__ <br>
-
-- **1: Intent Script** <br>
-
-If you dont have it already, create the file `intent_script.yaml` in the /config dir and fill in the code below.<br>
-(dont forget to reference it in `configuration.yaml` with `intent_script: !include intent_script.yaml`<br> 
-
-- **2: Custom Sentences** <br>
-
-Create a folder called `custom_sentences` inside your /config dir.<br>
-Inside that folder, once again create a folder named with your language code. `sv` for swedish, `en` for english.<br>
-In that folder you create a file and name it `MediaController.yaml`<br>
-
-- **3: Shell command** <br>
-
-If you dont have it already, create the file `shell_command.yaml` in the /config dir and fill in the code below.<br>
-(dont forget to reference it in `configuration.yaml` with `shell_command: !include shell_command.yaml`<br> 
-
-- **4: Python Script** <br>
-
-Create the file `media_controller.py` inside your /config folder. <br>
-Paste in wall of text at bottom of this page. <br>
-This scipt serves as is, if your looking for transcoding, this is not it. 
-YouTube API Key can be created [here](https://developers.google.com/youtube/registering_an_application). <br>
-Dont forget to define your stuff _and .........._ <br>
-__pewpew__ <br>
-  - 🎉 _congratulations! 🎉 you can now control_ <br>
-    - _your media like a pro voice ninja!_  <br>
-<br><br>
-
-## 🦆 /config/intent_script.yaml <br>
+## 🦆 2 /config/intent_script.yaml <br>
 
 You can define your playlist path in the template.
 
@@ -193,7 +222,7 @@ MediaController:
 <br><br>
 
 
-## 🦆 /config/custom_sentences/sv/MediaController.yaml <br>
+## 🦆 3 /config/custom_sentences/sv/MediaController.yaml <br>
 
 Before you hastly delete my words and insert your own, take a look at how I did this. <br>
 This setup & with the search defaulting to `0`, enables me to skip the search part and just say `spela upp musik` to trigger the jukebox intent. <br>
@@ -250,7 +279,7 @@ lists:
 <br><br>
 
 
-## 🦆 /config/shell_command.yaml <br>
+## 🦆 4 /config/shell_command.yaml <br>
 
 
 <br>
@@ -262,10 +291,10 @@ lists:
 <br><br>
 
 
-## 🦆 /config/media_controller.py <br>
+## 🦆 5 /config/media_controller.py <br>
 
 Don't forget to define your Home Assistant IP, long lived acess token, media directories.<br>
-Also in case you want your own local newscasts, please define their RESTful API's in this file aswell. <br>
+In case you want your own local newscasts, please define their RESTful API's in this file aswell. <br>
 _API [key](https://developers.google.com/youtube/registering_an_application) is required for YouTube_ <br>
 _Remote entity is required for live-TV & YouTube_ <br>
 
@@ -311,8 +340,10 @@ NEWS_API_LIST = [
 ]
 DELAY_BETWEEN_SERVICE_CALLS = 0
 
+
 ##### --> Thank you! <-- ####
 ##########################################################################
+
 
 news_list = []
 
@@ -323,13 +354,11 @@ def clean_search_query(query):
     cleaned_query = query.replace('.', '').replace(',', '')
     return cleaned_query
 
-
 def template_directory_path(directory_path):
     """
     This function templates the directory path.
     """
     return "media-source://media_source/local" + os.path.abspath(directory_path).split("/media")[-1]
-
 
 def list_files(directory):
     """
@@ -342,7 +371,6 @@ def list_files(directory):
                 file_list.append(os.path.join(root, file))
     return file_list
 
-
 def find_closest_directory(query, directories):
     """
     This function finds the closest directory match for the given query.
@@ -352,7 +380,6 @@ def find_closest_directory(query, directories):
         return closest_match[0]
     else:
         return None
-
 
 def find_closest_file(query, files):
     """
@@ -628,7 +655,7 @@ if __name__ == "__main__":
                         send_service_call(media_content_id, True, media_player_entity_id)
                     time.sleep(DELAY_BETWEEN_SERVICE_CALLS)
             else:
-                print("Nope, try again.")
+                print("You must have meatballs in your mouth? Finish your dinner and try again.")
 ```
 
 <br><br>

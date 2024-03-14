@@ -27,7 +27,7 @@ wat next?<br>
 </h1>
 
 
-# __🦆 👀 Few words__  <br>
+# __🦆 👀 a few words please__  <br>
 
 lost my vision almost 20 years ago. This is me, trying to make my life a little easier with voice assistants. <br>
 simple voice control, and some stuff in there between.<br>
@@ -38,10 +38,10 @@ it would be fun if any of this could help other visually impared people, but som
 guess i am okay, if this here would happen to help any regular, non blind, _(muggles)_ along the way too.
 
 <br>
-one million screen hours to secure an hour less screentime future  <br>
+one million screen hours to secure an hour less screentime future  <br> <br>
 
 can be found at [discord](https://discordapp.com/users/675530282849533952)  
-
+<br>
 
 ## 🙇 acknowledgements<br>
 

@@ -1,7 +1,6 @@
 
 <h1 align="center">
 <br>
-
 __Python Media Controller__
 
 <img src="https://raw.githubusercontent.com/pungkula1337anka/Voice-Stuff/main/asset/pythonmedia.png">
@@ -661,4 +660,9 @@ if __name__ == "__main__":
 <br><br>
 
 
-# __🎈 Enjoy! 🎈__ 
+<h1 align="center">
+<br>
+ 
+# __🎈 thanks for coming this far 🎈__ 
+
+</h1><br><br>

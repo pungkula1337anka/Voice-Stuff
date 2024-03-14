@@ -4,11 +4,13 @@
 Speak!
 <br>
 <br><br>
+Microphone. <br>  
 Wake. Word.<br>
 Speech. to. Text.<br>
 Intent. Recognition. <br>
 Intent. Execution.<br>
 Text. to. Speech.<br>
+Speaker.
 <br><br><br><br>
 <img src="https://github.com/pungkula1337anka/Voice-Stuff/assets/105579081/b5cefe6b-7976-4aa5-b35c-28bc62fa4c82" width="200" height="200"  />
 <br><br><br>

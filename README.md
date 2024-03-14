@@ -38,7 +38,7 @@ it would be fun if any of this could help other visually impared people, but som
 guess i am okay, if this here would happen to help any regular, non blind, _(muggles)_ along the way too.
 
 <br>
-one million screen hours to secure an hour less screentime future  
+one million screen hours to secure an hour less screentime future  <br>
 
 can be found at [discord](https://discordapp.com/users/675530282849533952)  
 

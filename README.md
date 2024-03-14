@@ -198,6 +198,17 @@ qwackify _(i.e., __🦆🎶__)_   <br><br><br>
 
 <br>
 
+## 🦆 my host <br>
+
+<img src="asset/host.jpeg" alt="drawing" width="200"/> <br><br>
+
+22W & passive cooling  <br>
+Streaccom DB-1 <br>
+Gigabyte H610I  <br>
+32GB DDR4 <br>
+Intel Celeron G6900 3.4 GHz <br>
+M.2 1TB 2280 MP600 CORE XT <br>
+
 ## 🏆 stupid trophies 👑  <br>
 
 

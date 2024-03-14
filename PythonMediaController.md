@@ -16,7 +16,7 @@ __Python Media Controller__
 
 The beuty about doing, whats called an "fuzzy search" like this, is that it allows you to (most likely) call an artists name which are not in your native language.
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>
-5 simple steps to control all your media by voice.. <br>
+5 simple steps to control all your media by voice. <br>
 
 <br>
 
@@ -34,7 +34,7 @@ _Example usage:_
 ```
 <br>
 
-__Available types:__
+__Available Media Types:__
 
 1. 🎬 __YouTube__  <br> 
 Plays <search_query>'s closeest match on YouTube. <br>
@@ -120,18 +120,19 @@ If you dont have it already, create the file `intent_script.yaml` in the /config
 Create a folder called `custom_sentences` inside your /config dir.<br>
 Inside that folder, once again create a folder named with your language code. `sv` for swedish, `en` for english.<br>
 In that folder you create a file and name it `MediaController.yaml`<br>
+In this file you will decide how you would like to trigger the script. <br>
 
 - **4: Shell command** <br>
 
-If you dont have it already, create the file `shell_command.yaml` in the /config dir and fill in the code below.<br>
-(dont forget to include it in `configuration.yaml` with `shell_command: !include shell_command.yaml`<br> 
+If you dont have it already, create the file `shell_command.yaml` in the /config dir and fill in the code below. <br>
+(dont forget to include it in `configuration.yaml` with `shell_command: !include shell_command.yaml` <br> 
 
 - **5: Python Script** <br>
 
 Create the file `media_controller.py` inside your /config folder. <br>
 Paste in wall of text at bottom of this page. <br>
 This scipt serves as is, if your looking for transcoding, this is not it. <br>
-YouTube API Key can be created [here](https://developers.google.com/youtube/registering_an_application). You probably need to create a project for it too. <br>
+YouTube API Key can be created [here](https://developers.google.com/youtube/registering_an_application). You probably need to connect the key to a project aswell. <br>
 
 Dont forget to define your stuff _and .........._ <br>
 
@@ -148,7 +149,6 @@ Start by creating a template sensor that simply states what room you are in. <br
 I did this with the state and attributes of my motion sensors. <br>
 
 _Example  templates_
-
 ```
 # sensor.presence
 
@@ -232,7 +232,7 @@ MediaController:
 ## 🦆 __3 /config/custom_sentences/sv/MediaController.yaml__ <br>
 
 Before you hastly delete my words and insert your own, take a look at how I did this. <br>
-This setup & with the search defaulting to `0`, enables me to skip the search part and just say `spela upp musik` to trigger the jukebox intent. <br>
+This setup & with the `{search}` defaulting to `0`, enables me to skip the search and just say `spela upp musik` to trigger the jukebox (random music). <br>
 and also say `spela upp spellistan` for insant playlist playback. <br>
 
 <br>
@@ -256,7 +256,8 @@ lists:
   search:
     wildcard: true
   typ:
-# only change the "in" value
+# only change "in" values.
+# changing the "out" value will break the script!
     values:
       - in: "(serie|serien|tvserien|tv-serien|tv serien)"
         out: "tv"  
@@ -290,7 +291,7 @@ lists:
 
 ## 🦆 __4 /config/shell_command.yaml__ <br>
 
-
+Nothing strange going on here.
 <br>
 
 ```

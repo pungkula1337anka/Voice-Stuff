@@ -194,7 +194,7 @@ click the 🦆 if you saw something you liked here
 <img src="/asset/host.jpeg" alt="host" width="200"/> <br>
 </h1>
 
-- ⚡ 22W & passive cooling <br>
+- ⚡ 22W & passive cooling no fans <br>
 - 💾 Streaccom DB-1 <br>
 - 💾 Gigabyte H610I  <br>
 - 💾 32GB DDR4 <br>

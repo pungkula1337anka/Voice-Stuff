@@ -24,29 +24,15 @@ _Example usage:_
 
 ```
 - "Start playing tvshow family guy"
-```
-```
 - "Start playing movie godzilla"
-```
-```
 - "Start playing channel 6"
-```
-```
 - "Start playing artist the rolling stones"
-```
-```
 - "Start playing song death to all but metal"
-```
-```
 - "Start playing music"
-```
-```
 - "Start playing youtube funny cats"
-```
-```
 - "Start playing podcast self hosted"
-```
 [...]
+```
 <br>
 
 __Available types:__
@@ -218,7 +204,7 @@ _Example  templates_
 
 ## 🦆 2 /config/intent_script.yaml <br>
 
-You can define your playlist path in the template.
+You can define your music playlist path in the template.
 
 <br>
 

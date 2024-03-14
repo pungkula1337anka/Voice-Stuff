@@ -21,7 +21,6 @@ Even if the STT generates the wrong word, the python script will still _(try to)
 <br>
 
 _Example usage:_
-
 ```
 - "Start playing tvshow family guy"
 - "Start playing movie godzilla"
@@ -40,6 +39,7 @@ __Available types:__
 1. 🎬 __YouTube__  <br> 
 Plays <search_query>'s closeest match on YouTube. <br>
 Specify a `remote.*` entity. _(not `media_player.*`)_ <br>
+Use included templates to do this automatically. 
 _Requires API key._ <br>
 
 2. 🎙️ __Podcast__  <br>
@@ -92,6 +92,7 @@ dont worry though, the Python wont let it get big and grow strong. <br>
 
 13. 📡 __Live-TV__ <br>
 Specify a `remote.*` entity. _(not `media_player.*`)_ <br>
+Use included templates to do this automatically. 
 Edit your `.m3u` file and split your channels into separate `.m3u` files. <br>
 Name each file by channel word you want to use and place it inside the directory `/config/www/live/` _(?)_ <br>
 _This only seems to work if the `*.m3u` is publicly accessible(?) so define your domain like the example_ <br>
@@ -123,24 +124,26 @@ In that folder you create a file and name it `MediaController.yaml`<br>
 - **4: Shell command** <br>
 
 If you dont have it already, create the file `shell_command.yaml` in the /config dir and fill in the code below.<br>
-(dont forget to reference it in `configuration.yaml` with `shell_command: !include shell_command.yaml`<br> 
+(dont forget to include it in `configuration.yaml` with `shell_command: !include shell_command.yaml`<br> 
 
 - **5: Python Script** <br>
 
 Create the file `media_controller.py` inside your /config folder. <br>
 Paste in wall of text at bottom of this page. <br>
-This scipt serves as is, if your looking for transcoding, this is not it. 
-YouTube API Key can be created [here](https://developers.google.com/youtube/registering_an_application). <br>
+This scipt serves as is, if your looking for transcoding, this is not it. <br>
+YouTube API Key can be created [here](https://developers.google.com/youtube/registering_an_application). You probably need to create a project for it too. <br>
+
 Dont forget to define your stuff _and .........._ <br>
+
 __yay__ <br>
   - 🎉 _congratulations! 🎉 you can now control_ <br>
     - _your media like a pro voice ninja!_  <br>
 <br><br>
 
 
-## 🦆 1 presence media player <br>
+## 🦆 __1 presence media player__ <br>
 
-Jinja Time!
+__Jinja Time!__ <br>
 Start by creating a template sensor that simply states what room you are in. <br> 
 I did this with the state and attributes of my motion sensors. <br>
 
@@ -226,7 +229,7 @@ MediaController:
 
 <br>
 
-## 🦆 3 /config/custom_sentences/sv/MediaController.yaml <br>
+## 🦆 __3 /config/custom_sentences/sv/MediaController.yaml__ <br>
 
 Before you hastly delete my words and insert your own, take a look at how I did this. <br>
 This setup & with the search defaulting to `0`, enables me to skip the search part and just say `spela upp musik` to trigger the jukebox intent. <br>
@@ -285,7 +288,7 @@ lists:
 
 <br>
 
-## 🦆 4 /config/shell_command.yaml <br>
+## 🦆 __4 /config/shell_command.yaml__ <br>
 
 
 <br>
@@ -298,7 +301,7 @@ lists:
 
 <br>
 
-## 🦆 5 /config/media_controller.py <br>
+## 🦆 __5 /config/media_controller.py__ <br>
 
 Don't forget to define your Home Assistant IP, long lived acess token, media directories.<br>
 In case you want your own local newscasts, please define their RESTful API's in this file aswell. <br>

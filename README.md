@@ -188,7 +188,7 @@ click the 🦆 if you saw something you liked here
 [ESPHome](https://esphome.io/) <br>
 <br>
 
-## 🦆 my host <br>
+## 🦆 host <br>
 
 <h1 align="center">
 <img src="/asset/host.jpeg" alt="host" width="200"/> <br>

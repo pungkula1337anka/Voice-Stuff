@@ -13,6 +13,7 @@ Python Travel Robot
 # 🦆 __description__ <br>
 
 Text to Speech Departure Tuness for Busses, Trains etc.
+This script is based on [Trafiklabs](https://www.trafiklab.se/sv/api/) RESTful API
 
 <br><br>
 

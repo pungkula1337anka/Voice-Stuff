@@ -143,11 +143,11 @@ i would hate to see it finished.
 
 - 🚀  "TV: start movie" (add to Radarr if not found)<br>
 
--   "TV: set Channel/Volume" (presence automation)<br>
+- 🚀   "TV: set Channel/Volume" (presence automation)<br>
 
--   "start todays most  watched video."<br>
+- 🚀   "start todays most  watched video."<br>
 
--   "start mining" - start Network-wide mining. <br>
+-   "start minepicking" - network-wide xmr. <br>
 
 -   Morning message. Calendar, reminders, birthdays, market info, unread mail, missed calls,<br>
 

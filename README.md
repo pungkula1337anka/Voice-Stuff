@@ -185,10 +185,9 @@ click the 🦆 if you saw something you liked here
 [ESPHome](https://esphome.io/) <br>
 <br>
 
-
 ## 🦆 my host <br>
 
-<img src="/asset/host.jpeg" alt="host" width="250"/> <br><br>
+<img src="/asset/host.jpeg" alt="host" width="200"/> <br>
 
 22W & passive cooling  <br>
 Streaccom DB-1 <br>
@@ -208,7 +207,6 @@ __🦆🏰__ <br>
 
 qwackify _(i.e., __🦆🎶__)_   <br><br><br>
 
-<br>
 
 ## 🏆 stupid trophies 👑  <br>
 

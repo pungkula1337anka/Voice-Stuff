@@ -187,7 +187,6 @@ click the 🦆 if you saw something you liked here
 
 ## 🦆 my host <br>
 
-<img src="/asset/host.jpeg" alt="host" width="200"/> <br>
 
 - ⚡ 22W & passive cooling <br>
 - 💾 Streaccom DB-1 <br>
@@ -195,7 +194,8 @@ click the 🦆 if you saw something you liked here
 - 💾 32GB DDR4 <br>
 - 💾 Intel Celeron G6900 3.4 GHz <br>
 - 💾 M.2 1TB 2280 MP600 CORE XT <br>
-
+<br>
+<img src="/asset/host.jpeg" alt="host" width="200"/> <br>
 <br>
 
 ## 🦆 my other strange stuff<br>

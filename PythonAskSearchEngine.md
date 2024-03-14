@@ -185,7 +185,6 @@ if __name__ == "__main__":
             send_tts_message(snippet)
             time.sleep(20)  
             send_tts_message(snippet)  
-```¨
+``` 
 
-<br><br>
 

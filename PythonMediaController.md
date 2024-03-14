@@ -92,9 +92,9 @@ dont worry though, the Python wont let it get big and grow strong. <br>
 
 13. 📡 __Live-TV__ <br>
 Specify a `remote.*` entity. _(not `media_player.*`)_ <br>
-Edit your `.m3u` file and split your channels so that each channel has its own `.m3u` file. <br>
-Name each file by channel word you want to use and place it inside the directory `/config/www/live/`? <br>
-_This only seems to work if the `*.m3u` is pPublicly accessible, so define your domain?_ <br>
+Edit your `.m3u` file and split your channels into separate `.m3u` files. <br>
+Name each file by channel word you want to use and place it inside the directory `/config/www/live/` _(?)_ <br>
+_This only seems to work if the `*.m3u` is publicly accessible(?) so define your domain like the example_ <br>
  
 <br> <br>
 
@@ -264,7 +264,7 @@ lists:
         out: "movie"        
       - in: "(ljudbok|ljudboken)"
         out: "audiobook"       
-      - in: "video"
+      - in: "(video|videon)"
         out: "othervideo"       
       - in: "(musik video|music video)"
         out: "musicvideo"              
@@ -272,7 +272,7 @@ lists:
         out: "playlist"
       - in: "(nyheter|nyheterna|senaste nytt)"
         out: "news"   
-      - in: "(kanal|kanalen|kannal)"
+      - in: "(kanal|kanalen|kanel)"
         out: "livetv"
       - in: "(youtube|yutube|yotub|tuben)"
         out: "youtube"
@@ -295,8 +295,8 @@ lists:
 
 Don't forget to define your Home Assistant IP, long lived acess token, media directories.<br>
 In case you want your own local newscasts, please define their RESTful API's in this file aswell. <br>
-_API [key](https://developers.google.com/youtube/registering_an_application) is required for YouTube_ <br>
-_Remote entity is required for live-TV & YouTube_ <br>
+_API [key](https://developers.google.com/youtube/registering_an_application) is required for YouTube._ <br>
+_Remote entity is required for live-TV & YouTube._ <br>
 
 
 ```
@@ -311,6 +311,7 @@ import difflib
 from difflib import get_close_matches
 from urllib.parse import urlencode
 
+
 ##########################################################################
 #### --> Define your shit here please <-- ####
 
@@ -320,6 +321,7 @@ YOUTUBE_API_KEY = 'YOUR_API_KEY_HERE'
 YOUR_DOMAIN = "example.duckdns.org:8123"
 PLAYED_NEWS_FILE = "played_news.txt"
 MAX_PLAYED_NEWS_ENTRIES = 350
+DELAY_BETWEEN_SERVICE_CALLS = 0
 SEARCH_FOLDERS = {
     "tv": "/media/TV",
     "music": "/media/Music",
@@ -328,7 +330,6 @@ SEARCH_FOLDERS = {
     "musicvideo": "/media/Music_Videos",
     "audiobooks": "/media/Audiobooks",
     "othervideos": "/media/Other_Videos",
-    "livetv": "/media/IPTV",
     "jukebox": "/media/Music",
     "song": "/media/Music"
 }
@@ -338,7 +339,6 @@ NEWS_API_LIST = [
     "http://api.sr.se/api/v2/podfiles?programid=5524&format=json",
     "http://api.sr.se/api/v2/podfiles?programid=5413&format=json"
 ]
-DELAY_BETWEEN_SERVICE_CALLS = 0
 
 
 ##### --> Thank you! <-- ####
@@ -346,7 +346,6 @@ DELAY_BETWEEN_SERVICE_CALLS = 0
 
 
 news_list = []
-
 def clean_search_query(query):
     """
     This function removes punctuation from the search query.

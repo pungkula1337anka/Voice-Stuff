@@ -64,7 +64,20 @@ SetHourTimer:
       data:
           duration: "{{hours}}:{{minutes}}:00"
       target:
-          entity_id: timer.timer             
+          entity_id: >
+            {% set timer1_state = states('timer.timer1') %}
+            {% set timer2_state = states('timer.timer2') %}
+            {% set timer3_state = states('timer.timer3') %}
+
+            {% if timer1_state == 'active' %}
+              {% if timer2_state == 'active' %}
+                timer.timer3
+              {% else %}
+                timer.timer2
+              {% endif %}
+            {% else %}
+              timer.timer1
+            {% endif %}         
   speech:
     text: "räknar ned från {{ hours }} timmar och {{ minutes }} minuter"  
 ```

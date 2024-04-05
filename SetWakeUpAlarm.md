@@ -60,11 +60,37 @@ IntentName:
       data:
           time: "{{hours}}:{{minutes | default(00)}}:00"
       target:
-          entity_id: input_datetime.wakeupalarm
+          entity_id: >
+            {% set wakeupalarm1_state = states('input_boolean.wakeupalarm1') %}
+            {% set wakeupalarm2_state = states('input_boolean.wakeupalarm2') %}
+            {% set wakeupalarm3_state = states('input_boolean.wakeupalarm3') %}
+
+            {% if wakeupalarm1_state == 'on' %}
+              {% if wakeupalarm2_state == 'on' %}
+                input_datetime.wakeupalarm3
+              {% else %}
+                input_datetime.wakeupalarm2
+              {% endif %}
+            {% else %}
+              input_datetime.wakeupalarm1
+            {% endif %} 
     - service: input_boolean.turn_on
       data: {}
       target:
-          entity_id: input_boolean.switch_wake_up_alarm            
+          entity_id: >input_boolean.switch_wake_up_alarm
+            {% set wakeupalarm1_state = states('input_boolean.wakeupalarm1') %}
+            {% set wakeupalarm2_state = states('input_boolean.wakeupalarm2') %}
+            {% set wakeupalarm3_state = states('input_boolean.wakeupalarm3') %}
+
+            {% if wakeupalarm1_state == 'on' %}
+              {% if wakeupalarm2_state == 'on' %}
+                input_boolean.wakeupalarm3
+              {% else %}
+                input_boolean.wakeupalarm2
+              {% endif %}
+            {% else %}
+              input_boolean.wakeupalarm1
+            {% endif %} 
   speech:
     text: "ställde väckarklockan på {{ hours }}  {{ minutes }}"     
 ```
@@ -109,14 +135,26 @@ lists:
 
 ```
 input_datetime:
-  wakeupalarm:
-    name: Wake Up Alarm
+  wakeupalarm1:
+    name: Wake Up Alarm1
+    has_date: true
+    has_time: true
+  wakeupalarm2:
+    name: Wake Up Alarm2
+    has_date: true
+    has_time: true
+  wakeupalarm3:
+    name: Wake Up Alarm3
     has_date: true
     has_time: true
 
 input_boolean:
-  switch_wake_up_alarm:
-    name: Wake Up Alarm Switch
+  wakeupalarm1:
+    name: Wake Up Alarm1
+  wakeupalarm2:
+    name: Wake Up Alarm2
+  wakeupalarm3:
+    name: Wake Up Alarm3
 
 timer:
   wakeup:

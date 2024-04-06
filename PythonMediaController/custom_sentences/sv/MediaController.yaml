@@ -1,4 +1,11 @@
-language: "sv"
+### -->     Custom Sentences   <--     ###
+##################################    
+##### -> MEDIA CONTROL <- ######
+# https://github.com/pungkula1337anka/Voice-Stuff/tree/main/PythonMediaController
+##################################
+# Full Media Control
+
+language: "sv" # Swedish
 intents:
   MediaController:
     data:

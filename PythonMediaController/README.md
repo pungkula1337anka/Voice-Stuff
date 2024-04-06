@@ -130,7 +130,9 @@ __Previous Track/Episode__  <br>
 
 - **1: Download the files** <br>
 Add the content of the files into your already existing files.<br>
-Make sure they are in the correct path.
+Make sure they are in the correct path. <br>
+LOoking for Reverse Proxy? Should be in `/share/caddy` <br>
+[Caddy official](https://caddyserver.com/download?package=github.com%2Fcaddy-dns%2Fduckdns)
 
 - **2: Reverse Proxy Media Directory** <br>
 Running Chromecast like this requires TLS HTTPS and a domain. <br>

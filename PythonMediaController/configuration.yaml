@@ -1,6 +1,10 @@
-
-
+### -->     CONFIGURATION.yaml   <--     ###
+##################################    
+##### -> INCLUDE <- ######
+##################################
 intent_script: !include intent_script.yaml
-
+##################################    
+##### -> SHELL_COMMAND <- ######
+##################################
 shell_command:
     media_controller: 'python media_controller.py "{{ search }}" {{ typ }} {{ player }}'

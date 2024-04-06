@@ -1,0 +1,6 @@
+
+
+intent_script: !include intent_script.yaml
+
+shell_command:
+    media_controller: 'python media_controller.py "{{ search }}" {{ typ }} {{ player }}'

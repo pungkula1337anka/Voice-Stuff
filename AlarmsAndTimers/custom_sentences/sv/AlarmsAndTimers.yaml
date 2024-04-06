@@ -1,0 +1,36 @@
+language: "sv"
+intents:
+  AlarmsAndTimers:
+    data:
+      - sentences:
+          - "(starta|ställ|sätt) väckarklockan på {hours} [och] {minutes} "          
+          - "{alarm_timer} [klockan] {hours} {minutes} "      
+          - "{alarm_timer} klockan {hours}"    
+          - "(starta|ställ|sätt)  [en] {alarm_timer} [på] {minutes} minuter"
+          - "(starta|ställ|sätt)  [en] {alarm_timer} [på] {minutes} minuter [och] {hours} (timma|timmar|timme)"  
+          - "när [ska] [jag] {status_alarms}"
+          - "hur länge är det {status_timers}"
+          - "{status_timers}"
+lists:
+  status_alarms:
+    values:
+      - in: "stiga upp"
+        out: "status"   
+  status_timers:
+    values:
+      - in: "kvar på timern"
+        out: "status"      
+  alarm_timer:
+    values:
+      - in: "timer"
+        out: "timer"      
+      - in: "väck mig"
+        out: "alarm"  
+  minutes:
+    range:
+      from: 0
+      to: 60
+  hours:
+    range:
+      from: 0
+      to: 24

@@ -1,4 +1,9 @@
-
+### -->     Custom Sentences   <--     ###
+##################################    
+##### -> MEDIA CONTROL <- ######
+# https://github.com/pungkula1337anka/Voice-Stuff/tree/main/PythonMediaController
+##################################
+# Full Media Control
 
 language: "en"
 intents:
@@ -16,7 +21,8 @@ lists:
   search:
     wildcard: true
   typ:
-    values:
+    values: # You define your own words here.
+            # But leave the "out" values as is, or the script will break.
       - in: "(series|TV series|TV show|TV shows)"
         out: "tv"
       - in: "(podcast|podcasts)"
@@ -45,7 +51,7 @@ lists:
         out: "youtube"
       - in: "(pause|mute|stop)"
         out: "pause"
-      - in: "(play|resume|ok)"
+      - in: "(resume|ok)"
         out: "play"
       - in: "(up|increase|raise)"
         out: "up"

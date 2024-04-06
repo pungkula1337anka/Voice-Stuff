@@ -1,0 +1,61 @@
+
+
+language: "en"
+intents:
+  MediaController:
+    data:
+      - sentences:
+          - "start {typ} {search}"
+          - "play {typ} {search}"
+          - "begin {typ} {search}"
+          - "I want to watch {typ} {search}"
+          - "play {typ}"
+          - "I want to listen to {typ} {search}"
+          - "{typ}"
+lists:
+  search:
+    wildcard: true
+  typ:
+    values:
+      - in: "(series|TV series|TV show|TV shows)"
+        out: "tv"
+      - in: "(podcast|podcasts)"
+        out: "podcast"
+      - in: "(random|shuffle|music)"
+        out: "jukebox"
+      - in: "(artist|band|group)"
+        out: "music"
+      - in: "(song|track)"
+        out: "song"
+      - in: "(movie|film)"
+        out: "movie"
+      - in: "(audiobook|audio book)"
+        out: "audiobook"
+      - in: "video"
+        out: "othervideo"
+      - in: "(music video|music videos)"
+        out: "musicvideo"
+      - in: "(playlist|playlists)"
+        out: "playlist"
+      - in: "(news|latest news)"
+        out: "news"
+      - in: "(channel|channels)"
+        out: "livetv"
+      - in: "(YouTube)"
+        out: "youtube"
+      - in: "(pause|mute|stop)"
+        out: "pause"
+      - in: "(play|resume|ok)"
+        out: "play"
+      - in: "(up|increase|raise)"
+        out: "up"
+      - in: "(down|decrease|lower)"
+        out: "down"
+      - in: "(next|forward)"
+        out: "next"
+      - in: "(previous|back)"
+        out: "previous"
+      - in: "(add|add to)"
+        out: "add"
+      - in: "I like this song"
+        out: "add"

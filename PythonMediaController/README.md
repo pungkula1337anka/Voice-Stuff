@@ -23,7 +23,7 @@ especially when spaking in a language other than your Assist pipeline defaults. 
 This allows for (most likely) calling an artists name or song title thats not in your native language. <br>
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>
 A correction function is also implemented as fallback to ensure as high success rate as possible for your voice commands. <br>
-All search results are stored in temporary .m3u files when being sent to your media player to simplify the playback process as much as possible. <br>
+All search results are stored in temporary .m3u files when being sent to your media player to simplify the playback process as much as possible. <br><br>
 The python comes with custom sentence, combined these has every possible command you could ever think off,  to control your TV's or Media boxes. <br>
 <br>
 

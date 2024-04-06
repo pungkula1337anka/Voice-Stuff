@@ -17,15 +17,17 @@ __Python Media Controller__ _v0.2_
 __UPDATED__
 This script now has __FULL__ video codec support! Play __ANY__ media files! __NO TRANSCODING NEEDED!__
 
-Python Media Controller utilizes the portability of Chromecast and the power of LibVLC to broadcast your local media to your devices.
-The difflib module is used to maximize your search potential and to create an "fuzzywuzzy" alike search effect, which can be clearvly used especially when spaking in a language other than your Assist pipeline defaults.
-This allows for (most likely) calling an artists name or song title thats not in your native language.
+Python Media Controller utilizes the portability of Chromecast and the power of LibVLC to broadcast your local media to your devices. <br>
+The difflib module is used to maximize your search potential and to create an __lightning fast__ "fuzzywuzzy" alike search effect, which can be clearvly used<br> 
+especially when spaking in a language other than your Assist pipeline defaults. <br>
+This allows for (most likely) calling an artists name or song title thats not in your native language. <br>
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>
-A correction function is also implemented as fallback to ensure as high success rate as possible for your voice commands.
-All search results are stored in temporary .m3u files when being sent to your media player to simplify the playback process as much as possible.
-The python comes with custom sentence, combined these has every possible command you could ever need to control your TV's or Media boxes.
+A correction function is also implemented as fallback to ensure as high success rate as possible for your voice commands. <br>
+All search results are stored in temporary .m3u files when being sent to your media player to simplify the playback process as much as possible. <br>
+The python comes with custom sentence, combined these has every possible command you could ever think off,  to control your TV's or Media boxes. <br>
+<br>
 
-5 simple steps to control all your media by voice. <br>
+4 quick and fairly simple steps to control all your media by voice. <br>
 
 <br>
 
@@ -35,7 +37,7 @@ _Example usage:_
 - "play movie godzilla"
 - "play channel 6"
 - "play artist the rolling stones"
-- "playing song death to all but metal"
+- "play song death to all but metal"
 - "play music"
 - "play youtube funny cats"
 - "play podcast self hosted"

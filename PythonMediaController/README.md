@@ -14,9 +14,11 @@ __Python Media Controller__ _v0.2_
 
 # __Full media control in one Python script.__ <br>
 
-__UPDATED__
-This script now has __FULL__ video codec support! Play __ANY__ media files! __NO TRANSCODING NEEDED!__
-
+__UPDATED__ <br>
+I belive this script now __Plays__ all video codecs! and __ANY__ media files! __NO TRANSCODING NEEDED!?__ <br>
+Its very quick, and low power usage.<br> 
+_Let me know if I am wrong._ <br>
+<br>
 Python Media Controller utilizes the portability of Chromecast and the power of LibVLC to broadcast your local media to your devices. <br>
 The difflib module is used to maximize your search potential and to create an __lightning fast__ "fuzzywuzzy" alike search effect, which can be clearvly used<br> 
 especially when spaking in a language other than your Assist pipeline defaults. <br>

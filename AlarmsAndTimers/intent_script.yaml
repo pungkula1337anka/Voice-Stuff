@@ -8,7 +8,7 @@ AlarmsAndTimers:
           sequence:
             - service: input_datetime.set_datetime
               data:
-                time: "{{hours}}:{{minutes | default(00)}}:00"
+                time: "{{hours | default(00)}}:{{minutes | default(00)}}:00"
               target:
                 entity_id: >
                   {% set wakeupalarm1_state = states('input_boolean.wakeupalarm1') %}
@@ -53,6 +53,28 @@ AlarmsAndTimers:
                   {% else %}
                     timer.timer1
                   {% endif %}
+        - conditions: "{{ stop == 'timers' }}"
+          sequence:
+            - service: timer.cancel
+              data: {}
+              target:
+                entity_id: all
+        - conditions: "{{ stop == 'alarms' }}"
+          sequence:
+            - service: input_boolean.turn_off
+              data: {}
+              target:
+                entity_id:
+                  - input_boolean.wakeupalarm1
+                  - input_boolean.wakeupalarm2
+                  - input_boolean.wakeupalarm3    
+        - conditions: "{{ snooze == 'snooze' }}"
+          sequence:
+            - service: timer.start
+              data:
+                duration: "00:09:00"
+              target:
+                entity_id: timer.wakeupalarm               
   speech:
     text: >
       {% set wakeupalarm1_state = states('input_boolean.wakeupalarm1') %}
@@ -64,33 +86,83 @@ AlarmsAndTimers:
       {% set timer1_state = states('timer.timer1') %}
       {% set timer2_state = states('timer.timer2') %}
       {% set timer3_state = states('timer.timer3') %}
+    
       {% if alarm_timer == 'alarm' %}
-        {% if wakeupalarm1_state == 'on' and wakeupalarm2_state == 'on' and wakeupalarm3_state == 'on' %}
-          You already have 3 alarms set.
-        {% elif wakeupalarm1_state == 'off' or wakeupalarm2_state == 'off' or wakeupalarm3_state == 'off' %}
-          Set your {{ entity_id }} to {{ hours }}:{{ minutes }}.
+        {% if status_alarms == 'status' %}
+          {% if wakeupalarm1_state == 'on' %}
+            Your first wakeup call is at: {{ wakeupalarm1_time.split(' ')[1][:5] }}
+          {% endif %}
+          {% if wakeupalarm2_state == 'on' %}
+            You also have another alarm set at: {{ wakeupalarm2_time.split(' ')[1][:5] }}
+          {% endif %}
+          {% if wakeupalarm3_state == 'on' %}
+            Last wake up call is at: {{ wakeupalarm3_time.split(' ')[1][:5] }}
+          {% endif %}
+          {% if wakeupalarm1_state == 'off' and wakeupalarm2_state == 'off' and wakeupalarm3_state == 'off' %}
+            Set your {{ entity_id }} to {{ hours }}:{{ minutes }}.
+          {% elif wakeupalarm1_state == 'on' and wakeupalarm2_state == 'on' and wakeupalarm3_state == 'on' %}
+            You already have 3 alarms set.
+          {% endif %}
+        {% else %}
+          {% if wakeupalarm1_state == 'on' and wakeupalarm2_state == 'on' and wakeupalarm3_state == 'on' %}
+            You already have 3 alarms set.
+          {% elif wakeupalarm1_state == 'off' or wakeupalarm2_state == 'off' or wakeupalarm3_state == 'off' %}
+            You got it! Waking you up at {{ hours }}:{% if minutes > 0 %} {{ minutes }} minutes{% endif %}
+          {% endif %}
         {% endif %}
       {% elif alarm_timer == 'timer' %}
-        Set timer for {{ minutes }} minutes.
-      {% elif status_timer == 'status' %}
-        {% if timer1_state == 'active' %}
-          {{ state_attr('timer.timer1', 'duration') }}
-        {% elif timer2_state == 'active' %}
-          {{ state_attr('timer.timer2', 'duration') }}
-        {% elif timer3_state == 'active' %}
-          {{ state_attr('timer.timer3', 'duration') }}
+        {% if status_timers == 'status' %}
+          {% if timer1_state == 'active' %}
+            Time left on timer: {{ state_attr('timer.timer1', 'duration') }}
+          {% endif %}
+          {% if timer2_state == 'active' %}
+            Second timer: {{ state_attr('timer.timer2', 'duration') }}
+          {% endif %}
+          {% if timer3_state == 'active' %}
+            Last timer is up at: {{ state_attr('timer.timer3', 'duration') }}
+          {% endif %}
+          {% if timer1_state != 'active' and timer2_state != 'active' and timer3_state != 'active' %}
+            You have no active timers.
+          {% endif %}
         {% else %}
-          You have no active timers.
-        {% endif %}
-      {% elif status_alarms == 'status' %}
-        {% if wakeupalarm1_state == 'on' %}
-          {{ wakeupalarm1_time }}
-        {% elif wakeupalarm2_state == 'on' %}
-          {{ wakeupalarm2_time }}
-        {% elif wakeupalarm3_state == 'on' %}
-          {{ wakeupalarm3_time }}
-        {% else %}
-          You have no active alarms.
+          Set timer for {{ minutes }} minutes{% if hours > 00 %} {{ hours }} hours{% endif %}
         {% endif %}
       {% endif %}
-      
+      {% if status_alarms == 'status' %}
+        {% if wakeupalarm1_state == 'on' %}
+          Your first wakeup call is at: {{ wakeupalarm1_time.split(' ')[1][:5] }}
+        {% endif %}
+        {% if wakeupalarm2_state == 'on' %}
+          You also have another alarm set at: {{ wakeupalarm2_time.split(' ')[1][:5] }}
+        {% endif %}
+        {% if wakeupalarm3_state == 'on' %}
+          Last wake up call is at: {{ wakeupalarm3_time.split(' ')[1][:5] }}
+        {% endif %}
+        {% if wakeupalarm1_state == 'off' and wakeupalarm2_state == 'off' and wakeupalarm3_state == 'off' %}
+          Counting down from {{ hours }}:{{ minutes }}.
+        {% elif wakeupalarm1_state == 'on' and wakeupalarm2_state == 'on' and wakeupalarm3_state == 'on' %}
+          You already have 3 alarms set.
+        {% endif %}
+      {% elif status_timers == 'status' %}
+        {% if timer1_state == 'active' %}
+          Time left on timer: {{ state_attr('timer.timer1', 'duration') }}
+        {% endif %}
+        {% if timer2_state == 'active' %}
+          Second timer: {{ state_attr('timer.timer2', 'duration') }}
+        {% endif %}
+        {% if timer3_state == 'active' %}
+          Last timer is up at: {{ state_attr('timer.timer3', 'duration') }}
+        {% endif %}
+        {% if timer1_state != 'active' and timer2_state != 'active' and timer3_state != 'active' %}
+          You have no active timers.
+        {% endif %}
+      {% endif %}
+      {% if stop == 'alarms' %}  
+        No more wake ups.
+      {% endif %}
+      {% if stop == 'timers' %}  
+        Timers turned off.
+      {% endif %}
+      {% if snooze == 'snooze' %}  
+        ...
+      {% endif %}

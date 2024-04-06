@@ -146,9 +146,7 @@ If you want to edit and use your own sentences you edit the `MediaController.yam
 
 - **4: Python Script** <br>
 Edit the top section in `media_controller.py` to unlock all available features. <br>
-
 YouTube API Key can be created [here](https://developers.google.com/youtube/registering_an_application). You probably need to connect the key to a project aswell. <br>
-
 Dont forget to define your stuff _and .........._ <br>
 
 __yay__ <br>

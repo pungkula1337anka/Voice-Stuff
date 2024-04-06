@@ -1,3 +1,9 @@
+### -->  Python Media Controller v0.2  <--   ###
+##################################    
+##### -> README <- ######
+# https://github.com/pungkula1337anka/Voice-Stuff/tree/main/PythonMediaController
+##################################
+# Be sure to place this file inside your /config directory.
 import os
 import sys
 import random
@@ -9,13 +15,14 @@ from urllib.parse import urlencode
 #########################################################################
 ### --> Define your shit here please <-- ###
 
+# Define your Home Assistant connection. 
 HOME_ASSISTANT_IP = "YOUR_HOME_ASSISTANT_IP:8123"
 ACCESS_TOKEN = "YOUR_LONG_LIVED_ACCESS_TOKEN"
 YOUR_DOMAIN = "EXAMPLE_HA_DOMAIN.duckdns.org:8123"
-# Grab your API Key from Google Developer.
-YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY'
 # Reverse Proxy your /media as file server at this domain. (For Chromecast)
 WEBSERVER = "https://EXAMPLE.duckdns.org"
+# Grab your API Key from Google Developer.
+YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY'
 # Define media_player & attribute for grabbing currently playing data.
 ENTITY_ID = "media_player.shield"
 ATTRIBUTE_NAME = "media_title"
@@ -43,7 +50,7 @@ NEWS_API_LIST = [
     "http://api.sr.se/api/v2/podfiles?programid=5524&format=json",
     "http://api.sr.se/api/v2/podfiles?programid=5413&format=json"
 ]
-# If you are having issues with Speech to Text translating or generating wrong words, you can correct them here, before they are processed in the script.
+# If you are having issues with Speech to Text translating or generating wrong words, you can correct them here, before they are processed into the script.
 CORRECTIONS = {
     "wrong word": "right word",
     "wrong word2": "right word2",

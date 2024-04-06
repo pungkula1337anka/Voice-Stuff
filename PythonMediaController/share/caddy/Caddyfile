@@ -1,0 +1,19 @@
+{
+    https_port 443
+}
+
+{env.HA_DOMAIN}.duckdns.org {
+    reverse_proxy {env.HA_IP}:8123
+
+    tls {
+        dns duckdns {env.DUCKDNS_API_TOKEN}
+    }
+}
+
+{env.DUCKDNS_DOMAIN}.duckdns.org {
+    root * /media
+    file_server
+    tls {
+        dns duckdns {env.DUCKDNS_API_TOKEN}
+    }
+}

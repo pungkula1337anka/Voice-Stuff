@@ -1,0 +1,27 @@
+### -->     INTENT_SCRIPT   <--     ###
+##################################    
+##### -> TV CONTROL <- ######
+# https://github.com/pungkula1337anka/Voice-Stuff/tree/main/PythonMediaController
+##################################
+# Full Media Control
+MediaController:
+  action:
+    - service: shell_command.media_controller
+      data: 
+        search: >
+          {% if typ == 'playlist' %}
+            https://exmaple.duckdns.org/Playlists/MyPlaylist2.m3u
+          {% else %}
+            {{ search | default(0) }}
+          {% endif %}
+        typ: "{{ typ }}"
+        player: >
+          remote.YOUR_MEDIA_PLAYER
+      response_variable: action_response
+    - stop: ""
+      response_variable: action_response                   
+  speech:
+    text: "{{ action_response['stdout'] }}"  
+
+
+

@@ -12,9 +12,9 @@ timer:
     name: timer3
     duration: 00:00:00
     restore: true  
-  wakeupalarm:
-    name: wakeupalarm
-    duration: 00:00:01
+  wakeup:
+    name: wakeup
+    duration: "00:00:01"
     restore: true  
 
 input_boolean:

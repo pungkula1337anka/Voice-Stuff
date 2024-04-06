@@ -136,7 +136,7 @@ Make sure they are in the correct path.
 Running Chromecast like this requires TLS HTTPS and a domain. <br>
 If you are running Home Assistant OS and are not familiar with these kinds of network setups, I would reccomend <br>
 network mounting your media to `/media`. <br>
-And downloading the `Caddy 2` Reverse Proxy addon. [Repo URL]() <br>
+And downloading the `Caddy 2` Reverse Proxy addon. [Add this repo](https://github.com/einschmidt/hassio-addons) <br>
 Register a couple duckdns domains and grab your API Key. <br>
 Place the files`caddy` and `Caddyfile` in your /share/caddy directory. <br>
 Define your `IP` and `duckdns domains` and `API key` in the `Caddyfile`. <br>

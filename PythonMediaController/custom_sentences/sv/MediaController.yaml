@@ -21,7 +21,8 @@ lists:
   search:
     wildcard: true
   typ:
-    values:
+    values: # You define your own words here.
+            # But leave the "out" values as is, or the script will break.
       - in: "(serie|serien|tvserien|tv-serien|tv serien)"
         out: "tv"  
       - in: "(podd|pod|podcast|podcost|poddan|podden)"

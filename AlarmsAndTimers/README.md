@@ -39,20 +39,20 @@ Say `snooze` if you are tired. <br>
 This will trigger the alarm in 9 minutes again. <br>
 
 4. __Remaining Duration Timers__  <br> 
-Say `snooze` if you are tired. <br>
-This will trigger the alarm in 9 minutes again. <br>
+Say `remaining on the timer` if you are curious. <br>
+This will let you know duration on all active timers. <br>
 
 5. __Status check on Alarms__  <br> 
-Say `snooze` if you are tired. <br>
-This will trigger the alarm in 9 minutes again. <br>
+Say `when do I get up` if you want to know your akarns <br>
+This will list all active alarms. <br>
 
 6. __Turn off Timers__  <br> 
-Say `snooze` if you are tired. <br>
-This will trigger the alarm in 9 minutes again. <br>
+Say `stop timers`. <br>
+This will stop and disable all active timers. <br>
 
 7. __Disable Alarms__  <br> 
-Say `snooze` if you are tired. <br>
-This will trigger the alarm in 9 minutes again. <br>
+Say `stop alarms`. <br>
+This will stop and disable all active alarms. <br>
 
 
 
@@ -64,19 +64,17 @@ This will trigger the alarm in 9 minutes again. <br>
 
 
 - **1: Download Files** <br>
-
+Add contents of files to already existing files. <br>
+Make sure the correct paths are used. <br>
 - **2: Custom Sentence** <br>
 If you would want to edit any words, you do it in this file. <br> 
-
 
 <br><br>
 
 
 ## 🦆 Example Automation <br>
 
-
 <br>
-
 
 ```
 alias: wake_up_alarm

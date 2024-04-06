@@ -1,30 +1,44 @@
-language: "en"  
+language: "en"
 intents:
   AlarmsAndTimers:
     data:
       - sentences:
           - "(start|set|put) the alarm clock at {hours} [and] {minutes}"
           - "{alarm_timer} [at] {hours} {minutes}"
-          - "{alarm_timer} at {hours}"
           - "(start|set|put) [an] {alarm_timer} [for] {minutes} minutes"
           - "(start|set|put) [an] {alarm_timer} [for] {minutes} minutes [and] {hours} (hour|hours)"
-          - "when [should] [I] {status_alarms} up"
-          - "how long [is] [it] {status_timers}"
+          - "when should I {status_alarms}"
+          - "how long is it {status_timers}"
           - "{status_timers}"
+          - "{status_alarms}"
+          - "stop all {stop}"
+          - "{snooze}"
 lists:
+  snooze:
+    values:
+      - in: "(snooze|snooze|snooze|snooze|snooze)"
+        out: "snooze"
+  stop:
+    values:
+      - in: "(alarm|alarms|alarm clock|alarm clock|alarm clocks|wakes)"
+        out: "alarms"
+      - in: "(timer|timers|timer)"
+        out: "timers"
   status_alarms:
     values:
-      - in: "(wake|get)"
+      - in: "(rise|rise|step|go)"
         out: "status"
   status_timers:
     values:
-      - in: "left on the timer"
+      - in: "remaining on the timer"
         out: "status"
   alarm_timer:
     values:
       - in: "timer"
         out: "timer"
       - in: "wake me up"
+        out: "alarm"
+      - in: "alarm"
         out: "alarm"
   minutes:
     range:

@@ -1,0 +1,32 @@
+
+timer:
+  timer1:
+    name: timer1
+    duration: 00:00:00
+    restore: true
+  timer2:
+    name: timer2
+    duration: 00:00:00
+    restore: true
+  timer3:
+    name: timer3
+    duration: 00:00:00
+    restore: true  
+  wakeupalarm:
+    name: wakeupalarm
+    duration: 00:00:01
+    restore: true  
+
+input_boolean:
+  wakeupalarm1:
+    name: wakeupalarm1
+    has_date: false
+    has_time: true
+  wakeupalarm2:
+    name: wakeupalarm2
+    has_date: false
+    has_time: true
+  wakeupalarm3:
+    name: wakeupalarm3
+    has_date: false
+    has_time: true

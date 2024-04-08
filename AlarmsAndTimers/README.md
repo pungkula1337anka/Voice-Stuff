@@ -77,64 +77,63 @@ If you would want to edit any words, you do it in this file. <br>
 <br>
 
 ```
-alias: wake_up_alarm
-description: ""
+alias: Tiners Automation
+description: Cooking timers etc
 trigger:
-  - platform: time
-    at: input_datetime.wakeupalarm
   - platform: event
     event_type: timer.finished
     event_data:
-      entity_id: timer.wakeup    
-condition:
-  - condition: time
-    weekday:
-      - fri
-      - thu
-      - wed
-      - tue
-      - mon
-action:
-  - service: timer.start
-    data: {}
-    target:
+      entity_id: timer.timer1
+    id: timer1
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.timer2
+    id: timer2
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.timer3
+    id: timer3
+  - platform: event
+    event_type: timer.finished
+    event_data:
       entity_id: timer.wakeup
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.ha
-  - service: media_player.play_media
-    data:
-      media_content_id: /local/sound/wakeup.mp3
-      media_content_type: music
-    target:
-      entity_id: media_player.ha
-  - service: notify.mobile_app_iPhone
-    data:
-      data:
-        push:
-          sound:
-            name: default
-            critical: 1
-            volume: 1
-      title: "⚠️ "
-      message: VAKNA
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 4
-      milliseconds: 0
-  - service: notify.mobile_app_iPhone
-    data:
-      data:
-        push:
-          sound:
-            name: default
-            critical: 1
-            volume: 1
-      title: "⚠️ "
-      message: VAKNA
+    id: wakeup
+condition: []
+action:
+  - if:
+      - condition: trigger
+        id:
+          - timer1
+          - timer2
+          - timer3
+    then:
+      - service: media_player.volume_set
+        data:
+          volume_level: 0.95
+        target:
+          entity_id: media_player.ha
+      - service: media_player.play_media
+        target:
+          entity_id:
+            - media_player.ha
+        data:
+          media_content_type: music
+          media_content_id: https://YOUR_DOMAIN.duckdns.org:1337/local/sound/timer.mp3
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 5
+          milliseconds: 0
+      - service: media_player.play_media
+        target:
+          entity_id:
+            - media_player.ha
+        data:
+          media_content_type: music
+          media_content_id: https://YOUR_DOMAIN.duckdns.org:1337/local/sound/timer.mp3
+mode: single
 ```
 
 <br><br>

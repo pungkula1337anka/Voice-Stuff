@@ -3,30 +3,29 @@ intents:
   AlarmsAndTimers:
     data:
       - sentences:
-          - "(start|set|put) the alarm clock at {hours} [and] {minutes}"
+          - "(start|set|put) alarm clock at {hours} [and] {minutes}"
           - "{alarm_timer} [at] {hours} {minutes}"
-          - "(start|set|put) [an] {alarm_timer} [for] {minutes} minutes"
-          - "(start|set|put) [an] {alarm_timer} [for] {minutes} minutes [and] {hours} (hour|hours)"
-          - "when should I {status_alarms}"
+          - "(start|set) [an] {alarm_timer} [at] {hours} (hour|hours)"
+          - "(start|set) [an] {alarm_timer} [at] {minutes} minutes"
+          - "(start|set) [an] {alarm_timer} [at] {seconds} seconds"
+          - "when should I {status_alarms} up"
           - "how long is it {status_timers}"
-          - "{status_timers}"
-          - "{status_alarms}"
           - "stop all {stop}"
           - "{snooze}"
 lists:
   snooze:
     values:
-      - in: "(snooze|snooze|snooze|snooze|snooze)"
+      - in: "(snooze|snooze|snus|snusa|snooze)"
         out: "snooze"
   stop:
     values:
-      - in: "(alarm|alarms|alarm clock|alarm clock|alarm clocks|wakes)"
+      - in: "(alarm|alarms|alarm clock|alarm clock|alarm clock|alarm clocks|alarms)"
         out: "alarms"
-      - in: "(timer|timers|timer)"
+      - in: "(timer|timers|the timer)"
         out: "timers"
   status_alarms:
     values:
-      - in: "(rise|rise|step|go)"
+      - in: "(rise|rise|step|go|wake)"
         out: "status"
   status_timers:
     values:
@@ -40,6 +39,10 @@ lists:
         out: "alarm"
       - in: "alarm"
         out: "alarm"
+  seconds:
+    range:
+      from: 0
+      to: 60
   minutes:
     range:
       from: 0

@@ -79,6 +79,14 @@ AlarmsAndTimers:
               data: {}
               target:
                 entity_id: all
+            - service: timer.cancel
+              data: {}
+              target:
+                entity_id: all
+            - service: timer.cancel
+              data: {}
+              target:
+                entity_id: all
         - conditions: "{{ stop == 'alarms' }}"
           sequence:
             - service: input_boolean.turn_off
@@ -162,13 +170,13 @@ AlarmsAndTimers:
       {% elif alarm_timer == 'timer' %}
         {% if status_timers == 'status' %}
           {% if timer1_state == 'active' %}
-            Time left on timer: {% set timer1_remaining = (as_timestamp(timer1_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer1_remaining }}
+            Time left on timer: {% set timer1_remaining = (as_timestamp(timer1_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer1_remaining }} . .
           {% endif %}
           {% if timer2_state == 'active' %}
-            Second timer: {% set timer2_remaining = (as_timestamp(timer2_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}
+            Second timer: {% set timer2_remaining = (as_timestamp(timer2_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %} , ,
           {% endif %}
           {% if timer3_state == 'active' %}
-            Last timer is finishing in: {% set timer3_remaining = (as_timestamp(timer3_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer3_remaining }}
+            Last timer is finishing in: {% set timer3_remaining = (as_timestamp(timer3_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer3_remaining }} . .
           {% endif %}
           {% if timer1_state != 'active' and timer2_state != 'active' and timer3_state != 'active' %}
             You have no active timers.
@@ -179,13 +187,13 @@ AlarmsAndTimers:
       {% endif %}
       {% if status_alarms == 'status' %}
         {% if wakeupalarm1_state == 'on' %}
-          Your first wakeup call is at: {{ wakeupalarm1_time.split(' ')[1][:5] }}
+          Your first wakeup call is at: {{ wakeupalarm1_time.split(' ')[1][:5] }} , ,
         {% endif %}
         {% if wakeupalarm2_state == 'on' %}
-          You also have another alarm set at: {{ wakeupalarm2_time.split(' ')[1][:5] }}
+          You also have another alarm set at: {{ wakeupalarm2_time.split(' ')[1][:5] }} , ,
         {% endif %}
         {% if wakeupalarm3_state == 'on' %}
-          Last wake up call is at: {{ wakeupalarm3_time.split(' ')[1][:5] }}
+          Last wake up call is at: {{ wakeupalarm3_time.split(' ')[1][:5] }} . .
         {% endif %}
         {% if wakeupalarm1_state == 'off' and wakeupalarm2_state == 'off' and wakeupalarm3_state == 'off' %}
           Counting down from {{ hours }}:{{ minutes }}.
@@ -194,13 +202,13 @@ AlarmsAndTimers:
         {% endif %}
       {% elif status_timers == 'status' %}
         {% if timer1_state == 'active' %}
-          Time left on timer: {% set timer1_remaining = (as_timestamp(timer1_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer1_remaining }}
+          Time left on timer: {% set timer1_remaining = (as_timestamp(timer1_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer1_remaining }} . .
         {% endif %}
         {% if timer2_state == 'active' %}
-          Second timer: {% set timer2_remaining = (as_timestamp(timer2_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}
+          Second timer: {% set timer2_remaining = (as_timestamp(timer2_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %} . .
         {% endif %}
         {% if timer3_state == 'active' %}
-          Last timer is finishing in: {% set timer3_remaining = (as_timestamp(timer3_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer3_remaining }}
+          Last timer is finishing in: {% set timer3_remaining = (as_timestamp(timer3_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer3_remaining }} . .
         {% endif %}
         {% if timer1_state != 'active' and timer2_state != 'active' and timer3_state != 'active' %}
           You have no active timers.

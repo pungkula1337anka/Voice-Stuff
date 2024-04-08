@@ -4,13 +4,12 @@ intents:
     data:
       - sentences:
           - "(starta|ställ|sätt) väckarklockan på {hours} [och] {minutes} "          
-          - "{alarm_timer} [klockan] {hours} {minutes} "       
-          - "(starta|ställ|sätt)  [en] {alarm_timer} [på] {minutes} minuter"
-          - "(starta|ställ|sätt)  [en] {alarm_timer} [på] {minutes} minuter [och] {hours} (timma|timmar|timme)"  
-          - "när ska jag {status_alarms}"
+          - "{alarm_timer} [klockan] {hours} {minutes} "    
+          - "(starta|ställ|sätt) [en] {alarm_timer} [på] {hours} (tim|timme|timma|timmar)"
+          - "(starta|ställ|sätt) [en] {alarm_timer} [på] {minutes} minuter"
+          - "(starta|ställ|sätt) [en] {alarm_timer} [på] {seconds} sekunder"
+          - "när ska jag {status_alarms} upp"
           - "hur länge är det {status_timers}"
-          - "{status_timers}"
-          - "{status_alarms}"
           - "stoppa alla {stop}"
           - "{snooze}"
 lists:
@@ -26,7 +25,7 @@ lists:
         out: "timers" 
   status_alarms:
     values:
-      - in: "(stig|stiga|kliva|gå)"
+      - in: "(stig|stiga|kliva|gå|vakna)"
         out: "status"   
   status_timers:
     values:
@@ -40,6 +39,10 @@ lists:
         out: "alarm"  
       - in: "alarm"
         out: "alarm"  
+  seconds:
+    range:
+      from: 0
+      to: 60
   minutes:
     range:
       from: 0
@@ -48,3 +51,6 @@ lists:
     range:
       from: 0
       to: 24
+      
+      
+      

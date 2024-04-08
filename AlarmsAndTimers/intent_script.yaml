@@ -8,7 +8,7 @@ AlarmsAndTimers:
           sequence:
             - service: input_datetime.set_datetime
               data:
-                time: "{{hours | default(00)}}:{{minutes | default(00)}}:00"
+                time: "{{hours | default(0)}}:{{minutes | default(0)}}:00"
               target:
                 entity_id: >
                   {% set wakeupalarm1_state = states('input_boolean.wakeupalarm1') %}
@@ -39,7 +39,27 @@ AlarmsAndTimers:
           sequence:
             - service: timer.start
               data:
-                duration: "{{hours | default(00)}}:{{minutes}}:00"
+                duration: >
+                  {% set sekunder = seconds %}
+                  {% set minuter = minutes %}
+                  {% set timmar = hours %}
+                  {% set total_seconds = 0 %}
+                  {% if sekunder is defined %}
+                    {% set total_seconds = total_seconds + sekunder %}
+                  {% else %}
+                    {% set sekunder = 0 %}
+                  {% endif %}
+                  {% if minuter is defined %}
+                    {% set total_seconds = total_seconds + (minuter * 60) %}
+                  {% else %}
+                    {% set minuter = 0 %}
+                  {% endif %}
+                  {% if timmar is defined %}
+                    {% set total_seconds = total_seconds + (timmar * 3600) %}
+                  {% else %}
+                    {% set timmar = 0 %}
+                  {% endif %}
+                  {{ total_seconds }}
               target:
                 entity_id: >
                   {% set timer1_state = states('timer.timer1') %}
@@ -72,7 +92,27 @@ AlarmsAndTimers:
           sequence:
             - service: timer.start
               data:
-                duration: "00:09:00"
+                duration: >
+                  {% set sekunder = seconds %}
+                  {% set minuter = minutes %}
+                  {% set timmar = hours %}
+                  {% set total_seconds = 0 %}
+                  {% if sekunder is defined %}
+                    {% set total_seconds = total_seconds + sekunder %}
+                  {% else %}
+                    {% set sekunder = 0 %}
+                  {% endif %}
+                  {% if minuter is defined %}
+                    {% set total_seconds = total_seconds + (minuter * 60) %}
+                  {% else %}
+                    {% set minuter = 0 %}
+                  {% endif %}
+                  {% if timmar is defined %}
+                    {% set total_seconds = total_seconds + (timmar * 3600) %}
+                  {% else %}
+                    {% set timmar = 0 %}
+                  {% endif %}
+                  {{ total_seconds }}
               target:
                 entity_id: timer.wakeupalarm               
   speech:
@@ -86,7 +126,16 @@ AlarmsAndTimers:
       {% set timer1_state = states('timer.timer1') %}
       {% set timer2_state = states('timer.timer2') %}
       {% set timer3_state = states('timer.timer3') %}
-    
+      {% set hours = hours | default(0) %}
+      {% set seconds = seconds | default(0) %}
+      {% set minutes = minutes | default(0) %}
+      {% set timer1_remaining = states('timer.timer1') %}
+      {% set timer2_remaining = states('timer.timer2') %}
+      {% set timer3_remaining = states('timer.timer3') %}      
+      {% set timer3_finishes_at = state_attr('timer.timer3', 'finishes_at') %}
+      {% set timer2_finishes_at = state_attr('timer.timer2', 'finishes_at') %}
+      {% set timer1_finishes_at = state_attr('timer.timer1', 'finishes_at') %}
+      
       {% if alarm_timer == 'alarm' %}
         {% if status_alarms == 'status' %}
           {% if wakeupalarm1_state == 'on' %}
@@ -99,7 +148,7 @@ AlarmsAndTimers:
             Last wake up call is at: {{ wakeupalarm3_time.split(' ')[1][:5] }}
           {% endif %}
           {% if wakeupalarm1_state == 'off' and wakeupalarm2_state == 'off' and wakeupalarm3_state == 'off' %}
-            Set your {{ entity_id }} to {{ hours }}:{{ minutes }}.
+            Set your {{ hours }}:{{ minutes }}.
           {% elif wakeupalarm1_state == 'on' and wakeupalarm2_state == 'on' and wakeupalarm3_state == 'on' %}
             You already have 3 alarms set.
           {% endif %}
@@ -113,13 +162,13 @@ AlarmsAndTimers:
       {% elif alarm_timer == 'timer' %}
         {% if status_timers == 'status' %}
           {% if timer1_state == 'active' %}
-            Time left on timer: {{ state_attr('timer.timer1', 'duration') }}
+            Time left on timer: {% set timer1_remaining = (as_timestamp(timer1_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer1_remaining }}
           {% endif %}
           {% if timer2_state == 'active' %}
-            Second timer: {{ state_attr('timer.timer2', 'duration') }}
+            Second timer: {% set timer2_remaining = (as_timestamp(timer2_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}
           {% endif %}
           {% if timer3_state == 'active' %}
-            Last timer is up at: {{ state_attr('timer.timer3', 'duration') }}
+            Last timer is finishing in: {% set timer3_remaining = (as_timestamp(timer3_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer3_remaining }}
           {% endif %}
           {% if timer1_state != 'active' and timer2_state != 'active' and timer3_state != 'active' %}
             You have no active timers.
@@ -145,13 +194,13 @@ AlarmsAndTimers:
         {% endif %}
       {% elif status_timers == 'status' %}
         {% if timer1_state == 'active' %}
-          Time left on timer: {{ state_attr('timer.timer1', 'duration') }}
+          Time left on timer: {% set timer1_remaining = (as_timestamp(timer1_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer1_remaining }}
         {% endif %}
         {% if timer2_state == 'active' %}
-          Second timer: {{ state_attr('timer.timer2', 'duration') }}
+          Second timer: {% set timer2_remaining = (as_timestamp(timer2_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}
         {% endif %}
         {% if timer3_state == 'active' %}
-          Last timer is up at: {{ state_attr('timer.timer3', 'duration') }}
+          Last timer is finishing in: {% set timer3_remaining = (as_timestamp(timer3_finishes_at) - as_timestamp(now())) | timestamp_custom('%M:%S', false) %}{{ timer3_remaining }}
         {% endif %}
         {% if timer1_state != 'active' and timer2_state != 'active' and timer3_state != 'active' %}
           You have no active timers.

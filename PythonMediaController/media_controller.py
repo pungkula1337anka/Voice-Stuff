@@ -50,7 +50,16 @@ NEWS_API_LIST = [
     "http://api.sr.se/api/v2/podfiles?programid=5524&format=json",
     "http://api.sr.se/api/v2/podfiles?programid=5413&format=json"
 ]
+# Define oyur Live-TV channels here.
+livetv_channels = {
+    "1": "http://example.com:1233/asdko23/291dmasi/93213",
+    "2": "http://example.com:1233/asdko23/291dmasi/93213",
+    "3": "http://example.com:1233/asdko23/291dmasi/93213",
+    "4": "http://example.com:1233/asdko23/291dmasi/93213",
+    "5": "http://example.com:1233/asdko23/291dmasi/93213",
+}
 # If you are having issues with Speech to Text translating or generating wrong words, you can correct them here, before they are processed into the script.
+# You can also use this to create aliases for your live-TV channels and such.
 CORRECTIONS = {
     "wrong word": "right word",
     "wrong word2": "right word2",
@@ -119,7 +128,7 @@ def call_service(service, data, entity_id):
     if response.status_code == 200:
         print(f"Service call '{service}' successful.")
     else:
-        print(f"Failed to call service '{service}'. Status code: {response.status_code}")
+        print(f"")
 
 
 def template_directory_path(directory_paths):
@@ -208,17 +217,26 @@ def read_m3u_file(file_path):
 
     return lines
 
-def send_livetv_call(search_query):
+def send_livetv_call(channel_name):
     """
     This function sends a service call to Home Assistant to start playing the playlist.
     """
+    if channel_name not in livetv_channels:
+        print("Channel not found in the list.")
+        return
+
+    channel_url = livetv_channels[channel_name]
+
+    with open("www/tmp/playlist.m3u", "w") as tmp_file:
+        tmp_file.write(channel_url)
+
     url = f"http://{HOME_ASSISTANT_IP}/api/services/remote/turn_on"
     headers = {
         "Authorization": f"Bearer {ACCESS_TOKEN}",
         "Content-Type": "application/json"
     }
     data = {
-        "activity": f"https://{YOUR_DOMAIN}/local/live/{search_query}/{search_query}.m3u",
+        "activity": f"https://{YOUR_DOMAIN}/local/tmp/playlist.m3u",
         "entity_id": sys.argv[3]  
     }
     response = requests.post(url, headers=headers, json=data)
@@ -226,6 +244,7 @@ def send_livetv_call(search_query):
         print("")
     else:
         print(f"det låter som du har en kötte bulle i käften. tugga klart middagen och försök sedan igen. Status code: {response.status_code}")
+        
 
 def get_entity_attribute(entity_id, attribute_name):
     url = f'http://{HOME_ASSISTANT_IP}/api/states/{entity_id}'

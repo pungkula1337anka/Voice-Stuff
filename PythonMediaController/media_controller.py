@@ -1,4 +1,4 @@
-### -->  Python Media Controller v0.2  <--   ###
+### -->  Python Media Controller v0.3  <--   ###
 ##################################    
 ##### -> README <- ######
 # https://github.com/pungkula1337anka/Voice-Stuff/tree/main/PythonMediaController

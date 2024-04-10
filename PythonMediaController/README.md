@@ -107,8 +107,8 @@ The script stores some data about played items in a .txt file in your config dir
 dont worry though, the Python wont let it get big and grow strong. <br>
 
 14. 📡 __Live-TV__ <br>
-Edit your `.m3u` file and split your channels into separate `.m3u` files. <br>
-Name each file by channel word you want to use and place it inside the directory `/config/www/live/` <br>
+Simply define your Live-TV http URLs in the python. <br>
+You can then call a channel by saying `play channel 5`. <br>
 
  
 <br> 

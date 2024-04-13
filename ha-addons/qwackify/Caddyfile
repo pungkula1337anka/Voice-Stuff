@@ -1,0 +1,15 @@
+{
+    https_port {$addonport}
+    admin off
+}
+
+{$domain}.duckdns.org {
+    root * /media
+    file_server
+    tls {
+        dns duckdns {$duckauth}
+    }
+}
+
+
+

@@ -27,11 +27,11 @@ RUN \
   && if [ "${BUILD_ARCH}" = "armv7" ]; then BINARCH="armv7"; fi \
   && if [ "${BUILD_ARCH}" = "aarch64" ]; then BINARCH="arm64"; fi \
   \
-  && curl -J -L -o /tmp/caddy.tar.gz "https://github.com/caddyserver/caddy/releases/download/${CADDY_VERSION}/caddy_${CADDY_VERSION//v/}_linux_${BINARCH}.tar.gz" \
-  && tar zxvf /tmp/caddy.tar.gz -C /usr/bin caddy \
-  && chmod +x /usr/bin/caddy \
-  && rm -rf /tmp/caddy \
-  && caddy version
+  && tar zxvf /caddy.tar.gz -C /rootfs/etc/caddy \
+  && chmod +x /rootfs/etc/caddy/caddy \
+  && rm -rf /caddy.tar.gz \
+  && /rootfs/etc/caddy/caddy version
+
 
 # Copy files based on assist_language variable
 ARG ASSIST_LANGUAGE

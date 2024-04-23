@@ -34,7 +34,7 @@ DEFAULT_PLAYLIST = "/media/Playlists/MyPlaylist2.m3u"
 # Stores recently played news data to avoid hearing duplicates.
 PLAYED_NEWS_FILE = "played_news.txt"
 MAX_PLAYED_NEWS_ENTRIES = 350
-INTRO_URL = "https://qwackify.duckdns.org/intro.mp4"
+INTRO_URL = "https://drive.proton.me/urls/GF9374B97R#ZMSv2jz9JPBY"
 # Define your /media folders here. 
 SEARCH_FOLDERS = {
     "tv": "/media/TV",

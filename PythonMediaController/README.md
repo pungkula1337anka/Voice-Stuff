@@ -2,31 +2,35 @@
 <h1 align="center">
 <br>
  
-__Python Media Controller__ _v0.2_
 
-<img src="https://raw.githubusercontent.com/pungkula1337anka/Voice-Stuff/main/asset/pythonmedia.png">
+<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/ducktv6.jpeg?raw=true" width="400" height="400"  />
 
+</h1><br>
 
 </h1><br>
 
 <br><br><br>
 
+# __What is 🦆 duck-TV? 📺__
+
+duck-TV is a super easy way to power-up your Chromecast and give it voice controlling capabilities. <br>
+The duck-TV script can be used to control all kinds of media! <br> <br>
+
+🦆 Quack and play, no delay, <br>
+🗑️ Clicks and taps? A thing of the past, <br>
+🎙 Just speak up, and have a blast! <br>
 
 # __Full media control in one Python script.__ <br>
 
-__UPDATED__ <br>
-I belive this script now __Plays__ all video codecs! and __ANY__ media files! __NO TRANSCODING NEEDED!?__ <br>
-Its very quick, and low power usage.<br> 
-_Let me know if I am wrong._ <br>
 <br>
-Python Media Controller utilizes the portability of Chromecast and the power of LibVLC to broadcast your local media to your devices. <br>
-The difflib module is used to maximize your search potential and to create an __lightning fast__ "fuzzywuzzy" alike search effect, which can be clearvly used<br> 
+duck-TV Voice Controller utilizes the portability of Chromecast and the power of LibVLC to broadcast your local media to your devices. <br>
+The difflib module is used to maximize your search potential and to create an __lightning fast__ "fuzzywuzzy" alike search effect, which can be clearvly used
 especially when spaking in a language other than your Assist pipeline defaults. <br>
-This allows for (most likely) calling an artists name or song title thats not in your native language. <br>
+This allows for calling an artists name or song title thats not in your native language. <br>
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>
 A correction function is also implemented as fallback to ensure as high success rate as possible for your voice commands. <br>
 All search results are stored in temporary .m3u files when being sent to your media player to simplify the playback process as much as possible. <br><br>
-The python comes with custom sentence, combined these has every possible command you could ever think off,  to control your TV's or Media boxes. <br>
+The script comes with custom sentence, combined these has every possible command you could ever think off, when controlling your TV's or Media boxes. <br>
 <br>
 
 4 quick and fairly simple steps to control all your media by voice. <br>
@@ -107,7 +111,7 @@ The script stores some data about played items in a .txt file in your config dir
 dont worry though, the Python wont let it get big and grow strong. <br>
 
 14. 📡 __Live-TV__ <br>
-Simply define your Live-TV http URLs in the python. <br>
+Simply define your Live-TV http URLs in the python file. <br>
 You can then call a channel by saying `play channel 5`. <br>
 
  
@@ -124,6 +128,9 @@ Simply say `Next`.<br>
 __Previous Track/Episode__  <br> 
 `Previous` is the word. <br>
 
+__Power On/Off your TV__  <br> 
+Turn on/off your TV's & media box by saying `on` or `off`.<br>
+
 <br>
 
 
@@ -131,34 +138,70 @@ __Previous Track/Episode__  <br>
 
 
 - **1: Download the files** <br>
-Add the content of the files into your already existing files.<br>
-Make sure they are in the correct path. <br>
-LOoking for Reverse Proxy? Should be in `/share/caddy` <br>
-[Caddy official](https://caddyserver.com/download?package=github.com%2Fcaddy-dns%2Fduckdns)
+Download and the files in this repo to your `/config` directory. <br>
+If the files already exist in your /config directory, simply add the content of the files and save.<br>
 
-- **2: Reverse Proxy Media Directory** <br>
-Running Chromecast like this requires TLS HTTPS and a domain. <br>
-If you are running Home Assistant OS and are not familiar with these kinds of network setups, I would reccomend <br>
-network mounting your media to `/media`. <br>
-And downloading the `Caddy 2` Reverse Proxy addon. [Add this repo](https://github.com/einschmidt/hassio-addons) <br>
-Register a couple duckdns domains and grab your API Key. <br>
-Place the files`caddy` and `Caddyfile` in your /share/caddy directory. <br>
-Define your `IP` and `duckdns domains` and `API key` in the `Caddyfile`. <br>
-Use the DuckDNS addon to dynamically update your IP to duckdns. <br>
-Congratulations, after restarting the addons your reverse proxy should be up and running. <br>
-
-- **3: Custom Sentences** <br>
-If you want to edit and use your own sentences you edit the `MediaController.yaml` file. <br>
-
-- **4: Python Script** <br>
+- **2: Python Script** <br>
 Edit the top section in `media_controller.py` to unlock all available features. <br>
 YouTube API Key can be created [here](https://developers.google.com/youtube/registering_an_application). You probably need to connect the key to a project aswell. <br>
-Dont forget to define your stuff _and .........._ <br>
+
+- **OPTIONAL: Custom Sentences** <br>
+If your language is not included in the `/custom_sentences` directory, simply create a folder with your language code and copy the yaml file and edit it to your preferences. <br>
 
 __yay__ <br>
   - 🎉 _congratulations! 🎉 you can now control_ <br>
     - _your media like a pro voice ninja!_  <br>
 <br><br>
+
+- **OPTIONAL BONUS: Continued Conversation** <br>
+If you want the Voice Assistant to automatically start upon failed intent (not having to say the wake word again) add the code below to your ESP devices yaml. <br>
+
+ESPHome```
+api:
+# -> CREATES SERVICE CALL <- #  
+  services:
+    - service: wait_and_start_va
+      then:
+        - script.execute: wait_and_start_va
+
+script:
+# -> WAIT AND START VA <- #  
+  - id: wait_and_start_va
+    then:
+      - delay: 10s 
+      - switch.turn_off: use_wake_word
+      - wait_until:
+          not:
+            voice_assistant.is_running:
+      - delay: 100ms
+      - voice_assistant.start:
+      - delay: 250ms  
+      - wait_until:
+          not:
+            voice_assistant.is_running:
+      - switch.turn_on: use_wake_word
+
+switch:
+# -> USE WAKE WORD <- #
+  - platform: template
+    name: Use wake word
+    id: use_wake_word
+    optimistic: true
+    restore_mode: RESTORE_DEFAULT_OFF
+    entity_category: config
+    on_turn_on:
+      - lambda: id(va).set_use_wake_word(true);
+      - if:
+          condition:
+            not:
+              - voice_assistant.is_running
+          then:
+            - voice_assistant.start_continuous
+    on_turn_off:
+      - voice_assistant.stop
+      - lambda: id(va).set_use_wake_word(false);
+```
+
 
 
 

@@ -11,14 +11,20 @@
 
 <br><br><br>
 
-# __What is 🦆 duck-TV? 📺__
+## __What is 🦆 duck-TV? 📺__
 
 duck-TV is a super easy way to power-up your Chromecast and give it voice controlling capabilities. <br>
 The duck-TV script can be used to control all kinds of media! <br> <br>
+<br>
+2 quick and simple steps to control all your media by voice. <br>
+<br><br>
 
 🦆 Quack and play, no delay, <br>
 🗑️ Clicks and taps? A thing of the past, <br>
 🎙 Just speak up, and have a blast! <br>
+
+<br>br>
+
 
 # __Full media control in one Python script.__ <br>
 
@@ -33,7 +39,7 @@ All search results are stored in temporary .m3u files when being sent to your me
 The script comes with custom sentence, combined these has every possible command you could ever think off, when controlling your TV's or Media boxes. <br>
 <br>
 
-4 quick and fairly simple steps to control all your media by voice. <br>
+
 
 <br>
 
@@ -148,15 +154,10 @@ YouTube API Key can be created [here](https://developers.google.com/youtube/regi
 - **OPTIONAL: Custom Sentences** <br>
 If your language is not included in the `/custom_sentences` directory, simply create a folder with your language code and copy the yaml file and edit it to your preferences. <br>
 
-__yay__ <br>
-  - 🎉 _congratulations! 🎉 you can now control_ <br>
-    - _your media like a pro voice ninja!_  <br>
-<br><br>
-
 - **OPTIONAL BONUS: Continued Conversation** <br>
 If you want the Voice Assistant to automatically start upon failed intent (not having to say the wake word again) add the code below to your ESP devices yaml. <br>
 
-ESPHome```
+```
 api:
 # -> CREATES SERVICE CALL <- #  
   services:
@@ -202,7 +203,10 @@ switch:
       - lambda: id(va).set_use_wake_word(false);
 ```
 
-
+__yay__ <br>
+  - 🎉 _congratulations! 🎉 you can now control_ <br>
+    - _your media like a pro voice ninja!_  <br>
+<br><br>
 
 
 <br>

@@ -11,19 +11,21 @@
 
 <br><br><br>
 
-## __What is 🦆 duck-TV? 📺__
+# __What is 🦆 duck-TV? 📺__
 
 duck-TV is a super easy way to power-up your Chromecast and give it voice controlling capabilities. <br>
 The duck-TV script can be used to control all kinds of media! <br> <br>
 <br>
-2 quick and simple steps to control all your media by voice. <br>
+
+__2 quick and simple steps to control all your media by voice.__ <br>
+
 <br><br>
 
 🦆 Quack and play, no delay, <br>
 🗑️ Clicks and taps? A thing of the past, <br>
 🎙 Just speak up, and have a blast! <br>
 
-<br>br>
+<br><br>
 
 
 # __Full media control in one Python script.__ <br>

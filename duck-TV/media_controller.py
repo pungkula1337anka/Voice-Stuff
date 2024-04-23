@@ -1,7 +1,7 @@
 ### -->  duck-TV Voice Controller v1.0  <--   ###
 ##################################    
 ##### -> README <- ######
-# https://github.com/pungkula1337anka/Voice-Stuff/tree/main/PythonMediaController
+# https://github.com/pungkula1337anka/Voice-Stuff/tree/main/duck-TV
 ##################################
 # Be sure to place this file inside your /config directory.
 import os
@@ -22,19 +22,17 @@ from urllib.parse import urlencode
 # Define your Home Assistant connection. 
 HOME_ASSISTANT_IP = "YOUR_HOME_ASSISTANT_IP:8123"
 ACCESS_TOKEN = "YOUR_LONG_LIVED_ACCESS_TOKEN"
-# Only chnage if you know what you are doing. Default = "smb://"
-WEBSERVER = "smb://"
+
 # Grab your API Key from Google Developer.
 YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY'
+
 # Define media_player & attribute for grabbing currently playing data.
 ENTITY_ID = "media_player.shield"
 ATTRIBUTE_NAME = "media_title"
+
 # Defining your default playlist to simplify automations.
 DEFAULT_PLAYLIST = "/media/Playlists/MyPlaylist2.m3u"
-# Stores recently played news data to avoid hearing duplicates.
-PLAYED_NEWS_FILE = "played_news.txt"
-MAX_PLAYED_NEWS_ENTRIES = 350
-INTRO_URL = "https://drive.proton.me/urls/GF9374B97R#ZMSv2jz9JPBY"
+
 # Define your /media folders here. 
 SEARCH_FOLDERS = {
     "tv": "/media/TV",
@@ -68,6 +66,13 @@ CORRECTIONS = {
     "wrong word2": "right word2",
 }
 
+# Stores recently played news data to avoid hearing duplicates.
+PLAYED_NEWS_FILE = "played_news.txt"
+MAX_PLAYED_NEWS_ENTRIES = 350
+INTRO_URL = "https://drive.proton.me/urls/GF9374B97R#ZMSv2jz9JPBY"
+
+# Only chnage if you know what you are doing. Default = "smb://"
+WEBSERVER = "smb://"
 ### --> Thank you! <-- ###
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 

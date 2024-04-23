@@ -222,4 +222,13 @@ __yay__ <br>
  
  __🎈 enjoy 🎈__ 
 
-</h1><br><br>
+</h1><br><br><br><br>
+
+
+# __Troubleshooting__
+
+Make sure you have Samba (SMB) on your HA instance. There is an official Addon you can use. <br><br>
+
+Make sure you have the Android TV Remote integration installed and properly configurated. <br> 
+
+Make sure you have defined everything in the top section of the python file correctly. <br> 

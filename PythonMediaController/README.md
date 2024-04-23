@@ -40,7 +40,7 @@ A correction function is also implemented as fallback to ensure as high success 
 All search results are stored in temporary .m3u files when being sent to your media player to simplify the playback process as much as possible. <br><br>
 The script comes with custom sentence, combined these has every possible command you could ever think off, when controlling your TV's or Media boxes. <br>
 <br>
-
+Upon first usage, you will prompted for your samba password. This will only happen once.<br>
 
 
 <br>

@@ -19,7 +19,7 @@ The duck-TV script can be used to control all kinds of media! <br> <br>
 
 __2 quick and simple steps to control all your media by voice.__ <br>
 
-<br><br>
+<br>
 
 🦆 Quack and play, no delay, <br>
 🗑️ Clicks and taps? A thing of the past, <br>
@@ -227,8 +227,10 @@ __yay__ <br>
 
 # __Troubleshooting__
 
-Make sure you have Samba (SMB) on your HA instance. There is an official Addon you can use. <br><br>
+Make sure you have Samba (SMB) on your HA instance. There is an official Addon you can use. <br>
 
-Make sure you have the Android TV Remote integration installed and properly configurated. <br> 
+Make sure you have the Android TV Remote integration installed and properly configurated on your HA instance. <br> 
 
 Make sure you have defined everything in the top section of the python file correctly. <br> 
+
+For best performance, I recommend having the VLC app installed on your TV/Android box. <br>

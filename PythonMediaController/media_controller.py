@@ -1,4 +1,4 @@
-### -->  Python Media Controller v0.3  <--   ###
+### -->  duck-TV Voice Controller v1.0  <--   ###
 ##################################    
 ##### -> README <- ######
 # https://github.com/pungkula1337anka/Voice-Stuff/tree/main/PythonMediaController
@@ -9,18 +9,21 @@ import sys
 import random
 import time
 import requests
+import datetime
 import difflib
+import tempfile
+import secrets
+import string
 from difflib import get_close_matches
 from urllib.parse import urlencode
-#########################################################################
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### --> Define your shit here please <-- ###
 
 # Define your Home Assistant connection. 
 HOME_ASSISTANT_IP = "YOUR_HOME_ASSISTANT_IP:8123"
 ACCESS_TOKEN = "YOUR_LONG_LIVED_ACCESS_TOKEN"
-YOUR_DOMAIN = "EXAMPLE_HA_DOMAIN.duckdns.org:8123"
-# Reverse Proxy your /media as file server at this domain. (For Chromecast)
-WEBSERVER = "https://EXAMPLE.duckdns.org"
+# Only chnage if you know what you are doing. Default = "smb://"
+WEBSERVER = "smb://"
 # Grab your API Key from Google Developer.
 YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY'
 # Define media_player & attribute for grabbing currently playing data.
@@ -66,7 +69,7 @@ CORRECTIONS = {
 }
 
 ### --> Thank you! <-- ###
-########################################################################
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 news_list = []
 
@@ -76,7 +79,7 @@ def apply_corrections(query):
     """
     corrected_query = CORRECTIONS.get(query, query)
     return corrected_query
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def preprocess_search_query():
     """
     This function preprocesses the search query before executing the main script.
@@ -88,7 +91,7 @@ def preprocess_search_query():
 
 if __name__ == "__main__":
     preprocess_search_query()
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 def clean_search_query(query):
     """
@@ -96,27 +99,63 @@ def clean_search_query(query):
     """
     cleaned_query = query.replace('.', '').replace(',', '').replace('!', '')
     return cleaned_query
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def call_media_next_track_service(entity_id):
     service_data = {}
     call_service("media_player/media_next_track", service_data, entity_id)
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def call_media_previous_track_service(entity_id):
     service_data = {}
     call_service("media_player/media_previous_track", service_data, entity_id)
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def call_media_play_pause_service(entity_id):
     service_data = {}
     call_service("media_player/media_play_pause", service_data, entity_id)
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def call_volume_up_service(entity_id):
     service_data = {}
     call_service("media_player/volume_up", service_data, entity_id)
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def call_volume_down_service(entity_id):
     service_data = {}
     call_service("media_player/volume_down", service_data, entity_id)
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+def call_power_on_service(file_name):
+    """
+    This function sends a service call to Home Assistant to power on TV.
+    """
+    url = f"http://{HOME_ASSISTANT_IP}/api/services/remote/turn_on"
+    headers = {
+        "Authorization": f"Bearer {ACCESS_TOKEN}",
+        "Content-Type": "application/json"
+    }
+    data = {
+        "entity_id": sys.argv[3]  
+    }
+    response = requests.post(url, headers=headers, json=data)
+    if response.status_code == 200:
+        print("qwack")
+    else:
+        print(f"")
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+def call_power_off_service(file_name):
+    """
+    This function sends a service call to Home Assistant to power on TV.
+    """
+    url = f"http://{HOME_ASSISTANT_IP}/api/services/remote/turn_off"
+    headers = {
+        "Authorization": f"Bearer {ACCESS_TOKEN}",
+        "Content-Type": "application/json"
+    }
+    data = {
+        "entity_id": sys.argv[3]  
+    }
+    response = requests.post(url, headers=headers, json=data)
+    if response.status_code == 200:
+        print("qwack qwack.")
+    else:
+        print(f"")
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def call_service(service, data, entity_id):
     url = f"http://{HOME_ASSISTANT_IP}/api/services/{service}"
     headers = {
@@ -129,19 +168,44 @@ def call_service(service, data, entity_id):
         print(f"Service call '{service}' successful.")
     else:
         print(f"")
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+def call_template_service():
+    """
+    This function gets the current Assist device.
+    """
+    template = """
+    {% set sensor_states = namespace(last_sensor='', last_changed=None) %}
+    {% for entity_id in states | selectattr('entity_id', 'match', 'binary_sensor.*assist_in_progress$') | map(attribute='entity_id') | list %}
+        {% set state_obj = states[entity_id] %}
+        {% if sensor_states.last_changed is none or state_obj.last_changed > sensor_states.last_changed %}
+            {% set sensor_states.last_sensor = entity_id %}
+            {% set sensor_states.last_changed = state_obj.last_changed %}
+        {% endif %}
+    {% endfor %}
+    {{ sensor_states.last_sensor if sensor_states.last_sensor else 'None' }}
+    """
+    url = f"http://{HOME_ASSISTANT_IP}/api/template"
+    headers = {
+        "Authorization": f"Bearer {ACCESS_TOKEN}",
+        "Content-Type": "application/json",
+    }
+    data = {"template": template}
+    response = requests.post(url, json=data, headers=headers)
+    if response.status_code == 200:
+        return response.text  
+    else:
+        return None  
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def template_directory_path(directory_paths):
     """
     This function templates the directory paths.
     """
     urls = []
     for directory_path in directory_paths:
-        url = f"{WEBSERVER}{os.path.abspath(directory_path).split('/media')[-1]}"
+        url = f"{WEBSERVER}{HOME_ASSISTANT_IP.split(':')[0]}/media{os.path.abspath(directory_path).split('/media')[-1]}"
         urls.append(url)
     return urls
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def list_files(directory):
     """
     This function lists all files recursively in the given directory.
@@ -152,7 +216,7 @@ def list_files(directory):
             if not file.endswith(('.nfo', '.png', '.gif', '.m3u', '.jpg', '.jpeg')):
                 file_list.append(os.path.join(root, file))
     return file_list
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def save_media_content_urls(media_content_urls, file_name):
     """
     This function saves the media content URLs to a text file.
@@ -162,8 +226,7 @@ def save_media_content_urls(media_content_urls, file_name):
         for media_content_url in media_content_urls:
             file.write(media_content_url + '\n')
     send_service_call(file_name)
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def find_closest_directory(query, directories):
     """
     This function finds the closest directory match for the given query.
@@ -173,8 +236,7 @@ def find_closest_directory(query, directories):
         return closest_match[0]
     else:
         return None
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def find_closest_files(query, directory, n=5):
     """
     This function finds the closest file matches for the given query within the directory and its subdirectories.
@@ -191,8 +253,7 @@ def find_closest_files(query, directory, n=5):
     closest_matches.sort(key=lambda x: x[1], reverse=True)
 
     return closest_matches[:n]
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def save_media_content_ids(media_content_ids, file_name):
     """
     This function saves the media content IDs to a text file.
@@ -204,9 +265,7 @@ def save_media_content_ids(media_content_ids, file_name):
         file.writelines('\n'.join(media_content_ids) + '\n')
 
     send_service_call(file_name)
-
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def read_m3u_file(file_path):
     if not os.path.exists(file_path):
         print("File not found:", file_path)
@@ -216,7 +275,24 @@ def read_m3u_file(file_path):
         lines = [line.strip() for line in file if not line.startswith('#')]
 
     return lines
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+def start_va(name):
+    """
+    This function sends a service call to Home Assistant to start Voice Assistant on targeted device.
+    """
+    url = f"http://{HOME_ASSISTANT_IP}/api/services/esphome/{name}_wait_and_start_va"
+    headers = {
+        "Authorization": f"Bearer {ACCESS_TOKEN}",
+        "Content-Type": "application/json"
+    }
+    data = {
+    }
+    response = requests.post(url, headers=headers, json=data)
+    if response.status_code == 200:
+        print("")
+    else:
+        print("")
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def send_livetv_call(channel_name):
     """
     This function sends a service call to Home Assistant to start playing the playlist.
@@ -236,7 +312,7 @@ def send_livetv_call(channel_name):
         "Content-Type": "application/json"
     }
     data = {
-        "activity": f"https://{YOUR_DOMAIN}/local/tmp/playlist.m3u",
+        "activity": f"http://{HOME_ASSISTANT_IP}/local/tmp/playlist.m3u",
         "entity_id": sys.argv[3]  
     }
     response = requests.post(url, headers=headers, json=data)
@@ -244,8 +320,7 @@ def send_livetv_call(channel_name):
         print("")
     else:
         print(f"det låter som du har en kötte bulle i käften. tugga klart middagen och försök sedan igen. Status code: {response.status_code}")
-        
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def get_entity_attribute(entity_id, attribute_name):
     url = f'http://{HOME_ASSISTANT_IP}/api/states/{entity_id}'
     headers = {'Authorization': f'Bearer {ACCESS_TOKEN}'}
@@ -260,12 +335,12 @@ def get_entity_attribute(entity_id, attribute_name):
     else:
         print("Failed to get entity state:", response.text)
         sys.exit(1)
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def create_m3u_from_file(filepath):
     metadata_list = []
     metadata_list.append(filepath)
     return metadata_list
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def add_song_to_playlist(playlist_file):
     song_path = get_entity_attribute(ENTITY_ID, ATTRIBUTE_NAME)
     if song_path:
@@ -279,7 +354,7 @@ def add_song_to_playlist(playlist_file):
         print(f"Song {song_path} added to the playlist {playlist_file} successfully!")
     else:
         print(f"Failed to extract song path from the media player '{ATTRIBUTE_NAME}' attribute '{ENTITY_ID}'.")
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def send_mp3playlist_call(search_query):
     """
     This function sends a service call to Home Assistant to start playing the playlist.
@@ -298,8 +373,7 @@ def send_mp3playlist_call(search_query):
         print("Sure thing.")
     else:
         print(f"It sounds like you have a meat ball in your mouth. Finish your dinner before trying again. Status code: {response.status_code}")
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def send_service_call(file_name):
     """
     This function sends a service call to Home Assistant to start playing the playlist.
@@ -310,7 +384,7 @@ def send_service_call(file_name):
         "Content-Type": "application/json"
     }
     data = {
-        "activity": f"https://{YOUR_DOMAIN}/local/playlist.m3u",
+        "activity": f"http://{HOME_ASSISTANT_IP}/local/playlist.m3u",
         "entity_id": sys.argv[3]  
     }
     response = requests.post(url, headers=headers, json=data)
@@ -318,8 +392,7 @@ def send_service_call(file_name):
         print("No problem.")
     else:
         print(f"It sounds like you have a meat ball in your mouth. Finish your dinner before trying again. Status code: {response.status_code}")
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def fetch_news():
     global news_list
 
@@ -334,20 +407,17 @@ def fetch_news():
                 url = item.get("downloadpodfile", {}).get("url") or item.get("url")
                 if url:
                     news_list.append(url)
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def load_played_news():
     if os.path.exists(PLAYED_NEWS_FILE):
         with open(PLAYED_NEWS_FILE, "r") as f:
             return set(f.read().splitlines()[:MAX_PLAYED_NEWS_ENTRIES])
     return set()
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def save_played_news():
     with open(PLAYED_NEWS_FILE, "w") as f:
         f.write("\n".join(played_news))
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def mainnews(entity_id):
     global played_news
     played_news = load_played_news()
@@ -361,8 +431,7 @@ def mainnews(entity_id):
         save_media_content_ids(new_news, "news")
         played_news.update(new_news)
         save_played_news()
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def search_youtube(query):
 
     params = {
@@ -391,7 +460,7 @@ def search_youtube(query):
     else:
         print(f"Failed to retrieve videos. Status code: {response.status_code}")
         return None, None
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
@@ -401,26 +470,25 @@ if __name__ == "__main__":
     query_or_file = sys.argv[1]
     type_or_entity_id = sys.argv[2].lower()
     media_player_entity_id = sys.argv[3]
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # News 
     if type_or_entity_id == "news":
         mainnews(media_player_entity_id)
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Live-TV (TV Channels)
     elif type_or_entity_id == "livetv":
         send_livetv_call(query_or_file)        
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Playlst (Play Playlist)
     elif type_or_entity_id == "playlist":
         query_or_file = sys.argv[1]   
         send_mp3playlist_call(query_or_file)
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Add (Song to Playlist)
     elif type_or_entity_id == "add":
         playlist_file = sys.argv[1] if len(sys.argv) == 2 else DEFAULT_PLAYLIST
         add_song_to_playlist(playlist_file)
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Jukebox (Random Music)
     elif type_or_entity_id == "jukebox":
         search_directory = SEARCH_FOLDERS["music"]
@@ -429,7 +497,7 @@ if __name__ == "__main__":
         media_content_urls = template_directory_path(files)
         save_media_content_urls(media_content_urls, "jukebox")
         send_service_call("jukebox")  
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Movies
     elif type_or_entity_id == "movie":
         closest_directory = find_closest_directory(query_or_file, os.listdir(SEARCH_FOLDERS["movie"]))
@@ -440,8 +508,12 @@ if __name__ == "__main__":
             save_media_content_urls(media_content_urls, "movie")
             send_service_call("movie")
         else:
-            print("No matching directory found for the search query.")
-
+            print("Could not find any movie with the title", sys.argv[1])
+            print("Try again")
+            entity_state = call_template_service()
+            name = entity_state.replace('binary_sensor.', '').replace('_assist_in_progress', '')
+            start_va(name)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # TV (TV Shows)
     elif type_or_entity_id == "tv":
         closest_directory = find_closest_directory(query_or_file, os.listdir(SEARCH_FOLDERS["tv"]))
@@ -453,8 +525,12 @@ if __name__ == "__main__":
             save_media_content_urls(media_content_urls, "tv")
             send_service_call("tv")
         else:
-            print("No matching directory found for the search query.")
-
+            print("Could not find any TV Show with the title", sys.argv[1])
+            print("Try again")
+            entity_state = call_template_service()
+            name = entity_state.replace('binary_sensor.', '').replace('_assist_in_progress', '')
+            start_va(name)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Music (Artist)
     elif type_or_entity_id == "music":
         closest_directory = find_closest_directory(query_or_file, os.listdir(SEARCH_FOLDERS["music"]))
@@ -466,8 +542,12 @@ if __name__ == "__main__":
             save_media_content_urls(media_content_urls, "music")
             send_service_call("music")
         else:
-            print("No matching directory found for the search query.")
-
+            print("Could not find any music artist with the name", sys.argv[1])
+            print("Try again")
+            entity_state = call_template_service()
+            name = entity_state.replace('binary_sensor.', '').replace('_assist_in_progress', '')
+            start_va(name)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Podcasts
     elif type_or_entity_id == "podcast":
         closest_directory = find_closest_directory(query_or_file, os.listdir(SEARCH_FOLDERS["podcast"]))
@@ -478,8 +558,12 @@ if __name__ == "__main__":
             save_media_content_urls(media_content_urls, "podcast")
             send_service_call("podcast")
         else:
-            print("No matching directory found for the search query.")
-
+            print("Could not find any Podcast with the name", sys.argv[1])
+            print("Try again")
+            entity_state = call_template_service()
+            name = entity_state.replace('binary_sensor.', '').replace('_assist_in_progress', '')
+            start_va(name)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Music Videos
     elif type_or_entity_id == "musicvideo":
         closest_directory = find_closest_directory(query_or_file, os.listdir(SEARCH_FOLDERS["musicvideo"]))
@@ -490,8 +574,12 @@ if __name__ == "__main__":
             save_media_content_urls(media_content_urls, "musicvideo")
             send_service_call("musicvideo")
         else:
-            print("No matching directory found for the search query.")
-
+            print("Could not find any Music Video with the title", sys.argv[1])
+            print("Try again")
+            entity_state = call_template_service()
+            name = entity_state.replace('binary_sensor.', '').replace('_assist_in_progress', '')
+            start_va(name)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Audiobooks            
     elif type_or_entity_id == "audiobooks":
         closest_directory = find_closest_directory(query_or_file, os.listdir(SEARCH_FOLDERS["audiobooks"]))
@@ -502,8 +590,12 @@ if __name__ == "__main__":
             save_media_content_urls(media_content_urls, "audiobooks")
             send_service_call("audiobooks")
         else:
-            print("No matching directory found for the search query.")
-
+            print("Could not find any Audiobook with the title", sys.argv[1])
+            print("Try again")
+            entity_state = call_template_service()
+            name = entity_state.replace('binary_sensor.', '').replace('_assist_in_progress', '')
+            start_va(name)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Other Videos
     elif type_or_entity_id == "othervideos":
         closest_directory = find_closest_directory(query_or_file, os.listdir(SEARCH_FOLDERS["othervideos"]))
@@ -514,8 +606,12 @@ if __name__ == "__main__":
             save_media_content_urls(media_content_urls, "othervideos")
             send_service_call("othervideos")
         else:
-            print("No matching directory found for the search query.")
-
+            print("Could not find any Video with the title", sys.argv[1])
+            print("Try again")
+            entity_state = call_template_service()
+            name = entity_state.replace('binary_sensor.', '').replace('_assist_in_progress', '')
+            start_va(name)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Song (Music)
     elif type_or_entity_id == "song":
         closest_files = find_closest_files(query_or_file, SEARCH_FOLDERS["music"], n=5)
@@ -525,8 +621,12 @@ if __name__ == "__main__":
             save_media_content_urls(media_content_urls, "song")
             send_service_call("song")
         else:
-            print("No matching file found for the search query.")
-
+            print("Could not find any Song with the title", sys.argv[1])
+            print("Try again")
+            entity_state = call_template_service()
+            name = entity_state.replace('binary_sensor.', '').replace('_assist_in_progress', '')
+            start_va(name)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # YouTube
     elif type_or_entity_id == "youtube":
         search_query = clean_search_query(query_or_file)
@@ -536,32 +636,46 @@ if __name__ == "__main__":
             print(f"Starting to play video: {video_title}: {video_url}")
             save_media_content_ids([video_url], "youtube")
         else:
-            print("No videos found for the given search query.")
-
+            print("Could not find any YouTube video with the title", sys.argv[1])
+            print("Try again")
+            entity_state = call_template_service()
+            name = entity_state.replace('binary_sensor.', '').replace('_assist_in_progress', '')
+            start_va(name)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Additional Media Control
+    
 # Play
     elif type_or_entity_id == "play":
         call_media_play_pause_service("all")
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Pause
     elif type_or_entity_id == "pause":
         call_media_play_pause_service("all")
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Next
     elif type_or_entity_id == "next":
         call_media_next_track_service("all")
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Previous
     elif type_or_entity_id == "previous":
         call_media_previous_track_service("all")
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Volume Up
     elif type_or_entity_id == "up":
         call_volume_up_service("all")
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Volume Down
     elif type_or_entity_id == "down":
         call_volume_down_service("all")
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Power On
+    elif type_or_entity_id == "on":
+        call_power_off_service("on")
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Power Off
+    elif type_or_entity_id == "off":
+        call_power_off_service("off")
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
     else:
         if type_or_entity_id not in SEARCH_FOLDERS:
             print("Invalid directory type.")

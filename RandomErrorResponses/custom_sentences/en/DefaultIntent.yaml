@@ -1,9 +1,10 @@
 language: "en"
 intents:
-  DefaultIntent:
+  ErrorResponse:
     data:
       - sentences:
-        - "{wild}"
+        - "{w}"
+        
 lists:
-  wild:
+  w:
     wildcard: true

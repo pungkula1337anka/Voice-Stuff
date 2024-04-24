@@ -8,3 +8,4 @@ intents:
 lists:
   w:
     wildcard: true
+

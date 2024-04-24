@@ -11,9 +11,6 @@
 
 <br><br>
 
-<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/banner-dark.png?raw=true" width="300" height="150"  />
-
-<br>
 
 # __What is 🦆 duck-TV? 📺__
 
@@ -31,6 +28,7 @@ __2 quick and simple steps to control all your media by voice.__ <br>
 
 <br><br>
 
+<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/banner-dark.png?raw=true" width="300" height="125"  />
 
 # __Full media control in one Python script.__ <br>
 

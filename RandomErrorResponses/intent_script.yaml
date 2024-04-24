@@ -1,4 +1,4 @@
-DefaultIntent:
+ErrorResponse:
   speech:
     text: >
       {% set 1 = "Buddy, you're speaking Japanese! I'm lost in translation." %}

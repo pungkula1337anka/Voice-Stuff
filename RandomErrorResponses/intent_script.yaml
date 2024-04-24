@@ -1,0 +1,10 @@
+DefaultIntent:
+  speech:
+    text: >
+      {% set 1 = "Buddy, you're speaking Japanese! I'm lost in translation." %}
+      {% set 2 = "What in the world... Did you have a meatball sandwich in your mouth or something? I'm clueless!" %}
+      {% set 3 = "You must've eaten mushrooms or something!" %}
+      {% set 4 = "Are we speaking in riddles now? I'm as lost as a sock in the dryer!" %}
+      {% set 5 = "Did I accidentally switch to the upside-down world? I'm totally puzzled!" %}
+      {% set 6 = "You're speaking in hieroglyphics! Give me a clue, will ya?" %}
+      {{ [1, 2, 3, 4, 5, 6] | random }}

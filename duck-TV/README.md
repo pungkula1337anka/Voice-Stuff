@@ -28,10 +28,11 @@ __2 quick and simple steps to control all your media by voice.__ <br>
 
 <br><br>
 
-<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/banner-dark.png?raw=true" width="300" height="125"  />
-
 # __Full media control in one Python script.__ <br>
 
+<br>
+<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/banner-dark.png?raw=true" width="300" height="115"  />
+<br>
 <br>
 duck-TV Voice Controller utilizes the portability of Chromecast and the power of LibVLC to broadcast your local media to your devices. <br>
 The difflib module is used to maximize your search potential and to create an __lightning fast__ "fuzzywuzzy" alike search effect, which can be clearvly used
@@ -217,20 +218,21 @@ __yay__ <br>
 <br>
 
 
-<br><br>
+<br>
 
 
 <h1 align="center">
-<br>
+
  
  __🎈 enjoy 🎈__ 
 
 </h1><br><br><br><br>
 
-<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/ducktv.png?raw=true" width="250" height="250"  />
-
 
 # __Troubleshooting__
+
+<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/ducktv.png?raw=true" width="250" height="250"  />
+
 
 Make sure you rebooted your Home Assistant after installing everything.
 

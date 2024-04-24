@@ -3,13 +3,17 @@
 <br>
  
 
-<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/ducktv6.jpeg?raw=true" width="400" height="400"  />
+<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/ducktv6.jpeg?raw=true" width="350" height="350"  />
 
 </h1><br>
 
 </h1><br>
 
-<br><br><br>
+<br><br>
+
+<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/banner-dark.png?raw=true" width="300" height="150"  />
+
+<br>
 
 # __What is 🦆 duck-TV? 📺__
 
@@ -211,6 +215,7 @@ __yay__ <br>
 <br><br>
 
 
+
 <br>
 
 
@@ -223,6 +228,8 @@ __yay__ <br>
  __🎈 enjoy 🎈__ 
 
 </h1><br><br><br><br>
+
+<img src="https://github.com/pungkula1337anka/Voice-Stuff/blob/main/asset/ducktv.png?raw=true" width="250" height="250"  />
 
 
 # __Troubleshooting__

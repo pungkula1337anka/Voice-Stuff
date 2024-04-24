@@ -5,6 +5,7 @@ intents:
       - sentences:
           - "(starta|ställ|sätt) väckarklockan på {hours} [och] {minutes} "          
           - "{alarm_timer} [klockan] {hours} {minutes} "    
+          - "{alarm_timer} [klockan] {hours}.{minutes} "    
           - "(starta|ställ|sätt) [en] {alarm_timer} [på] {hours} (tim|timme|timma|timmar)"
           - "(starta|ställ|sätt) [en] {alarm_timer} [på] {minutes} minuter"
           - "(starta|ställ|sätt) [en] {alarm_timer} [på] {seconds} sekunder"

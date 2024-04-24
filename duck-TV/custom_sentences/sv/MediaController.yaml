@@ -1,7 +1,7 @@
 ### -->     Custom Sentences   <--     ###
 ##################################    
-##### -> MEDIA CONTROL <- ######
-# https://github.com/pungkula1337anka/Voice-Stuff/tree/main/PythonMediaController
+##### -> duck-TV <- ######
+# https://github.com/pungkula1337anka/Voice-Stuff/tree/main/duck-TV
 ##################################
 # Full Media Control
 
@@ -65,3 +65,7 @@ lists:
         out: "add"    
       - in: "den här låten gillar jag"
         out: "add"         
+      - in: "på"
+        out: "on"  
+      - in: "av"
+        out: "off"    

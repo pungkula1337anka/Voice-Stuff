@@ -93,8 +93,23 @@ def apply_corrections(query):
     """
     This function applies corrections to the search query.
     """
-    corrected_query = CORRECTIONS.get(query, query)
-    return corrected_query
+    
+    query_lower = query.lower()
+    
+    corrected_query = CORRECTIONS.get(query_lower)
+    if corrected_query:
+        return corrected_query
+    
+    for wrong_query, corrected_query in CORRECTIONS.items():
+        if wrong_query in query_lower:
+            corrected_query = corrected_query[0].upper() + corrected_query[1:] if query[0].isupper() else corrected_query.lower()
+            
+            pattern = re.compile(re.escape(wrong_query) + r'(?=\W|$)', re.IGNORECASE)
+            corrected = pattern.sub(corrected_query, query)
+            
+            return corrected
+    
+    return query
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def preprocess_search_query():
     """

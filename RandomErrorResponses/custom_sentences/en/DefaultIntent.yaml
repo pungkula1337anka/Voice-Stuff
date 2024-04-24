@@ -1,0 +1,9 @@
+language: "en"
+intents:
+  DefaultIntent:
+    data:
+      - sentences:
+        - "{wild}"
+lists:
+  wild:
+    wildcard: true

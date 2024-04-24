@@ -256,7 +256,7 @@ data:
 <br>
 Make sure you have the movie your searching for in a folder in the directory you defined in the `media_controller.py` file.  <br>
 
-If the service call is successful, there problem is probably in the custom sentence file, try adjusting it. <br>
+If the service call is successful, the problem is probably in the custom sentence file, try adjusting it. <br>
 <br>
 <br>
 

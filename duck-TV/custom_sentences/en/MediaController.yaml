@@ -3,9 +3,9 @@
 ##### -> MEDIA CONTROL <- ######
 # https://github.com/pungkula1337anka/Voice-Stuff/tree/main/PythonMediaController
 ##################################
-# Full Media Control
+# This is translated with Google Translate
 
-language: "en"
+language: "en" # English
 intents:
   MediaController:
     data:
@@ -65,3 +65,7 @@ lists:
         out: "add"
       - in: "I like this song"
         out: "add"
+      - in: "on"
+        out: "on"  
+      - in: "off"
+        out: "off"  

@@ -149,7 +149,7 @@ Turn on/off your TV's & media box by saying `on` or `off`.<br>
 
 
 - **1: Download the files** <br>
-Download and the files in this repo to your `/config` directory. <br>
+Download and place the files in this repo in your `/config` directory. <br>
 If the files already exist in your /config directory, simply add the content of the files and save.<br>
 
 - **2: Python Script** <br>

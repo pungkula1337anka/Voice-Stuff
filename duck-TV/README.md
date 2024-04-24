@@ -227,6 +227,8 @@ __yay__ <br>
 
 # __Troubleshooting__
 
+Make sure you rebooted your Home Assistant after installing everything.
+
 Make sure you have Samba (SMB) on your HA instance. There is an official Addon you can use. <br>
 
 Make sure you have the Android TV Remote integration installed and properly configurated on your HA instance. <br> 
@@ -234,3 +236,23 @@ Make sure you have the Android TV Remote integration installed and properly conf
 Make sure you have defined everything in the top section of the python file correctly. <br> 
 
 For best performance, I recommend having the VLC app installed on your TV/Android box. <br>
+
+Still having issues? Go to Developer Tools > Services abd try sending a service call to start a movie: <br>
+
+```
+service: shell_command.media_controller
+data: 
+  search: MOVIE_TITLE_HERE
+  typ: movie
+  player: remote.YOUR_REMOTE
+```
+<br>
+Make sure you have the movie your searching for in a folder in the directory you defined in the `media_controller.py` file.  <br>
+
+If the service call is successful, there problem is probably in the custom sentence file, try adjusting it. <br>
+<br>
+<br>
+
+__Still having problems? Feel free to create an issue here or contact me-__ 
+
+<br><br>

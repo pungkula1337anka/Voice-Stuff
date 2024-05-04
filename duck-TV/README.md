@@ -35,7 +35,9 @@ __2 quick and simple steps to control all your media by voice.__ <br>
 <br>
 <br>
 duck-TV Voice Controller utilizes the portability of Chromecast and the power of LibVLC to broadcast your local media to your devices. <br>
+
 The difflib module is used to maximize your search potential and to create an __lightning fast__ "fuzzywuzzy" alike search effect, which can be clearvly used
+
 especially when spaking in a language other than your Assist pipeline defaults. <br>
 This allows for calling an artists name or song title thats not in your native language. <br>
 Even if the STT generates the wrong word, the python script will still _(try to)_ point you to the right directory path.<br>

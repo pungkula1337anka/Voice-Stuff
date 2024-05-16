@@ -1,9 +1,10 @@
 ### -->  duck-TV Voice Controller  <--   ###
-##################################    
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ##### -> README <- ######
 # https://github.com/pungkula1337anka/Voice-Stuff/tree/main/duck-TV
-##################################
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Be sure to place this file inside your /config directory.
+
 import os
 import sys
 import random

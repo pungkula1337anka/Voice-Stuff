@@ -16,6 +16,8 @@ import secrets
 import string
 from difflib import get_close_matches
 from urllib.parse import urlencode
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### --> Define your shit here please <-- ###
 
@@ -84,8 +86,11 @@ INTRO_URL = "https://drive.proton.me/urls/GF9374B97R#ZMSv2jz9JPBY"
 
 # Only chnage if you know what you are doing. Default = "smb://"
 WEBSERVER = "smb://"
+
 ### --> Thank you! <-- ###
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
 
 news_list = []
 
